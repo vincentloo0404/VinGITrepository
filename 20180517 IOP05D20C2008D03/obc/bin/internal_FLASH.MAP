@@ -1,0 +1,2176 @@
+Link map of __start
+  1] __start (func,global) found in Runtime.PPCEABI.VS.UC.a __start.o
+   2] __init_registers (func,weak) found in Runtime.PPCEABI.VS.UC.a __start.o
+    3] _stack_addr found as linker generated symbol
+    3] _SDA2_BASE_ found as linker generated symbol
+    3] _SDA_BASE_ found as linker generated symbol
+   2] __init_hardware (func,global) found in __ppc_eabi_init.o 
+    3] usr_init (func,global) found in MPC55xx_init.o 
+     4] INIT_Derivative (func,global) found in MPC560xP_HWInit.o 
+      5] L2SRAM_LOCATION found as linker generated symbol
+     4] __IVPR_VALUE found as linker generated symbol
+   2] __init_data (func,weak) found in Runtime.PPCEABI.VS.UC.a __start.o
+    3] _rom_copy_info (object,global) found in Linker Generated Symbol File 
+    3] __copy_rom_section (func,global) found in Runtime.PPCEABI.VS.UC.a __start.o
+     4] _savegpr_30 (notype,global) found in Runtime.PPCEABI.VS.UC.a runtime.o
+      5] __save_gpr (func,local) found in Runtime.PPCEABI.VS.UC.a runtime.o
+     4] memcpy (func,global) found in Runtime.PPCEABI.VS.UC.a __mem.o
+     4] __flush_cache (func,global) found in __ppc_eabi_init.o 
+     4] __restore_gpr_30_exit (func,global) found in Runtime.PPCEABI.VS.UC.a runtime.o
+      5] __finish_restore_frame_and_exit (notype,global) found in Runtime.PPCEABI.VS.UC.a runtime.o
+       6] __restore_gpr_31_exit (func,global) found in Runtime.PPCEABI.VS.UC.a runtime.o
+        7] __finish_restore_frame_and_exit2 (notype,global) found in Runtime.PPCEABI.VS.UC.a runtime.o
+         8] __restore_frame_and_exit (func,global) found in Runtime.PPCEABI.VS.UC.a runtime.o
+    3] _bss_init_info (object,global) found in Linker Generated Symbol File 
+    3] memset (func,global) found in Runtime.PPCEABI.VS.UC.a __mem.o
+     4] __fill_mem (func,global) found in Runtime.PPCEABI.VS.UC.a __mem.o
+   2] __init_user (func,global) found in __ppc_eabi_init.o 
+    3] FlashConfig (func,global) found in __ppc_eabi_init.o 
+     4] @22 (object,local) found in __ppc_eabi_init.o 
+   2] main (func,global) found in L4_Main.o 
+    3] ECUStartUp_L4_Ctrl (func,global) found in L4_ECUStateManagement.o 
+     4] MCU_L2_Init (func,global) found in L2_MCAL.o 
+      5] PORT_L2_Init (func,global) found in m_GPIO.o 
+      5] SWT_vDisableWatchDog (func,global) found in m_WatchDog_Drv.o 
+      5] mSysClk_Sel (func,global) found in m_Clock_Drv.o 
+      5] mMcClk_Sel (func,global) found in m_Clock_Drv.o 
+      5] mCTU_Init (func,global) found in m_CTU_Drv.o 
+       6] mCTU_Trig_FstCommand_Set (func,local) found in m_CTU_Drv.o 
+        7] @47 (object,local) found in m_CTU_Drv.o 
+       6] mCTU_Trig_Handdle_Set (func,global) found in m_CTU_Drv.o 
+        7] @121 (object,local) found in m_CTU_Drv.o 
+       6] mCTU_CLR_Dual_All_Set (func,local) found in m_CTU_Drv.o 
+       6] mCTU_FIFO_DMA_En_Set (func,local) found in m_CTU_Drv.o 
+       6] mCTU_FIFO_Thresh_Set (func,local) found in m_CTU_Drv.o 
+       6] mCTU_Module_En (func,global) found in m_CTU_Drv.o 
+       6] mCTU_GRE_Set (func,global) found in m_CTU_Drv.o 
+      5] mADC0_Init (func,global) found in m_ADC_Drv.o 
+       6] mADC_Mode_Set (func,local) found in m_ADC_Drv.o 
+       6] mADC_Align_Set (func,local) found in m_ADC_Drv.o 
+       6] mADC_CTU_En_Set (func,global) found in m_ADC_Drv.o 
+       6] mADC_Normal_Chan_En (func,local) found in m_ADC_Drv.o 
+        7] @163 (object,local) found in m_ADC_Drv.o 
+      5] mADC1_Init (func,global) found in m_ADC_Drv.o 
+      5] mDSPI_All_Init (func,global) found in m_DSPI_Drv.o 
+       6] mDSPI_Init_Module0 (func,local) found in m_DSPI_Drv.o 
+       6] mDSPI_Init_Module1 (func,local) found in m_DSPI_Drv.o 
+       6] mDSPI_Init_Module2 (func,local) found in m_DSPI_Drv.o 
+       6] mDSPI_Init_Module3 (func,local) found in m_DSPI_Drv.o 
+        7] mDSPI_Module_En (func,global) found in m_DSPI_Drv.o 
+        7] mDSPI_Module_Start (func,global) found in m_DSPI_Drv.o 
+      5] mCAN_Init (func,global) found in m_CAN_Drv.o 
+       6] mCAN_Module_En (func,global) found in m_CAN_Drv.o 
+       6] mCAN_SoftRst (func,local) found in m_CAN_Drv.o 
+       6] mCAN_Module_Dis (func,global) found in m_CAN_Drv.o 
+       6] mCAN_Enter_FreezeMode (func,local) found in m_CAN_Drv.o 
+       6] mCAN_Modify_Baud (func,local) found in m_CAN_Drv.o 
+       6] mCAN_RxFIFO_ID_Table_A_Set (func,local) found in m_CAN_Drv.o 
+       6] mDalay_Nms (func,global) found in Common.o 
+      5] mINTC_Init (func,global) found in m_Intc_Drv.o 
+       6] IntcIsrVectorTable (object,global) found in m_Intc_Drv.o 
+        7] dummy (func,global) found in m_Intc_Drv.o 
+        7] mEDMA_CH0_11_ISR (func,global) found in m_EDMA_Drv.o 
+         8] pFUN_mEDMA_IRQ11_CH0_Hook (func,global) found in L4_ScheduleManagement.o 
+          9] L4_S_DcDcTaskFunction (object,local) found in L4_ScheduleManagement.o 
+           10] NullFunction_Task22_L4_Per (func,local) found in L4_ScheduleManagement.o 
+          9] Cnt100us (object,local) found in L4_ScheduleManagement.o 
+          9] timer200us (object,local) found in L4_ScheduleManagement.o 
+        7] ECC_DBD_Isr (func,global) found in L2_Ecc.o 
+      5] mEDMA_CTU_FIFO_Init (func,global) found in m_EDMA_Drv.o 
+       6] RxDataRam0 (object,global) found in L3_AdcIf.o 
+       6] RxDataRam1 (object,global) found in L3_AdcIf.o 
+      5] mPWM_All_Init (func,global) found in m_PWM_Drv.o 
+       6] mPWM_Sub_All_Stop (func,global) found in m_PWM_Drv.o 
+       6] mPWM_Sub_0_Init (func,local) found in m_PWM_Drv.o 
+        7] mPWM_CaptX_Start (func,global) found in m_PWM_Drv.o 
+       6] mPWM_Sub_1_Init (func,local) found in m_PWM_Drv.o 
+       6] mPWM_Sub_2_Init (func,local) found in m_PWM_Drv.o 
+       6] mPWM_Sub_3_Init (func,local) found in m_PWM_Drv.o 
+       6] mPWM_General_Config (func,local) found in m_PWM_Drv.o 
+      5] ECSM_Init (func,global) found in L2_Ecc.o 
+       6] cRestoreEei (func,local) found in L2_Ecc.o 
+     4] ECU_L3_Init (func,global) found in L3_ECAL.o 
+      5] EmEep_L3_Init (func,global) found in L3_EmEep.o 
+       6] DataCopy (func,local) found in L3_EmEep.o 
+      5] AdcSigSample_L3_Init (func,global) found in L3_AdcIf.o 
+       6] L3_Dcdc_Vout_Ct_u16 (object,global) found in L3_AdcIf.o 
+       6] L3_Dcdc_Iout_Ct_u16 (object,global) found in L3_AdcIf.o 
+      5] SensorVoltageAbstract_L3_Init (func,global) found in L3_SensorVoltageSignal.o 
+       6] L3_S_Sensor5V_Volt_G_u16p08 (object,global) found in L3_SensorVoltageSignal.o 
+       6] L3_S_RslvVcc_Volt_G_u16p08 (object,global) found in L3_SensorVoltageSignal.o 
+      5] VoltSignalAbstract_L3_Init (func,global) found in L3_VoltSignal.o 
+       6] L3_S_BatCmmVolt_Volt_G_u16p10 (object,global) found in L3_VoltSignal.o 
+       6] L3_S_BatCmmVolt_Volt_G_u16p08 (object,global) found in L3_VoltSignal.o 
+       6] L3_S_BatMosVolt_Volt_G_u16p10 (object,global) found in L3_VoltSignal.o 
+      5] ccpInit (func,global) found in V_CCP.o 
+       6] ccp (object,global) found in V_CCP.o 
+       6] CCP_CAN_TxBuf (object,global) found in V_CCP.o 
+      5] IgnitionSignalAbstarct_L3_Init (func,global) found in L3_IgnitionSignal.o 
+       6] L3_S_IgnitionState_G_u08 (object,global) found in L3_IgnitionSignal.o 
+       6] L3_S_IgnVolt_Volt_F_u16p10 (object,local) found in L3_IgnitionSignal.o 
+       6] L3_S_IgnitionHWStateCnt_M_u08 (object,local) found in L3_IgnitionSignal.o 
+      5] CAN_L3_Init (func,global) found in L3_CAN.o 
+       6] L3_N_EpsTxMsgCnt_Ct_F_u16 (object,local) found in L3_CAN.o 
+       6] L3_N_EpsTxMsgBuf_F_Str (object,local) found in L3_CAN.o 
+       6] L3_S_EspMsgBuf_F_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_EmsMsgBuf_F_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_Ems1MsgTimeOut_Uls_G_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_Esp3MsgTimeOut_Uls_G_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_CANVehicleSpeed_Kph_G_u16p06 (object,global) found in L3_CAN.o 
+       6] L3_S_CANVehicleSpeedValid_Ct_G_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_CANEngineSpeed_rpm_G_u16 (object,global) found in L3_CAN.o 
+       6] L3_S_CANEngineSpeedValid_Ct_G_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_CANEngineRunningSt_Uls_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_CANEnAstSt_Uls_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_CANSta_Ct_M_Enu (object,global) found in L3_CAN.o 
+       6] L3_S_EPS_EPSFault_Ct_G_u08 (object,global) found in L3_CAN.o 
+       6] L3_S_Ems1MsgTimeCnt_Uls_u16 (object,global) found in L3_CAN.o 
+       6] L3_S_VehSpdMsgTimeCnt_Uls_u16 (object,global) found in L3_CAN.o 
+       6] L3_CanBusOffRecCnt_Ct_u16 (object,global) found in L3_CAN.o 
+      5] TemperatureAbstarct_L3_Init (func,global) found in L3_TemperatureSignal.o 
+       6] L3_S_MosfetTemp_DegC_G_s16p01 (object,global) found in L3_TemperatureSignal.o 
+      5] FS_L3_EcalFailSafeInit (func,global) found in L3_EcalFailSafe.o 
+      5] SBC_L3_Init (func,global) found in L3_SbcDrv.o 
+       6] mDSPI_Data_TxRx16_CTAS (func,global) found in m_DSPI_Drv.o 
+        7] mDSPI_WordTx_CTAS (func,local) found in m_DSPI_Drv.o 
+         8] OverTimeCheckLong (func,global) found in Common.o 
+        7] mDSPI_WordRx (func,local) found in m_DSPI_Drv.o 
+       6] WdVal (object,global) found in L3_SbcDrv.o 
+       6] McVal (object,global) found in L3_SbcDrv.o 
+       6] IcVal (object,global) found in L3_SbcDrv.o 
+       6] IsVal (object,global) found in L3_SbcDrv.o 
+     4] SRVL_L4_Init (func,global) found in L4_SRVL.o 
+      5] DTC_L4_vInit (func,global) found in L4_DTC.o 
+       6] gIndex_u08 (object,local) found in L4_DTC.o 
+       6] DTC_L4_Enable (func,global) found in L4_DTC.o 
+        7] L4_S_DTCEnable_Ct_G_a (object,local) found in L4_DTC.o 
+       6] L4_S_DTCCfg_G_Str (object,global) found in L4_DTC_Data.o 
+       6] L4_S_DTCError_CTR_Ct_G_a (object,local) found in L4_DTC.o 
+      5] FM_L4_ColdInit (func,global) found in L4_FaultManager.o 
+       6] L4_S_SysFaultState_Uls_G_Enu (object,global) found in L4_FaultManager.o 
+       6] DTC_L4_GetErrorStaB1 (func,global) found in L4_DTC.o 
+     4] APPL_L5_Init (func,global) found in L5_APPL.o 
+      5] OBC_initialize (func,global) found in OBC.o 
+       6] OBC_DWork (object,global) found in OBC.o 
+       6] OBC_U (object,global) found in OBC.o 
+       6] OBC_Y (object,global) found in OBC.o 
+     4] ECUStateManagement_L4_ColdInit (func,global) found in L4_ECUStateManagement.o 
+      5] L3_SleepWaitTime_Ct_u16 (object,local) found in L4_ECUStateManagement.o 
+      5] ScheduleManagement_L4_ColdInit (func,global) found in L4_ScheduleManagement.o 
+       6] TaskIndex (object,local) found in L4_ScheduleManagement.o 
+       6] NullFunction_Task21_L4_Per (func,local) found in L4_ScheduleManagement.o 
+       6] L4_S_TaskFunction (object,local) found in L4_ScheduleManagement.o 
+      5] L4_S_ECUState_Now_G_Enu (object,global) found in L4_ECUStateManagement.o 
+      5] ScheduleManagement_L4_StopInit (func,global) found in L4_ScheduleManagement.o 
+       6] CAN_Comm_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] L3_S_BatState_Uls_G_Enu (object,global) found in L3_BattVolt_Diag.o 
+        7] CAN_L3_Per (func,global) found in L3_CAN.o 
+         8] CAN_L3_RxMsg (func,local) found in L3_CAN.o 
+          9] CanRx_L2_Per (func,global) found in m_CAN_Drv.o 
+           10] Memory_Copy_Src_to_Dest (func,global) found in Common.o 
+           10] pFUN_mCAN_MB_FIFO_Hook (func,global) found in L3_CAN.o 
+            11] CCP_CRO_Indication (func,global) found in V_CCP.o 
+             12] ccpCommand (func,global) found in V_CCP.o 
+              13] ccpStopAllDaq (func,local) found in V_CCP.o 
+              13] @386 (object,local) found in V_CCP.o 
+              13] ccpStationId (object,global) found in V_CCP.o 
+              13] ccpGetPointer (func,global) found in V_CCP.o 
+              13] ccpWriteMTA (func,local) found in V_CCP.o 
+              13] ccpReadMTA (func,local) found in V_CCP.o 
+              13] ccpStopDaq (func,local) found in V_CCP.o 
+              13] ccpClearDaqList (func,local) found in V_CCP.o 
+               14] ccpQueueInit (func,global) found in V_CCP.o 
+              13] ccpPrepareDaq (func,local) found in V_CCP.o 
+              13] ccpStartDaq (func,local) found in V_CCP.o 
+              13] ccpStartAllPreparedDaq (func,local) found in V_CCP.o 
+              13] ccpSetCalPage (func,global) found in V_CCP.o 
+              13] ccpGetCalPage (func,global) found in V_CCP.o 
+              13] ccpSendCrm (func,global) found in V_CCP.o 
+               14] ccpSend (func,global) found in V_CCP.o 
+                15] mCAN_MB_12_15_Send_Message (func,global) found in m_CAN_Drv.o 
+            11] L3_N_EngineType_Uls_u08 (object,global) found in L3_CAN.o 
+            11] s_dsmco_PHYS_service (func,global) found in FBL_UDS.o 
+             12] fblUdsRxBuffer (object,global) found in FBL_UDS.o 
+             12] s_dsmco_dsc_handler (func,global) found in FBL_UDS.o 
+              13] lastDiagMode (object,global) found in FBL_UDS.o 
+              13] send_positive_response (func,global) found in FBL_UDS.o 
+               14] fblUdsTxBuffer (object,global) found in FBL_UDS.o 
+               14] CAN_L3_TxUdsMsg (func,global) found in FBL_UDS.o 
+                15] L3_UdsTxMsgBuf_Str (object,local) found in FBL_UDS.o 
+                15] mCAN_MB_08_11_Send_Message (func,global) found in m_CAN_Drv.o 
+              13] send_negative_response (func,global) found in FBL_UDS.o 
+               14] emergency_buffer (object,global) found in FBL_UDS.o 
+               14] send_UDS_CAN (func,global) found in FBL_UDS.o 
+             12] s_dsmco_RC_handler (func,global) found in FBL_UDS.o 
+            11] s_dsmco_FUNC_service (func,global) found in FBL_UDS.o 
+             12] s_dsmco_DTCSetting_handler (func,global) found in FBL_UDS.o 
+              13] DTCSettingDiagMode (object,global) found in FBL_UDS.o 
+             12] s_dsmco_CommControl_handler (func,global) found in FBL_UDS.o 
+              13] CommControlDiagMode (object,global) found in FBL_UDS.o 
+              13] EcuSoftRst (func,global) found in FBL_UDS.o 
+         8] CAN_L3_TxMsg (func,local) found in L3_CAN.o 
+          9] CanTx_L2_Confirm (func,global) found in m_CAN_Drv.o 
+           10] pFUN_mCAN_MB_08_11_Hook (func,global) found in L3_CAN.o 
+           10] pFUN_mCAN_MB_12_15_Hook (func,global) found in L3_CAN.o 
+            11] CCP_DTO_Confirmation (func,global) found in V_CCP.o 
+             12] ccpSendCallBack (func,global) found in V_CCP.o 
+          9] EPS_HSC_FrP00_Tx_Per (func,local) found in L3_CAN.o 
+         8] CAN_L3_BusOff (func,local) found in L3_CAN.o 
+          9] mCAN_Get_Fault_Conf_State (func,global) found in m_CAN_Drv.o 
+       6] CCP_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] CCP_Per (func,global) found in V_CCP.o 
+         8] @LOCAL@CCP_Per__Fv@ccpTimer1 (object,local) found in V_CCP.o 
+         8] @LOCAL@CCP_Per__Fv@ccpTimer2@0 (object,local) found in V_CCP.o 
+         8] ccpDaq10ms (func,global) found in V_CCP.o 
+          9] ccpSampleAndTransmitDtm (func,local) found in V_CCP.o 
+           10] ccpQueueWrite (func,global) found in V_CCP.o 
+         8] ccpDaq100ms (func,global) found in V_CCP.o 
+         8] ccpBackground (func,global) found in V_CCP.o 
+          9] ccpUserBackground (func,global) found in V_CCP.o 
+       6] SignalSampling_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] SBC_L3_Per (func,global) found in L3_SbcDrv.o 
+         8] @LOCAL@SBC_L3_Per__Fv@ReadSbcRegIndex (object,local) found in L3_SbcDrv.o 
+        7] IgnitionSignalAbstarct_L3_Per (func,global) found in L3_IgnitionSignal.o 
+         8] L3_S_IgnVolt_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+        7] TemperatureAbstarct_L3_Per (func,global) found in L3_TemperatureSignal.o 
+        7] FS_L3_BatVoltDiagPer (func,global) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatOffErrClearCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatOffErrConfirmCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatLowErrClearCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatLowErrConfirmCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatNormal1ErrConfirmCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_S_BatLevel_Uls_G_Enu (object,global) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatNormal1ErrClearCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatOver1ErrConfirmCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatOver1ErrClearCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatOver2ErrConfirmCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] L3_N_BatOver2ErrClearCnt_Ct_F_u16 (object,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_ExitBatoffState (func,local) found in L3_BattVolt_Diag.o 
+         8] DTC_L4_SetError (func,global) found in L4_DTC.o 
+          9] L4_S_FaultCode_G_Str (object,global) found in L4_DTC_Data.o 
+         8] DTC_L4_ClrError (func,global) found in L4_DTC.o 
+         8] FS_L3_EnterBatoffState (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_ExitBatLowState (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_EnterBatLowState (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_ExitBatNormal1State (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_EnterBatNormal1State (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_EnterBatOver1State (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_EnterBatOver2State (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_ExitBatOver1State (func,local) found in L3_BattVolt_Diag.o 
+         8] FS_L3_ExitBatOver2State (func,local) found in L3_BattVolt_Diag.o 
+        7] FS_L3_TemperatureDiagPer (func,global) found in L3_Temperature_Diag.o 
+         8] L3_N_TempSenDiagLoopCt_Ct_u08 (object,local) found in L3_Temperature_Diag.o 
+         8] L3_N_TempSenShGndErrCnt_Ct_u16 (object,local) found in L3_Temperature_Diag.o 
+         8] L3_N_TempSenShVcErrCnt_Ct_u16 (object,local) found in L3_Temperature_Diag.o 
+         8] L3_N_TempSenHighErrCnt_Ct_u16 (object,local) found in L3_Temperature_Diag.o 
+         8] L3_N_TempSenLowErrCnt_Ct_u16 (object,local) found in L3_Temperature_Diag.o 
+         8] FS_L3_TempSenShGnd (func,local) found in L3_Temperature_Diag.o 
+          9] L3_S_PcbTemp_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+          9] L3_S_TempSenDiagResult_Uls_G_Str (object,global) found in L3_Temperature_Diag.o 
+         8] FS_L3_TempSenShVc (func,local) found in L3_Temperature_Diag.o 
+         8] FS_L3_TempSenHigh (func,local) found in L3_Temperature_Diag.o 
+         8] FS_L3_TempSenLow (func,local) found in L3_Temperature_Diag.o 
+        7] FS_L3_IgnitionVoltDiagPer (func,global) found in L3_IgnitionVolt_Diag.o 
+       6] DTCManage_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] DTC_L4_POLLING_2ms (func,global) found in L4_DTC.o 
+         8] @LOCAL@DTC_L4_POLLING_2ms__Fv@testEnable@0 (object,local) found in L4_DTC.o 
+         8] @LOCAL@DTC_L4_POLLING_2ms__Fv@testIndex (object,local) found in L4_DTC.o 
+         8] DTC_L4_CustomerDTCMgt (func,local) found in L4_DTC.o 
+          9] DTC_L4_ClrDTCMgt (func,local) found in L4_DTC.o 
+         8] DTC_L4_FaultMgt (func,local) found in L4_DTC.o 
+          9] DTC_L4_SnapShotMgt (func,local) found in L4_DTC.o 
+       6] UDS_ON_CAN_STask_L4_Per (func,global) found in L4_StopTask.o 
+       6] FaultManage_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] FM_L4_ShutDown (func,global) found in L4_FaultManager.o 
+         8] DTC_L4_GetErrorStaB0 (func,global) found in L4_DTC.o 
+         8] FM_L4_EPSFaultBitCfm (func,local) found in L4_FaultManager.o 
+          9] L3_N_EPSFaultBitCnt_Ct_G_u16 (object,local) found in L4_FaultManager.o 
+       6] RunStateMonitor_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] ECUShutDown_L4_Ctrl (func,global) found in L4_ECUStateManagement.o 
+         8] SBC_L3_CheckWakeupIntEvent (func,global) found in L3_SbcDrv.o 
+         8] SBC_L3_CfgSleepMode (func,global) found in L3_SbcDrv.o 
+       6] MotorCtrl_STask_L4_Per (func,global) found in L4_StopTask.o 
+        7] AdcSigSample_L3_Per (func,global) found in L3_AdcIf.o 
+         8] @63 (object,local) found in L3_AdcIf.o 
+         8] L3_PriCurHigh_Ct_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_PriCurLow_Ct_u16 (object,global) found in L3_AdcIf.o 
+        7] AdcSigSample_L3_Per1 (func,global) found in L3_AdcIf.o 
+         8] @91 (object,local) found in L3_AdcIf.o 
+         8] L3_S_RslvR1Buf_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_RslvR2Buf_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_RslvVcc_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_BatCmmVolt_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_BatMosVolt_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_Sensor5V_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_Ref25V_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+         8] L3_S_RlyCoil_Ct_G_u16 (object,global) found in L3_AdcIf.o 
+      5] ScheduleManagement_L4_WarmInit (func,global) found in L4_ScheduleManagement.o 
+       6] CAN_Comm_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+       6] CCP_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+       6] SignalSampling_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+       6] DTCManage_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+       6] UDS_ON_CAN_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+       6] FaultManage_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+        7] FM_L4_WarmInit (func,global) found in L4_FaultManager.o 
+       6] RunStateMonitor_WTask_L4_Per (func,global) found in L4_WarmTask.o 
+        7] ECUStateManagement_L4_WarmInit (func,global) found in L4_ECUStateManagement.o 
+       6] DcDc_Task_L4_Per (func,global) found in L4_WarmTask.o 
+        7] L3_DcDcTaskCt_u08 (object,global) found in L4_WarmTask.o 
+        7] k_DcDcTaskPer_u08 (object,global) found in L4_WarmTask.o 
+        7] k_Dcdc_Vref_Ct_u16 (object,global) found in L4_WarmTask.o 
+        7] k_Dcdc_Iref_Ct_u16 (object,global) found in L4_WarmTask.o 
+        7] OBC_DcDc (func,global) found in DcDc.o 
+         8] k_CurKi_Uls_s16p12 (object,global) found in global.o 
+         8] k_CurKp_Uls_s16p12 (object,global) found in global.o 
+         8] k_VoltKi_Uls_s16p12 (object,global) found in global.o 
+         8] k_VoltKp_Uls_s16p12 (object,global) found in global.o 
+         8] k_DcDcLoopType_u08 (object,global) found in global.o 
+        7] OBC_PianCi (func,global) found in PianCi.o 
+         8] k_PfcCurErrDeadZone_Ct_s16 (object,global) found in global.o 
+         8] k_PfcCurKp_Uls_s16p10 (object,global) found in global.o 
+        7] k_PwmSelect_u08 (object,global) found in L4_WarmTask.o 
+        7] k_PhaseAdvance_Ct_u16 (object,global) found in L4_WarmTask.o 
+        7] k_PianCiComp_Ct_s16 (object,global) found in L4_WarmTask.o 
+        7] mPWM_Sub_0_AB_Advance (func,global) found in m_PWM_Drv.o 
+      5] L4_S_ECUState_Pre_G_Enu (object,global) found in L4_ECUStateManagement.o 
+     4] mPWM_Sub_All_Start (func,global) found in m_PWM_Drv.o 
+     4] mINTC_SetCurrPriority_Irq (func,global) found in m_Intc_Drv.o 
+    3] CAN_L3_TxTestMsg (func,global) found in L4_Main.o 
+     4] L3_UdsTxMsgBuf_Str1 (object,local) found in L4_Main.o 
+    3] ScheduleManagement_L4_Per (func,global) found in L4_ScheduleManagement.o 
+   2] exit (func,weak) found in __ppc_eabi_init.o 
+    3] _ExitProcess (func,weak) found in __ppc_eabi_init.o 
+  1] bam_rchw (object,global) found in MPC55xx_init.o 
+  1] bam_resetvector (object,global) found in MPC55xx_init.o 
+  1] .ivor_handlers (section,local) found in handlers_vle.o 
+   2] _@DummyFn1 (func,local) found in handlers_vle.o 
+   2] IVOR4Handler (notype,global) found in handlers_vle.o 
+   2] .ivor_handlers (section,local) found in handlers_vle.o 
+  1] .ivor_branch_table (section,local) found in ivor_branch_table_vle.o 
+   2] IVOR1_Isr (func,global) found in L2_Ecc.o 
+    3] Fls_Erase (func,global) found in Fls.o 
+     4] pFlashErase (object,global) found in Fls.o 
+      5] FlashErase_C (object,global) found in FlashErase.o 
+     4] Fls_GetSectorNum (func,local) found in Fls.o 
+      5] Fls_Sector (object,global) found in Fls.o 
+     4] ssdConfig (object,global) found in Fls.o 
+     4] ssdDataConfig (object,global) found in Fls.o 
+   2] IVOR2_Isr (func,global) found in L2_Ecc.o 
+   2] _@DummyFn2 (func,local) found in ivor_branch_table_vle.o 
+   2] .ivor_branch_table (section,local) found in ivor_branch_table_vle.o 
+  1] @219 (object,local) found in m_ADC_Drv.o 
+   2] @218 (object,local) found in m_ADC_Drv.o 
+  1] @225 (object,local) found in m_ADC_Drv.o 
+   2] @224 (object,local) found in m_ADC_Drv.o 
+  1] @133 (object,local) found in m_CTU_Drv.o 
+   2] @132 (object,local) found in m_CTU_Drv.o 
+  1] @257 (object,local) found in m_CTU_Drv.o 
+   2] @256 (object,local) found in m_CTU_Drv.o 
+  1] @36 (object,local) found in m_Clock_Drv.o 
+   2] @35 (object,local) found in m_Clock_Drv.o 
+  1] @62 (object,local) found in m_EDMA_Drv.o 
+   2] @61 (object,local) found in m_EDMA_Drv.o 
+  1] @50 (object,local) found in m_CAN_Drv.o 
+   2] @49 (object,local) found in m_CAN_Drv.o 
+  1] @66 (object,local) found in m_CAN_Drv.o 
+   2] @65 (object,local) found in m_CAN_Drv.o 
+  1] @139 (object,local) found in m_CAN_Drv.o 
+   2] @138 (object,local) found in m_CAN_Drv.o 
+  1] @215 (object,local) found in m_CAN_Drv.o 
+   2] @214 (object,local) found in m_CAN_Drv.o 
+  1] @250 (object,local) found in m_CAN_Drv.o 
+   2] @249 (object,local) found in m_CAN_Drv.o 
+  1] @269 (object,local) found in m_CAN_Drv.o 
+   2] @268 (object,local) found in m_CAN_Drv.o 
+  1] @345 (object,local) found in m_CAN_Drv.o 
+   2] @344 (object,local) found in m_CAN_Drv.o 
+  1] @372 (object,local) found in m_CAN_Drv.o 
+   2] @371 (object,local) found in m_CAN_Drv.o 
+  1] @91 (object,local) found in m_PWM_Drv.o 
+   2] @90 (object,local) found in m_PWM_Drv.o 
+  1] @127 (object,local) found in m_PWM_Drv.o 
+   2] @126 (object,local) found in m_PWM_Drv.o 
+  1] @177 (object,local) found in m_PWM_Drv.o 
+   2] @176 (object,local) found in m_PWM_Drv.o 
+  1] @207 (object,local) found in m_PWM_Drv.o 
+   2] @206 (object,local) found in m_PWM_Drv.o 
+  1] @263 (object,local) found in m_DSPI_Drv.o 
+   2] @262 (object,local) found in m_DSPI_Drv.o 
+  1] @455 (object,local) found in m_DSPI_Drv.o 
+   2] @454 (object,local) found in m_DSPI_Drv.o 
+  1] @478 (object,local) found in m_DSPI_Drv.o 
+   2] @477 (object,local) found in m_DSPI_Drv.o 
+  1] @540 (object,local) found in m_DSPI_Drv.o 
+   2] @539 (object,local) found in m_DSPI_Drv.o 
+  1] @552 (object,local) found in m_DSPI_Drv.o 
+   2] @551 (object,local) found in m_DSPI_Drv.o 
+  1] @333 (object,local) found in L4_ECUStateManagement.o 
+   2] @332 (object,local) found in L4_ECUStateManagement.o 
+  1] @346 (object,local) found in L4_ECUStateManagement.o 
+   2] @345 (object,local) found in L4_ECUStateManagement.o 
+  1] @356 (object,local) found in L4_ECUStateManagement.o 
+   2] @355 (object,local) found in L4_ECUStateManagement.o 
+  1] @333 (object,local) found in L4_Main.o 
+   2] @332 (object,local) found in L4_Main.o 
+  1] @339 (object,local) found in L4_Main.o 
+   2] @338 (object,local) found in L4_Main.o 
+  1] @142 (object,local) found in L3_ECAL.o 
+   2] @141 (object,local) found in L3_ECAL.o 
+  1] @294 (object,local) found in L2_MCAL.o 
+   2] @293 (object,local) found in L2_MCAL.o 
+  1] @365 (object,local) found in L4_ScheduleManagement.o 
+   2] @364 (object,local) found in L4_ScheduleManagement.o 
+  1] @374 (object,local) found in L4_ScheduleManagement.o 
+   2] @373 (object,local) found in L4_ScheduleManagement.o 
+  1] @6 (object,local) found in L4_SRVL.o 
+   2] @5 (object,local) found in L4_SRVL.o 
+  1] @46 (object,local) found in V_CCP.o 
+   2] @45 (object,local) found in V_CCP.o 
+  1] @97 (object,local) found in V_CCP.o 
+   2] @96 (object,local) found in V_CCP.o 
+  1] @111 (object,local) found in V_CCP.o 
+   2] @110 (object,local) found in V_CCP.o 
+  1] @132 (object,local) found in V_CCP.o 
+   2] @131 (object,local) found in V_CCP.o 
+  1] @149 (object,local) found in V_CCP.o 
+   2] @148 (object,local) found in V_CCP.o 
+  1] @161 (object,local) found in V_CCP.o 
+   2] @160 (object,local) found in V_CCP.o 
+  1] @195 (object,local) found in V_CCP.o 
+   2] @194 (object,local) found in V_CCP.o 
+  1] @216 (object,local) found in V_CCP.o 
+   2] @215 (object,local) found in V_CCP.o 
+  1] @237 (object,local) found in V_CCP.o 
+   2] @236 (object,local) found in V_CCP.o 
+  1] @289 (object,local) found in V_CCP.o 
+   2] @288 (object,local) found in V_CCP.o 
+  1] @388 (object,local) found in V_CCP.o 
+   2] @387 (object,local) found in V_CCP.o 
+  1] @402 (object,local) found in V_CCP.o 
+   2] @401 (object,local) found in V_CCP.o 
+  1] @420 (object,local) found in V_CCP.o 
+   2] @419 (object,local) found in V_CCP.o 
+  1] @427 (object,local) found in V_CCP.o 
+   2] @426 (object,local) found in V_CCP.o 
+  1] @434 (object,local) found in V_CCP.o 
+   2] @433 (object,local) found in V_CCP.o 
+  1] @444 (object,local) found in V_CCP.o 
+   2] @443 (object,local) found in V_CCP.o 
+  1] @454 (object,local) found in V_CCP.o 
+   2] @453 (object,local) found in V_CCP.o 
+  1] @494 (object,local) found in V_CCP.o 
+   2] @493 (object,local) found in V_CCP.o 
+  1] @91 (object,local) found in L4_FaultManager.o 
+   2] @90 (object,local) found in L4_FaultManager.o 
+  1] @134 (object,local) found in L4_FaultManager.o 
+   2] @133 (object,local) found in L4_FaultManager.o 
+  1] @231 (object,local) found in L4_FaultManager.o 
+   2] @230 (object,local) found in L4_FaultManager.o 
+  1] @65 (object,local) found in L3_AdcIf.o 
+   2] @64 (object,local) found in L3_AdcIf.o 
+  1] @93 (object,local) found in L3_AdcIf.o 
+   2] @92 (object,local) found in L3_AdcIf.o 
+  1] @168 (object,local) found in L4_DTC.o 
+   2] @167 (object,local) found in L4_DTC.o 
+  1] @185 (object,local) found in L4_DTC.o 
+   2] @184 (object,local) found in L4_DTC.o 
+  1] @197 (object,local) found in L4_DTC.o 
+   2] @196 (object,local) found in L4_DTC.o 
+  1] @219 (object,local) found in L4_DTC.o 
+   2] @218 (object,local) found in L4_DTC.o 
+  1] @230 (object,local) found in L4_DTC.o 
+   2] @229 (object,local) found in L4_DTC.o 
+  1] @287 (object,local) found in L4_DTC.o 
+   2] @286 (object,local) found in L4_DTC.o 
+  1] @298 (object,local) found in L4_DTC.o 
+   2] @297 (object,local) found in L4_DTC.o 
+  1] @321 (object,local) found in L4_DTC.o 
+   2] @320 (object,local) found in L4_DTC.o 
+  1] @333 (object,local) found in L4_DTC.o 
+   2] @332 (object,local) found in L4_DTC.o 
+  1] @8 (object,local) found in L5_APPL.o 
+   2] @7 (object,local) found in L5_APPL.o 
+  1] @81 (object,local) found in L3_CAN.o 
+   2] @80 (object,local) found in L3_CAN.o 
+  1] @107 (object,local) found in L3_CAN.o 
+   2] @106 (object,local) found in L3_CAN.o 
+  1] @123 (object,local) found in L3_CAN.o 
+   2] @122 (object,local) found in L3_CAN.o 
+  1] @135 (object,local) found in L3_CAN.o 
+   2] @134 (object,local) found in L3_CAN.o 
+  1] @145 (object,local) found in L3_CAN.o 
+   2] @144 (object,local) found in L3_CAN.o 
+  1] @154 (object,local) found in L3_CAN.o 
+   2] @153 (object,local) found in L3_CAN.o 
+  1] @166 (object,local) found in L3_CAN.o 
+   2] @165 (object,local) found in L3_CAN.o 
+  1] @172 (object,local) found in L3_CAN.o 
+   2] @171 (object,local) found in L3_CAN.o 
+  1] @15 (object,local) found in L3_EmEep.o 
+   2] @14 (object,local) found in L3_EmEep.o 
+  1] @21 (object,local) found in L3_EmEep.o 
+   2] @20 (object,local) found in L3_EmEep.o 
+  1] @346 (object,local) found in L4_WarmTask.o 
+   2] @345 (object,local) found in L4_WarmTask.o 
+  1] @352 (object,local) found in L4_WarmTask.o 
+   2] @351 (object,local) found in L4_WarmTask.o 
+  1] @362 (object,local) found in L4_WarmTask.o 
+   2] @361 (object,local) found in L4_WarmTask.o 
+  1] @368 (object,local) found in L4_WarmTask.o 
+   2] @367 (object,local) found in L4_WarmTask.o 
+  1] @374 (object,local) found in L4_WarmTask.o 
+   2] @373 (object,local) found in L4_WarmTask.o 
+  1] @384 (object,local) found in L4_WarmTask.o 
+   2] @383 (object,local) found in L4_WarmTask.o 
+  1] @333 (object,local) found in L4_StopTask.o 
+   2] @332 (object,local) found in L4_StopTask.o 
+  1] @339 (object,local) found in L4_StopTask.o 
+   2] @338 (object,local) found in L4_StopTask.o 
+  1] @345 (object,local) found in L4_StopTask.o 
+   2] @344 (object,local) found in L4_StopTask.o 
+  1] @351 (object,local) found in L4_StopTask.o 
+   2] @350 (object,local) found in L4_StopTask.o 
+  1] @357 (object,local) found in L4_StopTask.o 
+   2] @356 (object,local) found in L4_StopTask.o 
+  1] @366 (object,local) found in L4_StopTask.o 
+   2] @365 (object,local) found in L4_StopTask.o 
+  1] @379 (object,local) found in L4_StopTask.o 
+   2] @378 (object,local) found in L4_StopTask.o 
+  1] @98 (object,local) found in L3_BattVolt_Diag.o 
+   2] @97 (object,local) found in L3_BattVolt_Diag.o 
+  1] @74 (object,local) found in L3_Temperature_Diag.o 
+   2] @73 (object,local) found in L3_Temperature_Diag.o 
+  1] @157 (object,local) found in L3_SbcDrv.o 
+   2] @156 (object,local) found in L3_SbcDrv.o 
+  1] @174 (object,local) found in L3_SbcDrv.o 
+   2] @173 (object,local) found in L3_SbcDrv.o 
+  1] @188 (object,local) found in L3_SbcDrv.o 
+   2] @187 (object,local) found in L3_SbcDrv.o 
+  1] @198 (object,local) found in L3_SbcDrv.o 
+   2] @197 (object,local) found in L3_SbcDrv.o 
+  1] @160 (object,local) found in Fls.o 
+   2] @159 (object,local) found in Fls.o 
+  1] @327 (object,local) found in Fls.o 
+   2] @326 (object,local) found in Fls.o 
+  1] @207 (object,local) found in L2_Ecc.o 
+   2] @206 (object,local) found in L2_Ecc.o 
+  1] @213 (object,local) found in L2_Ecc.o 
+   2] @212 (object,local) found in L2_Ecc.o 
+  1] @223 (object,local) found in L2_Ecc.o 
+   2] @222 (object,local) found in L2_Ecc.o 
+  1] @36 (object,local) found in Common.o 
+   2] @35 (object,local) found in Common.o 
+  1] @56 (object,local) found in Common.o 
+   2] @55 (object,local) found in Common.o 
+  1] @51 (object,local) found in FBL_UDS.o 
+   2] @50 (object,local) found in FBL_UDS.o 
+  1] @63 (object,local) found in FBL_UDS.o 
+   2] @62 (object,local) found in FBL_UDS.o 
+  1] @75 (object,local) found in FBL_UDS.o 
+   2] @74 (object,local) found in FBL_UDS.o 
+  1] @86 (object,local) found in FBL_UDS.o 
+   2] @85 (object,local) found in FBL_UDS.o 
+  1] @108 (object,local) found in FBL_UDS.o 
+   2] @107 (object,local) found in FBL_UDS.o 
+  1] @120 (object,local) found in FBL_UDS.o 
+   2] @119 (object,local) found in FBL_UDS.o 
+  1] @130 (object,local) found in FBL_UDS.o 
+   2] @129 (object,local) found in FBL_UDS.o 
+  1] @146 (object,local) found in FBL_UDS.o 
+   2] @145 (object,local) found in FBL_UDS.o 
+  1] @159 (object,local) found in FBL_UDS.o 
+   2] @158 (object,local) found in FBL_UDS.o 
+  1] @181 (object,local) found in FBL_UDS.o 
+   2] @180 (object,local) found in FBL_UDS.o 
+  1] @46 (object,local) found in DcDc.o 
+   2] @45 (object,local) found in DcDc.o 
+  1] @14 (object,local) found in OBC.o 
+   2] @13 (object,local) found in OBC.o 
+  1] @30 (object,local) found in PianCi.o 
+   2] @29 (object,local) found in PianCi.o 
+  1] __init_cpp_exceptions_reference (object,global) found in Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+   2] __init_cpp_exceptions (func,global) found in Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+    3] fragmentID (object,local) found in Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+    3] __exception_info_constants (func,weak) found in Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+     4] _eti_init_info (object,global) found in Linker Generated Symbol File 
+    3] __register_fragment (func,global) found in Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+     4] fragmentinfo (object,local) found in Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  1] __fini_cpp_exceptions_reference (object,global) found in Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+   2] __fini_cpp_exceptions (func,global) found in Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+    3] __unregister_fragment (func,global) found in Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  1] _ctors (notype,global) found in Linker Generated Symbol File 
+  1] _ctors$99 (object,global) found in Linker Generated Symbol File 
+  1] _dtors (notype,global) found in Linker Generated Symbol File 
+  1] _dtors$99 (object,global) found in Linker Generated Symbol File 
+    3] .text (section,local) found in m_ADC_Drv.o 
+    3] .text.283 (notype,local) found in m_ADC_Drv.o 
+    3] .init (section,local) found in MPC55xx_init.o 
+    3] .init.10 (notype,local) found in MPC55xx_init.o 
+    3] .text (section,local) found in MPC560xP_HWInit.o 
+    3] .text.34 (notype,local) found in MPC560xP_HWInit.o 
+    3] .text (section,local) found in m_Intc_Drv.o 
+    3] .text.24 (notype,local) found in m_Intc_Drv.o 
+    3] .text (section,local) found in m_CTU_Drv.o 
+    3] .text.286 (notype,local) found in m_CTU_Drv.o 
+    3] .text (section,local) found in m_Clock_Drv.o 
+    3] .text.45 (notype,local) found in m_Clock_Drv.o 
+    3] .text (section,local) found in m_EDMA_Drv.o 
+    3] .text.71 (notype,local) found in m_EDMA_Drv.o 
+    3] .text (section,local) found in m_WatchDog_Drv.o 
+    3] .text.23 (notype,local) found in m_WatchDog_Drv.o 
+    3] .text (section,local) found in m_CAN_Drv.o 
+    3] .text.388 (notype,local) found in m_CAN_Drv.o 
+    3] .text (section,local) found in m_PWM_Drv.o 
+    3] .text.302 (notype,local) found in m_PWM_Drv.o 
+    3] .text (section,local) found in m_DSPI_Drv.o 
+    3] .text.575 (notype,local) found in m_DSPI_Drv.o 
+    3] .text (section,local) found in m_GPIO.o 
+    3] .text.14 (notype,local) found in m_GPIO.o 
+    3] .text (section,local) found in L4_ECUStateManagement.o 
+    3] .text.371 (notype,local) found in L4_ECUStateManagement.o 
+    3] .text (section,local) found in L4_Main.o 
+    3] .text.350 (notype,local) found in L4_Main.o 
+    3] .text (section,local) found in L3_ECAL.o 
+    3] .text.153 (notype,local) found in L3_ECAL.o 
+    3] .text (section,local) found in L2_MCAL.o 
+    3] .text.299 (notype,local) found in L2_MCAL.o 
+    3] .text (section,local) found in L4_ScheduleManagement.o 
+    3] .text.387 (notype,local) found in L4_ScheduleManagement.o 
+    3] .text (section,local) found in L4_SRVL.o 
+    3] .text.11 (notype,local) found in L4_SRVL.o 
+    3] .text (section,local) found in V_CCP.o 
+    3] .text.535 (notype,local) found in V_CCP.o 
+    3] .text (section,local) found in L4_FaultManager.o 
+    3] .text.270 (notype,local) found in L4_FaultManager.o 
+    3] .text (section,local) found in L3_AdcIf.o 
+    3] .text.104 (notype,local) found in L3_AdcIf.o 
+    3] .text (section,local) found in L3_IgnitionSignal.o 
+    3] .text.71 (notype,local) found in L3_IgnitionSignal.o 
+    3] .text (section,local) found in L4_DTC.o 
+    3] .text.345 (notype,local) found in L4_DTC.o 
+    3] .text (section,local) found in L3_EcalFailSafe.o 
+    3] .text.62 (notype,local) found in L3_EcalFailSafe.o 
+    3] .text (section,local) found in L5_APPL.o 
+    3] .text.13 (notype,local) found in L5_APPL.o 
+    3] .text (section,local) found in L3_CAN.o 
+    3] .text.192 (notype,local) found in L3_CAN.o 
+    3] .text (section,local) found in L3_EmEep.o 
+    3] .text.33 (notype,local) found in L3_EmEep.o 
+    3] .text (section,local) found in L4_WarmTask.o 
+    3] .text.391 (notype,local) found in L4_WarmTask.o 
+    3] .text (section,local) found in L4_StopTask.o 
+    3] .text.385 (notype,local) found in L4_StopTask.o 
+    3] .text (section,local) found in L3_TemperatureSignal.o 
+    3] .text.54 (notype,local) found in L3_TemperatureSignal.o 
+    3] .text (section,local) found in L3_SensorVoltageSignal.o 
+    3] .text.54 (notype,local) found in L3_SensorVoltageSignal.o 
+    3] .text (section,local) found in L3_BattVolt_Diag.o 
+    3] .text.305 (notype,local) found in L3_BattVolt_Diag.o 
+    3] .text (section,local) found in L3_Temperature_Diag.o 
+    3] .text.184 (notype,local) found in L3_Temperature_Diag.o 
+    3] .text (section,local) found in L3_IgnitionVolt_Diag.o 
+    3] .text.64 (notype,local) found in L3_IgnitionVolt_Diag.o 
+    3] .text (section,local) found in L3_SbcDrv.o 
+    3] .text.203 (notype,local) found in L3_SbcDrv.o 
+    3] .text (section,local) found in L3_VoltSignal.o 
+    3] .text.54 (notype,local) found in L3_VoltSignal.o 
+    3] .text (section,local) found in Fls.o 
+    3] .text.367 (notype,local) found in Fls.o 
+    3] .text (section,local) found in L2_Ecc.o 
+    3] .text.249 (notype,local) found in L2_Ecc.o 
+    3] .text (section,local) found in Common.o 
+    3] .text.143 (notype,local) found in Common.o 
+    3] .text (section,local) found in FBL_UDS.o 
+    3] .text.199 (notype,local) found in FBL_UDS.o 
+    3] .text (section,local) found in DcDc.o 
+    3] .text.54 (notype,local) found in DcDc.o 
+    3] .text (section,local) found in OBC.o 
+    3] .text.22 (notype,local) found in OBC.o 
+    3] .text (section,local) found in PianCi.o 
+    3] .text.37 (notype,local) found in PianCi.o 
+    3] .init (section,local) found in Runtime.PPCEABI.VS.UC.a __start.o
+    3] .init.130 (notype,local) found in Runtime.PPCEABI.VS.UC.a __start.o
+    3] .text (section,local) found in Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+    3] .text.1683 (notype,local) found in Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+    3] .text (section,local) found in Runtime.PPCEABI.VS.UC.a runtime.o
+    3] .text.205 (notype,local) found in Runtime.PPCEABI.VS.UC.a runtime.o
+
+
+.boot section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000008 0000c000 00000400  1 .boot 	MPC55xx_init.o 
+  00000000 000004 0000c000 00000400  4 bam_rchw 	MPC55xx_init.o 
+  00000004 000004 0000c004 00000404  4 bam_resetvector 	MPC55xx_init.o 
+
+
+.init section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 0000cc 0000c020 00000408  1 .init 	Linker Generated Symbol File 
+  00000000 0000b4 0000c020 00000408  4 _rom_copy_info 	Linker Generated Symbol File 
+  000000b4 000018 0000c0d4 000004bc  4 _bss_init_info 	Linker Generated Symbol File 
+
+
+.init_vle section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000016 0000c0ec 000004d4  1 .init 	MPC55xx_init.o 
+  00000000 000016 0000c0ec 000004d4  2 usr_init 	MPC55xx_init.o 
+  00000016 000000 0000c102 000004ea  1 .init.10 	MPC55xx_init.o 
+  00000016 000036 0000c102 000004ea  1 .init 	__ppc_eabi_init.o 
+  00000016 000014 0000c102 000004ea  2 __init_hardware 	__ppc_eabi_init.o 
+  0000002a 000022 0000c116 000004fe  2 __flush_cache 	__ppc_eabi_init.o 
+  0000004c 0000ea 0000c138 00000520  1 .init 	Runtime.PPCEABI.VS.UC.a __start.o
+  0000004c 000048 0000c138 00000520  4 __start 	Runtime.PPCEABI.VS.UC.a __start.o
+  00000094 00002c 0000c180 00000568  2 __copy_rom_section 	Runtime.PPCEABI.VS.UC.a __start.o
+  UNUSED   00000e ........ ........    __init_bss_section Runtime.PPCEABI.VS.UC.a __start.o
+  000000c0 00001a 0000c1ac 00000594  2 __init_registers 	Runtime.PPCEABI.VS.UC.a __start.o
+  000000da 00005c 0000c1c6 000005ae  2 __init_data 	Runtime.PPCEABI.VS.UC.a __start.o
+  00000136 000000 0000c222 0000060a  1 .init.130 	Runtime.PPCEABI.VS.UC.a __start.o
+  00000136 0000ca 0000c222 0000060a  1 .init 	Runtime.PPCEABI.VS.UC.a __mem.o
+  00000136 000038 0000c222 0000060a  2 memcpy 	Runtime.PPCEABI.VS.UC.a __mem.o
+  0000016e 000078 0000c25a 00000642  2 __fill_mem 	Runtime.PPCEABI.VS.UC.a __mem.o
+  000001e6 00001a 0000c2d2 000006ba  2 memset 	Runtime.PPCEABI.VS.UC.a __mem.o
+  00000200 00000e 0000c2ec 000006d4  1 .init 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00000200 00000e 0000c2ec 000006d4  2 __exception_info_constants 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  UNUSED   000028 ........ ........    __find_exception_addresses Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+
+
+.ivor_branch_table section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 0000f4 0000d000 000006f0  1 .ivor_branch_table 	ivor_branch_table_vle.o 
+  00000000 0000f4 0000d000 000006f0  4 _@DummyFn2 	ivor_branch_table_vle.o 
+
+
+.ivor_handlers section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 0000ae 0000d100 000007f0  1 .ivor_handlers 	handlers_vle.o 
+  00000000 0000ae 0000d100 000007f0  4 _@DummyFn1 	handlers_vle.o 
+  00000000 000000 0000d100 000007f0    IVOR4Handler (entry of .ivor_handlers) 	handlers_vle.o 
+
+
+.intc_sw_isr_vector_table section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000400 0000e000 00001000  1 .intc_sw_isr_vector_table 	m_Intc_Drv.o 
+  00000000 000400 0000e000 00001000  8 IntcIsrVectorTable 	m_Intc_Drv.o 
+
+
+.text section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+
+
+.text_vle section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 00053e 0000e400 00001400  1 .text 	m_ADC_Drv.o 
+  00000000 00002e 0000e400 00001400  2 mADC_Align_Set 	m_ADC_Drv.o 
+  0000002e 00002e 0000e42e 0000142e  2 mADC_Mode_Set 	m_ADC_Drv.o 
+  UNUSED   000014 ........ ........    mADC_Normal_Stop m_ADC_Drv.o 
+  UNUSED   000014 ........ ........    mADC_Normal_Start m_ADC_Drv.o 
+  0000005c 00002e 0000e45c 0000145c  2 mADC_CTU_En_Set 	m_ADC_Drv.o 
+  UNUSED   00007e ........ ........    mADC_Intc_En m_ADC_Drv.o 
+  UNUSED   0000ba ........ ........    mADC_Intc_WatchDog_En m_ADC_Drv.o 
+  UNUSED   0001e8 ........ ........    mADC_DMA_Chan_En m_ADC_Drv.o 
+  UNUSED   000048 ........ ........    mADC_Thrsh_En_Set m_ADC_Drv.o 
+  UNUSED   000048 ........ ........    mADC_Thrsh_High_Set m_ADC_Drv.o 
+  UNUSED   000046 ........ ........    mADC_Thrsh_Low_Set m_ADC_Drv.o 
+  0000008a 0001e8 0000e48a 0000148a  2 mADC_Normal_Chan_En 	m_ADC_Drv.o 
+  UNUSED   00020a ........ ........    mADC_Normal_Chan_Dis m_ADC_Drv.o 
+  UNUSED   0001e8 ........ ........    mADC_Inject_Chan_En m_ADC_Drv.o 
+  00000272 000140 0000e672 00001672  2 mADC0_Init 	m_ADC_Drv.o 
+  000003b2 00018c 0000e7b2 000017b2  2 mADC1_Init 	m_ADC_Drv.o 
+  UNUSED   000074 ........ ........    mADC0_ValGet m_ADC_Drv.o 
+  UNUSED   000074 ........ ........    mADC1_ValGet m_ADC_Drv.o 
+  UNUSED   00009e ........ ........    mADC_Oneshot_ValGet m_ADC_Drv.o 
+  0000053e 000000 0000e93e 0000193e  1 .text.283 	m_ADC_Drv.o 
+  0000053e 00001e 0000e93e 0000193e  1 .text 	MPC560xP_HWInit.o 
+  0000053e 00001e 0000e93e 0000193e  2 INIT_Derivative 	MPC560xP_HWInit.o 
+  UNUSED   000012 ........ ........    INIT_ExternalBusAndMemory MPC560xP_HWInit.o 
+  UNUSED   00000c ........ ........    InitPCRs MPC560xP_HWInit.o 
+  UNUSED   000064 ........ ........    __initSIUExtBusInterface MPC560xP_HWInit.o 
+  UNUSED   000002 ........ ........    __initEBIChipSelects MPC560xP_HWInit.o 
+  UNUSED   000016 ........ ........    WriteMMUTableEntry MPC560xP_HWInit.o 
+  UNUSED   000006 ........ ........    __initMMUExternalMemory MPC560xP_HWInit.o 
+  0000055c 000000 0000e95c 0000195c  1 .text.34 	MPC560xP_HWInit.o 
+  0000055c 000066 0000e95c 0000195c  1 .text 	__ppc_eabi_init.o 
+  0000055c 00003e 0000e95c 0000195c  2 FlashConfig 	__ppc_eabi_init.o 
+  0000059a 000012 0000e99a 0000199a  2 __init_user 	__ppc_eabi_init.o 
+  000005ac 000014 0000e9ac 000019ac  2 exit 	__ppc_eabi_init.o 
+  000005c0 000002 0000e9c0 000019c0  2 _ExitProcess 	__ppc_eabi_init.o 
+  000005c2 000072 0000e9c2 000019c2  1 .text 	m_Intc_Drv.o 
+  UNUSED   000006 ........ ........    mINTC_Enable_Irq m_Intc_Drv.o 
+  000005c2 000016 0000e9c2 000019c2  2 mINTC_SetCurrPriority_Irq 	m_Intc_Drv.o 
+  000005d8 000002 0000e9d8 000019d8  2 dummy 	m_Intc_Drv.o 
+  000005da 00005a 0000e9da 000019da  2 mINTC_Init 	m_Intc_Drv.o 
+  00000634 000000 0000ea34 00001a34  1 .text.24 	m_Intc_Drv.o 
+  00000634 00154c 0000ea34 00001a34  1 .text 	m_CTU_Drv.o 
+  00000634 00018c 0000ea34 00001a34  2 mCTU_Trig_FstCommand_Set 	m_CTU_Drv.o 
+  000007c0 00084e 0000ebc0 00001bc0  2 mCTU_Trig_Handdle_Set 	m_CTU_Drv.o 
+  0000100e 0000f6 0000f40e 0000240e  2 mCTU_CLR_Dual_All_Set 	m_CTU_Drv.o 
+  00001104 0000ee 0000f504 00002504  2 mCTU_FIFO_DMA_En_Set 	m_CTU_Drv.o 
+  UNUSED   0000d0 ........ ........    mCTU_FIFO_Overrun_En_Set m_CTU_Drv.o 
+  UNUSED   0000d0 ........ ........    mCTU_FIFO_Thresh_OverFlow_En_Set m_CTU_Drv.o 
+  UNUSED   0000d0 ........ ........    mCTU_FIFO_Empty_En_Set m_CTU_Drv.o 
+  UNUSED   0000ce ........ ........    mCTU_FIFO_Full_En_Set m_CTU_Drv.o 
+  UNUSED   00000c ........ ........    mCTU_FIFO_Intc_Dis_All m_CTU_Drv.o 
+  000011f2 0000ce 0000f5f2 000025f2  2 mCTU_FIFO_Thresh_Set 	m_CTU_Drv.o 
+  UNUSED   000038 ........ ........    mCTU_ADC_StateM_Reset m_CTU_Drv.o 
+  000012c0 000038 0000f6c0 000026c0  2 mCTU_GRE_Set 	m_CTU_Drv.o 
+  000012f8 00001a 0000f6f8 000026f8  2 mCTU_Module_En 	m_CTU_Drv.o 
+  UNUSED   000028 ........ ........    mCTU_Module_Dis m_CTU_Drv.o 
+  00001312 00086e 0000f712 00002712  2 mCTU_Init 	m_CTU_Drv.o 
+  UNUSED   000092 ........ ........    mCTU_FIFO_GetVal m_CTU_Drv.o 
+  00001b80 000000 0000ff80 00002f80  1 .text.286 	m_CTU_Drv.o 
+  00001b80 0001be 0000ff80 00002f80  1 .text 	m_Clock_Drv.o 
+  00001b80 00013c 0000ff80 00002f80  2 mSysClk_Sel 	m_Clock_Drv.o 
+  00001cbc 000082 000100bc 000030bc  2 mMcClk_Sel 	m_Clock_Drv.o 
+  00001d3e 000000 0001013e 0000313e  1 .text.45 	m_Clock_Drv.o 
+  00001d3e 0003e4 0001013e 0000313e  1 .text 	m_EDMA_Drv.o 
+  UNUSED   000400 ........ ........    mEDMA_Config_TCD m_EDMA_Drv.o 
+  UNUSED   00001e ........ ........    mEDMA_Hard_Req_En m_EDMA_Drv.o 
+  UNUSED   000020 ........ ........    mEDMA_Hard_Req_Dis m_EDMA_Drv.o 
+  00001d3e 0003c6 0001013e 0000313e  2 mEDMA_CTU_FIFO_Init 	m_EDMA_Drv.o 
+  00002104 00001e 00010504 00003504  2 mEDMA_CH0_11_ISR 	m_EDMA_Drv.o 
+  00002122 000000 00010522 00003522  1 .text.71 	m_EDMA_Drv.o 
+  00002122 000032 00010522 00003522  1 .text 	m_WatchDog_Drv.o 
+  00002122 000032 00010522 00003522  2 SWT_vDisableWatchDog 	m_WatchDog_Drv.o 
+  UNUSED   000032 ........ ........    mSWT_WatchDog_Dis m_WatchDog_Drv.o 
+  UNUSED   000040 ........ ........    mSWT_WatchDog_En m_WatchDog_Drv.o 
+  UNUSED   000022 ........ ........    mSWT_WatchDog_Feed m_WatchDog_Drv.o 
+  00002154 000000 00010554 00003554  1 .text.23 	m_WatchDog_Drv.o 
+  00002154 000872 00010554 00003554  1 .text 	m_CAN_Drv.o 
+  00002154 000010 00010554 00003554  2 mCAN_Module_En 	m_CAN_Drv.o 
+  00002164 000040 00010564 00003564  2 mCAN_Module_Dis 	m_CAN_Drv.o 
+  000021a4 000040 000105a4 000035a4  2 mCAN_SoftRst 	m_CAN_Drv.o 
+  UNUSED   00001c ........ ........    mCAN_IntcMask_En m_CAN_Drv.o 
+  UNUSED   00001e ........ ........    mCAN_IntcMask_Dis m_CAN_Drv.o 
+  000021e4 00003c 000105e4 000035e4  2 mCAN_RxFIFO_ID_Table_A_Set 	m_CAN_Drv.o 
+  UNUSED   00008c ........ ........    mCAN_RxFIFO_ID_Table_B_Set m_CAN_Drv.o 
+  UNUSED   00004a ........ ........    mCAN_RxFIFO_ID_Table_C_Set m_CAN_Drv.o 
+  UNUSED   00003a ........ ........    mCAN_MB_ID_Set m_CAN_Drv.o 
+  00002220 00005a 00010620 00003620  2 mCAN_Enter_FreezeMode 	m_CAN_Drv.o 
+  0000227a 0000cc 0001067a 0000367a  2 mCAN_Modify_Baud 	m_CAN_Drv.o 
+  UNUSED   0000c2 ........ ........    mCAN_Abort_Procedure m_CAN_Drv.o 
+  UNUSED   000046 ........ ........    mCAN_BusOff_Recovery m_CAN_Drv.o 
+  00002346 00038c 00010746 00003746  2 mCAN_Init 	m_CAN_Drv.o 
+  UNUSED   000010 ........ ........    mCAN_MB_00_03_Send_Message m_CAN_Drv.o 
+  UNUSED   000010 ........ ........    mCAN_MB_04_07_Send_Message m_CAN_Drv.o 
+  000026d2 0000ac 00010ad2 00003ad2  2 mCAN_MB_08_11_Send_Message 	m_CAN_Drv.o 
+  0000277e 0000ac 00010b7e 00003b7e  2 mCAN_MB_12_15_Send_Message 	m_CAN_Drv.o 
+  UNUSED   0000ac ........ ........    mCAN_MB_16_31_Send_Message m_CAN_Drv.o 
+  UNUSED   000148 ........ ........    mCAN_MB_All_Send_Clear m_CAN_Drv.o 
+  0000282a 000012 00010c2a 00003c2a  2 mCAN_Get_Fault_Conf_State 	m_CAN_Drv.o 
+  0000283c 000090 00010c3c 00003c3c  2 CanRx_L2_Per 	m_CAN_Drv.o 
+  000028cc 0000fa 00010ccc 00003ccc  2 CanTx_L2_Confirm 	m_CAN_Drv.o 
+  000029c6 000000 00010dc6 00003dc6  1 .text.388 	m_CAN_Drv.o 
+  000029c6 00066a 00010dc6 00003dc6  1 .text 	m_PWM_Drv.o 
+  UNUSED   000042 ........ ........    mPWM_Sub_Start m_PWM_Drv.o 
+  UNUSED   000026 ........ ........    mPWM_Sub_Stop m_PWM_Drv.o 
+  000029c6 00001a 00010dc6 00003dc6  2 mPWM_Sub_All_Stop 	m_PWM_Drv.o 
+  000029e0 00002a 00010de0 00003de0  2 mPWM_Sub_All_Start 	m_PWM_Drv.o 
+  00002a0a 000018 00010e0a 00003e0a  2 mPWM_General_Config 	m_PWM_Drv.o 
+  UNUSED   00001e ........ ........    mPWM_CaptX_Stop m_PWM_Drv.o 
+  00002a22 000018 00010e22 00003e22  2 mPWM_CaptX_Start 	m_PWM_Drv.o 
+  00002a3a 0001d6 00010e3a 00003e3a  2 mPWM_Sub_0_Init 	m_PWM_Drv.o 
+  00002c10 00003a 00011010 00004010  2 mPWM_Sub_0_AB_Advance 	m_PWM_Drv.o 
+  UNUSED   000056 ........ ........    mPWM_Sub_0_A_Updata_Duty m_PWM_Drv.o 
+  UNUSED   000056 ........ ........    mPWM_Sub_0_B_Updata_Duty m_PWM_Drv.o 
+  00002c4a 0001d8 0001104a 0000404a  2 mPWM_Sub_1_Init 	m_PWM_Drv.o 
+  UNUSED   000056 ........ ........    mPWM_Sub_1_A_Updata_Duty m_PWM_Drv.o 
+  UNUSED   000056 ........ ........    mPWM_Sub_1_B_Updata_Duty m_PWM_Drv.o 
+  00002e22 000002 00011222 00004222  2 mPWM_Sub_2_Init 	m_PWM_Drv.o 
+  UNUSED   000010 ........ ........    mPWM_Sub_2_A_Updata_Duty m_PWM_Drv.o 
+  UNUSED   000010 ........ ........    mPWM_Sub_2_B_Updata_Duty m_PWM_Drv.o 
+  00002e24 0001e4 00011224 00004224  2 mPWM_Sub_3_Init 	m_PWM_Drv.o 
+  UNUSED   000056 ........ ........    mPWM_Sub_3_A_Updata_Duty m_PWM_Drv.o 
+  UNUSED   000056 ........ ........    mPWM_Sub_3_B_Updata_Duty m_PWM_Drv.o 
+  00003008 000028 00011408 00004408  2 mPWM_All_Init 	m_PWM_Drv.o 
+  UNUSED   0000aa ........ ........    mPWM_Sub_All_AB_Duty m_PWM_Drv.o 
+  UNUSED   00008c ........ ........    mPWM_Sub_x_AB_SetValue m_PWM_Drv.o 
+  UNUSED   000032 ........ ........    mPWM_Sub_x_AB_SetDeadtime m_PWM_Drv.o 
+  UNUSED   00004c ........ ........    mPWM_Sub_x_SetValue_A_Only m_PWM_Drv.o 
+  UNUSED   00004e ........ ........    mPWM_Sub_All_AB_Load m_PWM_Drv.o 
+  UNUSED   00007a ........ ........    mPWM_Sub_x_AB_SetPolarity m_PWM_Drv.o 
+  00003030 000000 00011430 00004430  1 .text.302 	m_PWM_Drv.o 
+  00003030 00043c 00011430 00004430  1 .text 	m_DSPI_Drv.o 
+  00003030 000014 00011430 00004430  2 mDSPI_Module_En 	m_DSPI_Drv.o 
+  UNUSED   000014 ........ ........    mDSPI_Module_Dis m_DSPI_Drv.o 
+  00003044 000014 00011444 00004444  2 mDSPI_Module_Start 	m_DSPI_Drv.o 
+  UNUSED   000014 ........ ........    mDSPI_Module_Stop m_DSPI_Drv.o 
+  UNUSED   000058 ........ ........    mDSPI_BaudRateSet m_DSPI_Drv.o 
+  UNUSED   000102 ........ ........    mDSPI_Intc_En m_DSPI_Drv.o 
+  UNUSED   000058 ........ ........    mDSPI_PUSH_CTAS_Set m_DSPI_Drv.o 
+  UNUSED   000072 ........ ........    mDSPI_ByteRx m_DSPI_Drv.o 
+  UNUSED   0000da ........ ........    mDSPI_ByteTx m_DSPI_Drv.o 
+  UNUSED   00006c ........ ........    mDSPI_Data_TxRx8 m_DSPI_Drv.o 
+  UNUSED   00002c ........ ........    mDSPI_Data_Tx8 m_DSPI_Drv.o 
+  UNUSED   00002a ........ ........    mDSPI_Data_Rx8 m_DSPI_Drv.o 
+  UNUSED   000064 ........ ........    mDSPI_Data_TxRx8_N m_DSPI_Drv.o 
+  00003058 000074 00011458 00004458  2 mDSPI_WordRx 	m_DSPI_Drv.o 
+  UNUSED   0000c6 ........ ........    mDSPI_WordTx m_DSPI_Drv.o 
+  UNUSED   000066 ........ ........    mDSPI_Data_TxRx16 m_DSPI_Drv.o 
+  UNUSED   000028 ........ ........    mDSPI_Data_Tx16 m_DSPI_Drv.o 
+  UNUSED   00002a ........ ........    mDSPI_Data_Rx16 m_DSPI_Drv.o 
+  UNUSED   000064 ........ ........    mDSPI_Data_TxRx16_N m_DSPI_Drv.o 
+  UNUSED   000022 ........ ........    mDSPI_TxConfig m_DSPI_Drv.o 
+  UNUSED   0000dc ........ ........    mDSPI_ByteTx_CTAS m_DSPI_Drv.o 
+  UNUSED   000074 ........ ........    mDSPI_Data_TxRx8_CTAS m_DSPI_Drv.o 
+  UNUSED   000034 ........ ........    mDSPI_Data_Tx8_CTAS m_DSPI_Drv.o 
+  UNUSED   000032 ........ ........    mDSPI_Data_Rx8_CTAS m_DSPI_Drv.o 
+  UNUSED   00006e ........ ........    mDSPI_Data_TxRx8_N_CTAS m_DSPI_Drv.o 
+  000030cc 0000c8 000114cc 000044cc  2 mDSPI_WordTx_CTAS 	m_DSPI_Drv.o 
+  00003194 00006e 00011594 00004594  2 mDSPI_Data_TxRx16_CTAS 	m_DSPI_Drv.o 
+  UNUSED   000030 ........ ........    mDSPI_Data_Tx16_CTAS m_DSPI_Drv.o 
+  UNUSED   000032 ........ ........    mDSPI_Data_Rx16_CTAS m_DSPI_Drv.o 
+  UNUSED   00006e ........ ........    mDSPI_Data_TxRx16_N_CTAS m_DSPI_Drv.o 
+  00003202 000002 00011602 00004602  2 mDSPI_Init_Module0 	m_DSPI_Drv.o 
+  00003204 000002 00011604 00004604  2 mDSPI_Init_Module1 	m_DSPI_Drv.o 
+  00003206 000002 00011606 00004606  2 mDSPI_Init_Module2 	m_DSPI_Drv.o 
+  00003208 000182 00011608 00004608  2 mDSPI_Init_Module3 	m_DSPI_Drv.o 
+  0000338a 0000e2 0001178a 0000478a  2 mDSPI_All_Init 	m_DSPI_Drv.o 
+  0000346c 000000 0001186c 0000486c  1 .text.575 	m_DSPI_Drv.o 
+  0000346c 00012e 0001186c 0000486c  1 .text 	m_GPIO.o 
+  0000346c 00012e 0001186c 0000486c  2 PORT_L2_Init 	m_GPIO.o 
+  0000359a 000000 0001199a 0000499a  1 .text.14 	m_GPIO.o 
+  0000359a 0000c0 0001199a 0000499a  1 .text 	L4_ECUStateManagement.o 
+  0000359a 000038 0001199a 0000499a  2 ECUStartUp_L4_Ctrl 	L4_ECUStateManagement.o 
+  000035d2 000040 000119d2 000049d2  2 ECUShutDown_L4_Ctrl 	L4_ECUStateManagement.o 
+  00003612 000046 00011a12 00004a12  2 ECUStateManagement_L4_ColdInit 	L4_ECUStateManagement.o 
+  00003658 000002 00011a58 00004a58  2 ECUStateManagement_L4_WarmInit 	L4_ECUStateManagement.o 
+  UNUSED   000002 ........ ........    ECUStateManagement_L4_Per L4_ECUStateManagement.o 
+  0000365a 000000 00011a5a 00004a5a  1 .text.371 	L4_ECUStateManagement.o 
+  0000365a 000138 00011a5a 00004a5a  1 .text 	L4_Main.o 
+  0000365a 00011c 00011a5a 00004a5a  2 CAN_L3_TxTestMsg 	L4_Main.o 
+  00003776 00001c 00011b76 00004b76  2 main 	L4_Main.o 
+  00003792 000000 00011b92 00004b92  1 .text.350 	L4_Main.o 
+  00003792 000038 00011b92 00004b92  1 .text 	L3_ECAL.o 
+  00003792 000038 00011b92 00004b92  2 ECU_L3_Init 	L3_ECAL.o 
+  UNUSED   00004e ........ ........    ECU_L3_Stop L3_ECAL.o 
+  000037ca 000000 00011bca 00004bca  1 .text.153 	L3_ECAL.o 
+  000037ca 000054 00011bca 00004bca  1 .text 	L2_MCAL.o 
+  000037ca 000054 00011bca 00004bca  2 MCU_L2_Init 	L2_MCAL.o 
+  0000381e 000000 00011c1e 00004c1e  1 .text.299 	L2_MCAL.o 
+  0000381e 000306 00011c1e 00004c1e  1 .text 	L4_ScheduleManagement.o 
+  0000381e 000002 00011c1e 00004c1e  2 NullFunction_Task21_L4_Per 	L4_ScheduleManagement.o 
+  00003820 000002 00011c20 00004c20  2 NullFunction_Task22_L4_Per 	L4_ScheduleManagement.o 
+  00003822 0000ce 00011c22 00004c22  2 ScheduleManagement_L4_ColdInit 	L4_ScheduleManagement.o 
+  000038f0 0000c2 00011cf0 00004cf0  2 ScheduleManagement_L4_WarmInit 	L4_ScheduleManagement.o 
+  UNUSED   0000c2 ........ ........    ScheduleManagement_L4_RunInit L4_ScheduleManagement.o 
+  000039b2 0000c2 00011db2 00004db2  2 ScheduleManagement_L4_StopInit 	L4_ScheduleManagement.o 
+  00003a74 000050 00011e74 00004e74  2 ScheduleManagement_L4_Per 	L4_ScheduleManagement.o 
+  00003ac4 000060 00011ec4 00004ec4  2 pFUN_mEDMA_IRQ11_CH0_Hook 	L4_ScheduleManagement.o 
+  00003b24 000000 00011f24 00004f24  1 .text.387 	L4_ScheduleManagement.o 
+  00003b24 000018 00011f24 00004f24  1 .text 	L4_SRVL.o 
+  00003b24 000018 00011f24 00004f24  2 SRVL_L4_Init 	L4_SRVL.o 
+  00003b3c 000000 00011f3c 00004f3c  1 .text.11 	L4_SRVL.o 
+  00003b3c 0010d0 00011f3c 00004f3c  1 .text 	V_CCP.o 
+  00003b3c 000054 00011f3c 00004f3c  2 ccpSendCrm 	V_CCP.o 
+  00003b90 00001e 00011f90 00004f90  2 ccpQueueInit 	V_CCP.o 
+  00003bae 00007e 00011fae 00004fae  2 ccpQueueWrite 	V_CCP.o 
+  00003c2c 000040 0001202c 0000502c  2 ccpWriteMTA 	V_CCP.o 
+  00003c6c 00003e 0001206c 0000506c  2 ccpReadMTA 	V_CCP.o 
+  00003caa 000064 000120aa 000050aa  2 ccpClearDaqList 	V_CCP.o 
+  00003d0e 000096 0001210e 0000510e  2 ccpPrepareDaq 	V_CCP.o 
+  00003da4 000036 000121a4 000051a4  2 ccpStartDaq 	V_CCP.o 
+  00003dda 00005a 000121da 000051da  2 ccpStartAllPreparedDaq 	V_CCP.o 
+  00003e34 000068 00012234 00005234  2 ccpStopDaq 	V_CCP.o 
+  00003e9c 000042 0001229c 0000529c  2 ccpStopAllDaq 	V_CCP.o 
+  00003ede 0000e6 000122de 000052de  2 ccpSampleAndTransmitDtm 	V_CCP.o 
+  00003fc4 0000d6 000123c4 000053c4  2 ccpDaq10ms 	V_CCP.o 
+  0000409a 0000da 0001249a 0000549a  2 ccpDaq100ms 	V_CCP.o 
+  UNUSED   0001be ........ ........    ccpDaq V_CCP.o 
+  00004174 0000da 00012574 00005574  2 ccpBackground 	V_CCP.o 
+  0000424e 000626 0001264e 0000564e  2 ccpCommand 	V_CCP.o 
+  00004874 0000f2 00012c74 00005c74  2 ccpSendCallBack 	V_CCP.o 
+  00004966 000040 00012d66 00005d66  2 ccpInit 	V_CCP.o 
+  000049a6 000018 00012da6 00005da6  2 CCP_CRO_Indication 	V_CCP.o 
+  000049be 000014 00012dbe 00005dbe  2 CCP_DTO_Confirmation 	V_CCP.o 
+  000049d2 000148 00012dd2 00005dd2  2 ccpSend 	V_CCP.o 
+  00004b1a 000046 00012f1a 00005f1a  2 ccpUserBackground 	V_CCP.o 
+  00004b60 000004 00012f60 00005f60  2 ccpGetPointer 	V_CCP.o 
+  00004b64 00002e 00012f64 00005f64  2 ccpGetCalPage 	V_CCP.o 
+  00004b92 00002e 00012f92 00005f92  2 ccpSetCalPage 	V_CCP.o 
+  UNUSED   000002 ........ ........    ccpInitCalPage V_CCP.o 
+  UNUSED   000002 ........ ........    pFUN_mPIT_IRQ60_T1_Hook V_CCP.o 
+  00004bc0 00004c 00012fc0 00005fc0  2 CCP_Per 	V_CCP.o 
+  00004c0c 000000 0001300c 0000600c  1 .text.535 	V_CCP.o 
+  00004c0c 000588 0001300c 0000600c  1 .text 	L4_FaultManager.o 
+  00004c0c 0000e4 0001300c 0000600c  2 FM_L4_ColdInit 	L4_FaultManager.o 
+  00004cf0 000206 000130f0 000060f0  2 FM_L4_WarmInit 	L4_FaultManager.o 
+  UNUSED   00021e ........ ........    FM_L4_Per L4_FaultManager.o 
+  00004ef6 000252 000132f6 000062f6  2 FM_L4_ShutDown 	L4_FaultManager.o 
+  UNUSED   000068 ........ ........    FM_L4_L2McalInit L4_FaultManager.o 
+  UNUSED   000170 ........ ........    FM_L4_L3EcalInit L4_FaultManager.o 
+  UNUSED   000002 ........ ........    FM_L4_L4SrvlInit L4_FaultManager.o 
+  UNUSED   000002 ........ ........    FM_L4_L5ApplInit L4_FaultManager.o 
+  00005148 00004c 00013548 00006548  2 FM_L4_EPSFaultBitCfm 	L4_FaultManager.o 
+  00005194 000000 00013594 00006594  1 .text.270 	L4_FaultManager.o 
+  00005194 0002ba 00013594 00006594  1 .text 	L3_AdcIf.o 
+  00005194 00000e 00013594 00006594  2 AdcSigSample_L3_Init 	L3_AdcIf.o 
+  000051a2 0000d8 000135a2 000065a2  2 AdcSigSample_L3_Per 	L3_AdcIf.o 
+  0000527a 0001d4 0001367a 0000667a  2 AdcSigSample_L3_Per1 	L3_AdcIf.o 
+  0000544e 000000 0001384e 0000684e  1 .text.104 	L3_AdcIf.o 
+  0000544e 0000bc 0001384e 0000684e  1 .text 	L3_IgnitionSignal.o 
+  0000544e 000014 0001384e 0000684e  2 IgnitionSignalAbstarct_L3_Init 	L3_IgnitionSignal.o 
+  00005462 0000a8 00013862 00006862  2 IgnitionSignalAbstarct_L3_Per 	L3_IgnitionSignal.o 
+  0000550a 000000 0001390a 0000690a  1 .text.71 	L3_IgnitionSignal.o 
+  0000550a 00068c 0001390a 0000690a  1 .text 	L4_DTC.o 
+  0000550a 0002a4 0001390a 0000690a  2 DTC_L4_vInit 	L4_DTC.o 
+  000057ae 00018c 00013bae 00006bae  2 DTC_L4_SetError 	L4_DTC.o 
+  0000593a 0000aa 00013d3a 00006d3a  2 DTC_L4_ClrError 	L4_DTC.o 
+  UNUSED   000028 ........ ........    DTC_L4_GetErrorSta L4_DTC.o 
+  000059e4 00002c 00013de4 00006de4  2 DTC_L4_GetErrorStaB0 	L4_DTC.o 
+  00005a10 00002c 00013e10 00006e10  2 DTC_L4_GetErrorStaB1 	L4_DTC.o 
+  00005a3c 000014 00013e3c 00006e3c  2 DTC_L4_Enable 	L4_DTC.o 
+  UNUSED   000014 ........ ........    DTC_L4_Disable L4_DTC.o 
+  UNUSED   000026 ........ ........    DTC_L4_GetSta L4_DTC.o 
+  UNUSED   000066 ........ ........    DTC_L4_ClrSta L4_DTC.o 
+  00005a50 000044 00013e50 00006e50  2 DTC_L4_ClrDTCMgt 	L4_DTC.o 
+  00005a94 000002 00013e94 00006e94  2 DTC_L4_SnapShotMgt 	L4_DTC.o 
+  00005a96 000012 00013e96 00006e96  2 DTC_L4_CustomerDTCMgt 	L4_DTC.o 
+  00005aa8 0000b8 00013ea8 00006ea8  2 DTC_L4_FaultMgt 	L4_DTC.o 
+  00005b60 000036 00013f60 00006f60  2 DTC_L4_POLLING_2ms 	L4_DTC.o 
+  00005b96 000000 00013f96 00006f96  1 .text.345 	L4_DTC.o 
+  00005b96 000002 00013f96 00006f96  1 .text 	L3_EcalFailSafe.o 
+  00005b96 000002 00013f96 00006f96  2 FS_L3_EcalFailSafeInit 	L3_EcalFailSafe.o 
+  00005b98 000000 00013f98 00006f98  1 .text.62 	L3_EcalFailSafe.o 
+  00005b98 000014 00013f98 00006f98  1 .text 	L5_APPL.o 
+  00005b98 000014 00013f98 00006f98  2 APPL_L5_Init 	L5_APPL.o 
+  00005bac 000000 00013fac 00006fac  1 .text.13 	L5_APPL.o 
+  00005bac 0003f6 00013fac 00006fac  1 .text 	L3_CAN.o 
+  00005bac 00013c 00013fac 00006fac  2 CAN_L3_Init 	L3_CAN.o 
+  00005ce8 000132 000140e8 000070e8  2 pFUN_mCAN_MB_FIFO_Hook 	L3_CAN.o 
+  00005e1a 000002 0001421a 0000721a  2 pFUN_mCAN_MB_08_11_Hook 	L3_CAN.o 
+  00005e1c 00002a 0001421c 0000721c  2 pFUN_mCAN_MB_12_15_Hook 	L3_CAN.o 
+  00005e46 00006e 00014246 00007246  2 CAN_L3_RxMsg 	L3_CAN.o 
+  00005eb4 00005e 000142b4 000072b4  2 EPS_HSC_FrP00_Tx_Per 	L3_CAN.o 
+  00005f12 00001e 00014312 00007312  2 CAN_L3_TxMsg 	L3_CAN.o 
+  00005f30 00005a 00014330 00007330  2 CAN_L3_BusOff 	L3_CAN.o 
+  00005f8a 000018 0001438a 0000738a  2 CAN_L3_Per 	L3_CAN.o 
+  UNUSED   000004 ........ ........    CAN_L3_TP_Transmit L3_CAN.o 
+  00005fa2 000000 000143a2 000073a2  1 .text.192 	L3_CAN.o 
+  00005fa2 000046 000143a2 000073a2  1 .text 	L3_EmEep.o 
+  00005fa2 000034 000143a2 000073a2  2 DataCopy 	L3_EmEep.o 
+  00005fd6 000012 000143d6 000073d6  2 EmEep_L3_Init 	L3_EmEep.o 
+  UNUSED   000002 ........ ........    EmEep_L3_PowerDown L3_EmEep.o 
+  00005fe8 000000 000143e8 000073e8  1 .text.33 	L3_EmEep.o 
+  00005fe8 000124 000143e8 000073e8  1 .text 	L4_WarmTask.o 
+  UNUSED   000002 ........ ........    Monitor_Service_WTask_L4_Per L4_WarmTask.o 
+  00005fe8 0000bc 000143e8 000073e8  2 DcDc_Task_L4_Per 	L4_WarmTask.o 
+  000060a4 000014 000144a4 000074a4  2 DTCManage_WTask_L4_Per 	L4_WarmTask.o 
+  000060b8 000002 000144b8 000074b8  2 SignalSampling_WTask_L4_Per 	L4_WarmTask.o 
+  000060ba 000014 000144ba 000074ba  2 RunStateMonitor_WTask_L4_Per 	L4_WarmTask.o 
+  000060ce 000014 000144ce 000074ce  2 FaultManage_WTask_L4_Per 	L4_WarmTask.o 
+  000060e2 000014 000144e2 000074e2  2 CAN_Comm_WTask_L4_Per 	L4_WarmTask.o 
+  000060f6 000002 000144f6 000074f6  2 UDS_ON_CAN_WTask_L4_Per 	L4_WarmTask.o 
+  000060f8 000014 000144f8 000074f8  2 CCP_WTask_L4_Per 	L4_WarmTask.o 
+  0000610c 000000 0001450c 0000750c  1 .text.391 	L4_WarmTask.o 
+  0000610c 0000c6 0001450c 0000750c  1 .text 	L4_StopTask.o 
+  0000610c 000018 0001450c 0000750c  2 MotorCtrl_STask_L4_Per 	L4_StopTask.o 
+  00006124 000014 00014524 00007524  2 DTCManage_STask_L4_Per 	L4_StopTask.o 
+  00006138 000028 00014538 00007538  2 SignalSampling_STask_L4_Per 	L4_StopTask.o 
+  00006160 000014 00014560 00007560  2 RunStateMonitor_STask_L4_Per 	L4_StopTask.o 
+  00006174 000014 00014574 00007574  2 FaultManage_STask_L4_Per 	L4_StopTask.o 
+  00006188 000024 00014588 00007588  2 CAN_Comm_STask_L4_Per 	L4_StopTask.o 
+  000061ac 000002 000145ac 000075ac  2 UDS_ON_CAN_STask_L4_Per 	L4_StopTask.o 
+  000061ae 000024 000145ae 000075ae  2 CCP_STask_L4_Per 	L4_StopTask.o 
+  000061d2 000000 000145d2 000075d2  1 .text.385 	L4_StopTask.o 
+  000061d2 00000a 000145d2 000075d2  1 .text 	L3_TemperatureSignal.o 
+  000061d2 000008 000145d2 000075d2  2 TemperatureAbstarct_L3_Init 	L3_TemperatureSignal.o 
+  000061da 000002 000145da 000075da  2 TemperatureAbstarct_L3_Per 	L3_TemperatureSignal.o 
+  000061dc 000000 000145dc 000075dc  1 .text.54 	L3_TemperatureSignal.o 
+  000061dc 000012 000145dc 000075dc  1 .text 	L3_SensorVoltageSignal.o 
+  000061dc 000012 000145dc 000075dc  2 SensorVoltageAbstract_L3_Init 	L3_SensorVoltageSignal.o 
+  UNUSED   000024 ........ ........    SensorVoltageAbstract_L3_Per L3_SensorVoltageSignal.o 
+  000061ee 000000 000145ee 000075ee  1 .text.54 	L3_SensorVoltageSignal.o 
+  000061ee 00096a 000145ee 000075ee  1 .text 	L3_BattVolt_Diag.o 
+  UNUSED   00004a ........ ........    FS_L3_BatVoltDiagInit L3_BattVolt_Diag.o 
+  000061ee 00023a 000145ee 000075ee  2 FS_L3_BatVoltDiagPer 	L3_BattVolt_Diag.o 
+  00006428 0000b8 00014828 00007828  2 FS_L3_EnterBatoffState 	L3_BattVolt_Diag.o 
+  000064e0 0000b8 000148e0 000078e0  2 FS_L3_ExitBatoffState 	L3_BattVolt_Diag.o 
+  00006598 0000b8 00014998 00007998  2 FS_L3_EnterBatLowState 	L3_BattVolt_Diag.o 
+  00006650 0000b8 00014a50 00007a50  2 FS_L3_ExitBatLowState 	L3_BattVolt_Diag.o 
+  00006708 0000b8 00014b08 00007b08  2 FS_L3_EnterBatNormal1State 	L3_BattVolt_Diag.o 
+  000067c0 0000b8 00014bc0 00007bc0  2 FS_L3_ExitBatNormal1State 	L3_BattVolt_Diag.o 
+  00006878 0000b8 00014c78 00007c78  2 FS_L3_EnterBatOver1State 	L3_BattVolt_Diag.o 
+  00006930 0000b8 00014d30 00007d30  2 FS_L3_ExitBatOver1State 	L3_BattVolt_Diag.o 
+  000069e8 0000b8 00014de8 00007de8  2 FS_L3_EnterBatOver2State 	L3_BattVolt_Diag.o 
+  00006aa0 0000b8 00014ea0 00007ea0  2 FS_L3_ExitBatOver2State 	L3_BattVolt_Diag.o 
+  00006b58 000000 00014f58 00007f58  1 .text.305 	L3_BattVolt_Diag.o 
+  00006b58 0003fe 00014f58 00007f58  1 .text 	L3_Temperature_Diag.o 
+  UNUSED   000040 ........ ........    FS_L3_TemperatureDiagInit L3_Temperature_Diag.o 
+  00006b58 0000bc 00014f58 00007f58  2 FS_L3_TemperatureDiagPer 	L3_Temperature_Diag.o 
+  00006c14 0000ce 00015014 00008014  2 FS_L3_TempSenShGnd 	L3_Temperature_Diag.o 
+  00006ce2 0000d2 000150e2 000080e2  2 FS_L3_TempSenShVc 	L3_Temperature_Diag.o 
+  00006db4 0000d0 000151b4 000081b4  2 FS_L3_TempSenHigh 	L3_Temperature_Diag.o 
+  00006e84 0000d2 00015284 00008284  2 FS_L3_TempSenLow 	L3_Temperature_Diag.o 
+  00006f56 000000 00015356 00008356  1 .text.184 	L3_Temperature_Diag.o 
+  00006f56 000002 00015356 00008356  1 .text 	L3_IgnitionVolt_Diag.o 
+  UNUSED   00000e ........ ........    FS_L3_IgnitionVoltDiagInit L3_IgnitionVolt_Diag.o 
+  00006f56 000002 00015356 00008356  2 FS_L3_IgnitionVoltDiagPer 	L3_IgnitionVolt_Diag.o 
+  00006f58 000000 00015358 00008358  1 .text.64 	L3_IgnitionVolt_Diag.o 
+  00006f58 000396 00015358 00008358  1 .text 	L3_SbcDrv.o 
+  00006f58 000202 00015358 00008358  2 SBC_L3_Init 	L3_SbcDrv.o 
+  0000715a 0000cc 0001555a 0000855a  2 SBC_L3_Per 	L3_SbcDrv.o 
+  00007226 000084 00015626 00008626  2 SBC_L3_CfgSleepMode 	L3_SbcDrv.o 
+  000072aa 000044 000156aa 000086aa  2 SBC_L3_CheckWakeupIntEvent 	L3_SbcDrv.o 
+  000072ee 000000 000156ee 000086ee  1 .text.203 	L3_SbcDrv.o 
+  000072ee 000018 000156ee 000086ee  1 .text 	L3_VoltSignal.o 
+  000072ee 000018 000156ee 000086ee  2 VoltSignalAbstract_L3_Init 	L3_VoltSignal.o 
+  UNUSED   00004a ........ ........    VoltSignalAbstract_L3_Per L3_VoltSignal.o 
+  00007306 000000 00015706 00008706  1 .text.54 	L3_VoltSignal.o 
+  00007306 00017c 00015706 00008706  1 .text 	Fls.o 
+  00007306 000068 00015706 00008706  2 Fls_GetSectorNum 	Fls.o 
+  UNUSED   0000a2 ........ ........    Fls_DrvClear Fls.o 
+  UNUSED   00015c ........ ........    Fls_Init Fls.o 
+  UNUSED   000028 ........ ........    Fls_Read Fls.o 
+  UNUSED   000276 ........ ........    Fls_Write Fls.o 
+  UNUSED   000010 ........ ........    Callback Fls.o 
+  0000736e 000114 0001576e 0000876e  2 Fls_Erase 	Fls.o 
+  00007482 000000 00015882 00008882  1 .text.367 	Fls.o 
+  00007482 0000c6 00015882 00008882  1 .text 	L2_Ecc.o 
+  00007482 000006 00015882 00008882  2 cRestoreEei 	L2_Ecc.o 
+  UNUSED   000006 ........ ........    cRestoreMCSR L2_Ecc.o 
+  UNUSED   000106 ........ ........    CreateEER_CF L2_Ecc.o 
+  UNUSED   0000e4 ........ ........    CreateEER_DF L2_Ecc.o 
+  UNUSED   00016a ........ ........    EccTest L2_Ecc.o 
+  00007488 00005c 00015888 00008888  2 IVOR1_Isr 	L2_Ecc.o 
+  000074e4 000016 000158e4 000088e4  2 IVOR2_Isr 	L2_Ecc.o 
+  000074fa 000026 000158fa 000088fa  2 ECC_DBD_Isr 	L2_Ecc.o 
+  00007520 000028 00015920 00008920  2 ECSM_Init 	L2_Ecc.o 
+  00007548 000000 00015948 00008948  1 .text.249 	L2_Ecc.o 
+  00007548 000060 00015948 00008948  1 .text 	Common.o 
+  00007548 000020 00015948 00008948  2 mDalay_Nms 	Common.o 
+  00007568 00002a 00015968 00008968  2 OverTimeCheckLong 	Common.o 
+  UNUSED   00002a ........ ........    OverTimeCheckLong_16U Common.o 
+  00007592 000016 00015992 00008992  2 Memory_Copy_Src_to_Dest 	Common.o 
+  UNUSED   000012 ........ ........    Memory_Set_Dest Common.o 
+  UNUSED   000008 ........ ........    mComm_vTimeInit Common.o 
+  UNUSED   00000e ........ ........    mComm_vTimeTick Common.o 
+  UNUSED   000006 ........ ........    mComm_u16GetCurrCnt Common.o 
+  UNUSED   00005a ........ ........    mComm_u8CheckTimeOut Common.o 
+  000075a8 000000 000159a8 000089a8  1 .text.143 	Common.o 
+  000075a8 0004d8 000159a8 000089a8  1 .text 	FBL_UDS.o 
+  000075a8 000044 000159a8 000089a8  2 s_dsmco_PHYS_service 	FBL_UDS.o 
+  000075ec 00004c 000159ec 000089ec  2 s_dsmco_FUNC_service 	FBL_UDS.o 
+  00007638 00005c 00015a38 00008a38  2 s_dsmco_dsc_handler 	FBL_UDS.o 
+  00007694 00004c 00015a94 00008a94  2 s_dsmco_RC_handler 	FBL_UDS.o 
+  000076e0 0000c6 00015ae0 00008ae0  2 s_dsmco_CommControl_handler 	FBL_UDS.o 
+  000077a6 000056 00015ba6 00008ba6  2 s_dsmco_DTCSetting_handler 	FBL_UDS.o 
+  000077fc 000058 00015bfc 00008bfc  2 send_negative_response 	FBL_UDS.o 
+  00007854 000062 00015c54 00008c54  2 send_UDS_CAN 	FBL_UDS.o 
+  000078b6 000068 00015cb6 00008cb6  2 send_positive_response 	FBL_UDS.o 
+  0000791e 000030 00015d1e 00008d1e  2 EcuSoftRst 	FBL_UDS.o 
+  0000794e 000132 00015d4e 00008d4e  2 CAN_L3_TxUdsMsg 	FBL_UDS.o 
+  00007a80 000000 00015e80 00008e80  1 .text.199 	FBL_UDS.o 
+  00007a80 000168 00015e80 00008e80  1 .text 	DcDc.o 
+  00007a80 000168 00015e80 00008e80  2 OBC_DcDc 	DcDc.o 
+  00007be8 000000 00015fe8 00008fe8  1 .text.54 	DcDc.o 
+  00007be8 000034 00015fe8 00008fe8  1 .text 	OBC.o 
+  UNUSED   000018 ........ ........    OBC_step OBC.o 
+  00007be8 000034 00015fe8 00008fe8  2 OBC_initialize 	OBC.o 
+  00007c1c 000000 0001601c 0000901c  1 .text.22 	OBC.o 
+  00007c1c 0000b2 0001601c 0000901c  1 .text 	PianCi.o 
+  00007c1c 0000b2 0001601c 0000901c  2 OBC_PianCi 	PianCi.o 
+  00007cce 000000 000160ce 000090ce  1 .text.37 	PianCi.o 
+  00007cce 00003a 000160ce 000090ce  1 .text 	Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  00007cce 00001e 000160ce 000090ce  2 __register_fragment 	Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  00007cec 00001c 000160ec 000090ec  2 __unregister_fragment 	Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00005a ........ ........    ExPPC_FindExceptionFragment__FPcP12FragmentInfo Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   0000e2 ........ ........    ExPPC_FindExceptionRecord__FPcP15MWExceptionInfo Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000006 ........ ........    ExPPC_PopR31__FPcP15MWExceptionInfo Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000012 ........ ........    ExPPC_CurrentAction__FPC14ActionIterator Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000168 ........ ........    ExPPC_NextAction__FP14ActionIterator Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00004a ........ ........    ExPPC_PopStackFrame__FP12ThrowContextP15MWExceptionInfo Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000268 ........ ........    ExPPC_UnwindStack__FP12ThrowContextP15MWExceptionInfoPv Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000046 ........ ........    ExPPC_DeletePointerCond_32__FP12ThrowContextPC23ex_deletepointercond_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00004e ........ ........    ExPPC_DeletePointerCond__FP12ThrowContextPC20ex_deletepointercond Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000026 ........ ........    ExPPC_DeletePointer_32__FP12ThrowContextPC19ex_deletepointer_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00002a ........ ........    ExPPC_DeletePointer__FP12ThrowContextPC16ex_deletepointer Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000058 ........ ........    ExPPC_DestroyMemberArray_32__FP12ThrowContextPC24ex_destroymemberarray_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00005c ........ ........    ExPPC_DestroyMemberArray__FP12ThrowContextPC21ex_destroymemberarray Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00004a ........ ........    ExPPC_DestroyMemberCond_32__FP12ThrowContextPC23ex_destroymembercond_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000052 ........ ........    ExPPC_DestroyMemberCond__FP12ThrowContextPC20ex_destroymembercond Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00006e ........ ........    ExPPC_DestroyVLA__FP12ThrowContextPC13ex_destroyvla Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00004c ........ ........    ExPPC_DestroyBaseVTT__FP12ThrowContextPC17ex_destroybasevtt Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00002c ........ ........    ExPPC_DestroyMember_32__FP12ThrowContextPC19ex_destroymember_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000030 ........ ........    ExPPC_DestroyMember__FP12ThrowContextPC16ex_destroymember Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00002c ........ ........    ExPPC_DestroyBase_32__FP12ThrowContextPC19ex_destroymember_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000030 ........ ........    ExPPC_DestroyBase__FP12ThrowContextPC16ex_destroymember Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000040 ........ ........    ExPPC_DestroyLocalArray_32__FP12ThrowContextPC23ex_destroylocalarray_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000042 ........ ........    ExPPC_DestroyLocalArray__FP12ThrowContextPC20ex_destroylocalarray Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000028 ........ ........    ExPPC_DestroyLocalPointer_32__FP12ThrowContextPC25ex_destroylocalpointer_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00002c ........ ........    ExPPC_DestroyLocalPointer__FP12ThrowContextPC22ex_destroylocalpointer Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000038 ........ ........    ExPPC_DestroyLocalCond_32__FP12ThrowContextPC22ex_destroylocalcond_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00003e ........ ........    ExPPC_DestroyLocalCond__FP12ThrowContextPC19ex_destroylocalcond Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000014 ........ ........    ExPPC_DestroyLocal_32__FP12ThrowContextPC18ex_destroylocal_32 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000016 ........ ........    ExPPC_DestroyLocal__FP12ThrowContextPC15ex_destroylocal Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000044 ........ ........    ExPPC_IsInSpecification__FPcP16ex_specification Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   0000aa ........ ........    __unexpected Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000024 ........ ........    __dt__Q23std13bad_exceptionFv Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    __ct__Q23std13bad_exceptionFv Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000022 ........ ........    ExPPC_LongJump__FP12ThrowContextPvPv Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000042 ........ ........    ExPPC_HandleUnexpected__FP12ThrowContextP15MWExceptionInfoP16ex_specification Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000228 ........ ........    ExPPC_ThrowHandler__FP12ThrowContext Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000028 ........ ........    __as__15MWExceptionInfoFRC15MWExceptionInfo Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000052 ........ ........    __throw Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00001c ........ ........    __end__catch Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000086 ........ ........    __uncaught_exception_helper__FP12ThrowContext Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   000028 ........ ........    __uncaught_exception Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000a ........ ........    what__Q23std13bad_exceptionCFv Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  00007d08 000000 00016108 00009108  1 .text.1683 	Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  00007d08 000064 00016108 00009108  1 .text 	Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d08 00004a 00016108 00009108  2 __save_gpr 	Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_14 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_14 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_15 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_15 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_16 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_16 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_17 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_17 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_18 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_18 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_19 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_19 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_20 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_20 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_21 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_21 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_22 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_22 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_23 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_23 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_24 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_24 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_25 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_25 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_26 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_26 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_27 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_27 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_28 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_28 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_29 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_29 Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d48 000000 00016148 00009148    _savegpr_30 (entry of __save_gpr) 	Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_30 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _savegpr_31 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _save32gpr_31 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00004a ........ ........    __restore_gpr Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_14 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_14 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_15 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_15 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_16 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_16 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_17 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_17 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_18 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_18 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_19 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_19 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_20 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_20 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_21 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_21 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_22 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_22 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_23 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_23 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_24 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_24 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_25 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_25 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_26 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_26 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_27 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_27 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_28 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_28 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_29 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_29 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_30 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_30 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _restgpr_31 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    _rest32gpr_31 Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d52 000008 00016152 00009152  2 __restore_frame_and_exit 	Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d54 000000 00016154 00009154    __finish_restore_frame_and_exit2 (entry of __restore_frame_and_exit) 	Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d5a 00000a 0001615a 0000915a  2 __restore_gpr_31_exit 	Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d60 000000 00016160 00009160    __finish_restore_frame_and_exit (entry of __restore_gpr_31_exit) 	Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d64 000008 00016164 00009164  2 __restore_gpr_30_exit 	Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_29_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_28_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_27_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_26_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000a ........ ........    __restore_gpr_25_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_24_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_23_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_22_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_21_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_20_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_19_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_18_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_17_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_16_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_15_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000008 ........ ........    __restore_gpr_14_exit Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000000 ........ ........    __save_lr Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_31 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_30 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_29 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_28 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_27 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_26 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_25 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_24 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_23 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_22 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_21 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_20 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_19 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_18 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_17 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_16 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_15 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00000c ........ ........    __create_frame_and_save_gpr_14 Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   0000c4 ........ ........    __div2u Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   000108 ........ ........    __div2i Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   0000ba ........ ........    __mod2u Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   0000e2 ........ ........    __mod2i Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00001a ........ ........    __shl2i Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00001a ........ ........    __shr2u Runtime.PPCEABI.VS.UC.a runtime.o
+  UNUSED   00001c ........ ........    __shr2i Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d6c 000000 0001616c 0000916c  1 .text.205 	Runtime.PPCEABI.VS.UC.a runtime.o
+  00007d6c 000050 0001616c 0000916c  1 .text 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00007d6c 00002e 0001616c 0000916c  2 __init_cpp_exceptions 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00007d9a 000022 0001619a 0000919a  2 __fini_cpp_exceptions 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+
+
+.rodata section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 00000c 000161c0 000091c0  1 .rodata 	__ppc_eabi_init.o 
+  00000000 00000c 000161c0 000091c0  4 @22 	__ppc_eabi_init.o 
+  0000000c 000004 000161d0 000091d0  8 *fill*
+  00000010 000009 000161d0 000091d0  1 .rodata 	V_CCP.o 
+  00000010 000009 000161d0 000091d0  4 ccpStationId 	V_CCP.o 
+  00000019 000007 000161e0 000091e0  8 *fill*
+  00000020 0000e3 000161e0 000091e0  1 .rodata 	L4_DTC_Data.o 
+  00000020 000038 000161e0 000091e0  8 L4_S_DTCCfg_G_Str 	L4_DTC_Data.o 
+  00000058 0000ab 00016218 00009218  4 L4_S_FaultCode_G_Str 	L4_DTC_Data.o 
+  00000103 000005 000162c8 000092c8  8 *fill*
+  00000108 0001a8 000162c8 000092c8  1 .rodata 	FlashErase.o 
+  00000108 0001a8 000162c8 000092c8  8 FlashErase_C 	FlashErase.o 
+
+
+.ctors section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000000 00016470 00009470  1 .ctors$00 	Linker Generated Symbol File 
+  00000000 000000 00016470 00009470  4 _ctors 	Linker Generated Symbol File 
+  00000000 000004 00016470 00009470  1 .ctors$10 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00000000 000004 00016470 00009470  4 __init_cpp_exceptions_reference 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00000004 000004 00016474 00009474  1 .ctors$99 	Linker Generated Symbol File 
+  00000004 000004 00016474 00009474  4 _ctors$99 	Linker Generated Symbol File 
+
+
+.dtors section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000000 00016478 00009478  1 .dtors$00 	Linker Generated Symbol File 
+  00000000 000000 00016478 00009478  4 _dtors 	Linker Generated Symbol File 
+  00000000 000004 00016478 00009478  1 .dtors$15 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00000000 000004 00016478 00009478  4 __fini_cpp_exceptions_reference 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00000004 000004 0001647c 0000947c  1 .dtors$99 	Linker Generated Symbol File 
+  00000004 000004 0001647c 0000947c  4 _dtors$99 	Linker Generated Symbol File 
+
+
+extab section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000010 00016480 00009480  1 extab 	m_ADC_Drv.o 
+  00000000 000008 00016480 00009480  4 @218 	m_ADC_Drv.o 
+  00000008 000008 00016488 00009488  4 @224 	m_ADC_Drv.o 
+  UNUSED   000008 ........ ........    @240 m_ADC_Drv.o 
+  UNUSED   000008 ........ ........    @256 m_ADC_Drv.o 
+  UNUSED   000008 ........ ........    @274 m_ADC_Drv.o 
+  00000010 000010 00016490 00009490  1 extab 	m_CTU_Drv.o 
+  00000010 000008 00016490 00009490  4 @132 	m_CTU_Drv.o 
+  UNUSED   000008 ........ ........    @228 m_CTU_Drv.o 
+  00000018 000008 00016498 00009498  4 @256 	m_CTU_Drv.o 
+  UNUSED   000008 ........ ........    @279 m_CTU_Drv.o 
+  00000020 000008 000164a0 000094a0  1 extab 	m_Clock_Drv.o 
+  00000020 000008 000164a0 000094a0  4 @35 	m_Clock_Drv.o 
+  00000028 000008 000164a8 000094a8  1 extab 	m_EDMA_Drv.o 
+  00000028 000008 000164a8 000094a8  4 @61 	m_EDMA_Drv.o 
+  00000030 000040 000164b0 000094b0  1 extab 	m_CAN_Drv.o 
+  00000030 000008 000164b0 000094b0  4 @49 	m_CAN_Drv.o 
+  00000038 000008 000164b8 000094b8  4 @65 	m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @100 m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @111 m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @122 m_CAN_Drv.o 
+  00000040 000008 000164c0 000094c0  4 @138 	m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @161 m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @168 m_CAN_Drv.o 
+  00000048 000008 000164c8 000094c8  4 @214 	m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @222 m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @230 m_CAN_Drv.o 
+  00000050 000008 000164d0 000094d0  4 @249 	m_CAN_Drv.o 
+  00000058 000008 000164d8 000094d8  4 @268 	m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @287 m_CAN_Drv.o 
+  UNUSED   000008 ........ ........    @309 m_CAN_Drv.o 
+  00000060 000008 000164e0 000094e0  4 @344 	m_CAN_Drv.o 
+  00000068 000008 000164e8 000094e8  4 @371 	m_CAN_Drv.o 
+  00000070 000020 000164f0 000094f0  1 extab 	m_PWM_Drv.o 
+  00000070 000008 000164f0 000094f0  4 @90 	m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @108 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @120 m_PWM_Drv.o 
+  00000078 000008 000164f8 000094f8  4 @126 	m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @138 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @150 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @162 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @170 m_PWM_Drv.o 
+  00000080 000008 00016500 00009500  4 @176 	m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @188 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @200 m_PWM_Drv.o 
+  00000088 000008 00016508 00009508  4 @206 	m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @225 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @241 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @260 m_PWM_Drv.o 
+  UNUSED   000008 ........ ........    @283 m_PWM_Drv.o 
+  00000090 000028 00016510 00009510  1 extab 	m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @130 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @156 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @169 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @186 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @208 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @217 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @226 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @249 m_DSPI_Drv.o 
+  00000090 000008 00016510 00009510  4 @262 	m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @279 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @301 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @310 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @319 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @342 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @368 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @391 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @401 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @411 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @435 m_DSPI_Drv.o 
+  00000098 000008 00016518 00009518  4 @454 	m_DSPI_Drv.o 
+  000000a0 000008 00016520 00009520  4 @477 	m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @487 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @497 m_DSPI_Drv.o 
+  UNUSED   000008 ........ ........    @521 m_DSPI_Drv.o 
+  000000a8 000008 00016528 00009528  4 @539 	m_DSPI_Drv.o 
+  000000b0 000008 00016530 00009530  4 @551 	m_DSPI_Drv.o 
+  000000b8 000018 00016538 00009538  1 extab 	L4_ECUStateManagement.o 
+  000000b8 000008 00016538 00009538  4 @332 	L4_ECUStateManagement.o 
+  000000c0 000008 00016540 00009540  4 @345 	L4_ECUStateManagement.o 
+  000000c8 000008 00016548 00009548  4 @355 	L4_ECUStateManagement.o 
+  000000d0 000010 00016550 00009550  1 extab 	L4_Main.o 
+  000000d0 000008 00016550 00009550  4 @332 	L4_Main.o 
+  000000d8 000008 00016558 00009558  4 @338 	L4_Main.o 
+  000000e0 000008 00016560 00009560  1 extab 	L3_ECAL.o 
+  000000e0 000008 00016560 00009560  4 @141 	L3_ECAL.o 
+  UNUSED   000008 ........ ........    @147 L3_ECAL.o 
+  000000e8 000008 00016568 00009568  1 extab 	L2_MCAL.o 
+  000000e8 000008 00016568 00009568  4 @293 	L2_MCAL.o 
+  000000f0 000010 00016570 00009570  1 extab 	L4_ScheduleManagement.o 
+  000000f0 000008 00016570 00009570  4 @364 	L4_ScheduleManagement.o 
+  000000f8 000008 00016578 00009578  4 @373 	L4_ScheduleManagement.o 
+  00000100 000008 00016580 00009580  1 extab 	L4_SRVL.o 
+  00000100 000008 00016580 00009580  4 @5 	L4_SRVL.o 
+  00000108 000090 00016588 00009588  1 extab 	V_CCP.o 
+  00000108 000008 00016588 00009588  4 @45 	V_CCP.o 
+  00000110 000008 00016590 00009590  4 @96 	V_CCP.o 
+  00000118 000008 00016598 00009598  4 @110 	V_CCP.o 
+  00000120 000008 000165a0 000095a0  4 @131 	V_CCP.o 
+  00000128 000008 000165a8 000095a8  4 @148 	V_CCP.o 
+  00000130 000008 000165b0 000095b0  4 @160 	V_CCP.o 
+  00000138 000008 000165b8 000095b8  4 @194 	V_CCP.o 
+  00000140 000008 000165c0 000095c0  4 @215 	V_CCP.o 
+  00000148 000008 000165c8 000095c8  4 @236 	V_CCP.o 
+  UNUSED   000008 ........ ........    @269 V_CCP.o 
+  00000150 000008 000165d0 000095d0  4 @288 	V_CCP.o 
+  00000158 000008 000165d8 000095d8  4 @387 	V_CCP.o 
+  00000160 000008 000165e0 000095e0  4 @401 	V_CCP.o 
+  00000168 000008 000165e8 000095e8  4 @419 	V_CCP.o 
+  00000170 000008 000165f0 000095f0  4 @426 	V_CCP.o 
+  00000178 000008 000165f8 000095f8  4 @433 	V_CCP.o 
+  00000180 000008 00016600 00009600  4 @443 	V_CCP.o 
+  00000188 000008 00016608 00009608  4 @453 	V_CCP.o 
+  00000190 000008 00016610 00009610  4 @493 	V_CCP.o 
+  00000198 000018 00016618 00009618  1 extab 	L4_FaultManager.o 
+  00000198 000008 00016618 00009618  4 @90 	L4_FaultManager.o 
+  000001a0 000008 00016620 00009620  4 @133 	L4_FaultManager.o 
+  UNUSED   000008 ........ ........    @179 L4_FaultManager.o 
+  000001a8 000008 00016628 00009628  4 @230 	L4_FaultManager.o 
+  UNUSED   000008 ........ ........    @236 L4_FaultManager.o 
+  UNUSED   000008 ........ ........    @242 L4_FaultManager.o 
+  000001b0 000010 00016630 00009630  1 extab 	L3_AdcIf.o 
+  000001b0 000008 00016630 00009630  4 @64 	L3_AdcIf.o 
+  000001b8 000008 00016638 00009638  4 @92 	L3_AdcIf.o 
+  000001c0 000048 00016640 00009640  1 extab 	L4_DTC.o 
+  000001c0 000008 00016640 00009640  4 @167 	L4_DTC.o 
+  000001c8 000008 00016648 00009648  4 @184 	L4_DTC.o 
+  000001d0 000008 00016650 00009650  4 @196 	L4_DTC.o 
+  UNUSED   000008 ........ ........    @207 L4_DTC.o 
+  000001d8 000008 00016658 00009658  4 @218 	L4_DTC.o 
+  000001e0 000008 00016660 00009660  4 @229 	L4_DTC.o 
+  UNUSED   000008 ........ ........    @250 L4_DTC.o 
+  UNUSED   000008 ........ ........    @272 L4_DTC.o 
+  000001e8 000008 00016668 00009668  4 @286 	L4_DTC.o 
+  000001f0 000008 00016670 00009670  4 @297 	L4_DTC.o 
+  000001f8 000008 00016678 00009678  4 @320 	L4_DTC.o 
+  00000200 000008 00016680 00009680  4 @332 	L4_DTC.o 
+  00000208 000008 00016688 00009688  1 extab 	L5_APPL.o 
+  00000208 000008 00016688 00009688  4 @7 	L5_APPL.o 
+  00000210 000040 00016690 00009690  1 extab 	L3_CAN.o 
+  00000210 000008 00016690 00009690  4 @80 	L3_CAN.o 
+  00000218 000008 00016698 00009698  4 @106 	L3_CAN.o 
+  00000220 000008 000166a0 000096a0  4 @122 	L3_CAN.o 
+  00000228 000008 000166a8 000096a8  4 @134 	L3_CAN.o 
+  00000230 000008 000166b0 000096b0  4 @144 	L3_CAN.o 
+  00000238 000008 000166b8 000096b8  4 @153 	L3_CAN.o 
+  00000240 000008 000166c0 000096c0  4 @165 	L3_CAN.o 
+  00000248 000008 000166c8 000096c8  4 @171 	L3_CAN.o 
+  00000250 000010 000166d0 000096d0  1 extab 	L3_EmEep.o 
+  00000250 000008 000166d0 000096d0  4 @14 	L3_EmEep.o 
+  00000258 000008 000166d8 000096d8  4 @20 	L3_EmEep.o 
+  00000260 000030 000166e0 000096e0  1 extab 	L4_WarmTask.o 
+  00000260 000008 000166e0 000096e0  4 @345 	L4_WarmTask.o 
+  00000268 000008 000166e8 000096e8  4 @351 	L4_WarmTask.o 
+  00000270 000008 000166f0 000096f0  4 @361 	L4_WarmTask.o 
+  00000278 000008 000166f8 000096f8  4 @367 	L4_WarmTask.o 
+  00000280 000008 00016700 00009700  4 @373 	L4_WarmTask.o 
+  00000288 000008 00016708 00009708  4 @383 	L4_WarmTask.o 
+  00000290 000038 00016710 00009710  1 extab 	L4_StopTask.o 
+  00000290 000008 00016710 00009710  4 @332 	L4_StopTask.o 
+  00000298 000008 00016718 00009718  4 @338 	L4_StopTask.o 
+  000002a0 000008 00016720 00009720  4 @344 	L4_StopTask.o 
+  000002a8 000008 00016728 00009728  4 @350 	L4_StopTask.o 
+  000002b0 000008 00016730 00009730  4 @356 	L4_StopTask.o 
+  000002b8 000008 00016738 00009738  4 @365 	L4_StopTask.o 
+  000002c0 000008 00016740 00009740  4 @378 	L4_StopTask.o 
+  000002c8 000008 00016748 00009748  1 extab 	L3_BattVolt_Diag.o 
+  000002c8 000008 00016748 00009748  4 @97 	L3_BattVolt_Diag.o 
+  000002d0 000008 00016750 00009750  1 extab 	L3_Temperature_Diag.o 
+  000002d0 000008 00016750 00009750  4 @73 	L3_Temperature_Diag.o 
+  000002d8 000020 00016758 00009758  1 extab 	L3_SbcDrv.o 
+  000002d8 000008 00016758 00009758  4 @156 	L3_SbcDrv.o 
+  000002e0 000008 00016760 00009760  4 @173 	L3_SbcDrv.o 
+  000002e8 000008 00016768 00009768  4 @187 	L3_SbcDrv.o 
+  000002f0 000008 00016770 00009770  4 @197 	L3_SbcDrv.o 
+  000002f8 000010 00016778 00009778  1 extab 	Fls.o 
+  000002f8 000008 00016778 00009778  4 @159 	Fls.o 
+  UNUSED   000008 ........ ........    @191 Fls.o 
+  UNUSED   000008 ........ ........    @198 Fls.o 
+  UNUSED   000008 ........ ........    @214 Fls.o 
+  UNUSED   000008 ........ ........    @288 Fls.o 
+  UNUSED   000008 ........ ........    @295 Fls.o 
+  00000300 000008 00016780 00009780  4 @326 	Fls.o 
+  00000308 000018 00016788 00009788  1 extab 	L2_Ecc.o 
+  UNUSED   000008 ........ ........    @167 L2_Ecc.o 
+  UNUSED   000008 ........ ........    @184 L2_Ecc.o 
+  UNUSED   000008 ........ ........    @193 L2_Ecc.o 
+  00000308 000008 00016788 00009788  4 @206 	L2_Ecc.o 
+  00000310 000008 00016790 00009790  4 @212 	L2_Ecc.o 
+  00000318 000008 00016798 00009798  4 @222 	L2_Ecc.o 
+  00000320 000010 000167a0 000097a0  1 extab 	Common.o 
+  00000320 000008 000167a0 000097a0  4 @35 	Common.o 
+  00000328 000008 000167a8 000097a8  4 @55 	Common.o 
+  UNUSED   000008 ........ ........    @75 Common.o 
+  UNUSED   000008 ........ ........    @132 Common.o 
+  00000330 000050 000167b0 000097b0  1 extab 	FBL_UDS.o 
+  00000330 000008 000167b0 000097b0  4 @50 	FBL_UDS.o 
+  00000338 000008 000167b8 000097b8  4 @62 	FBL_UDS.o 
+  00000340 000008 000167c0 000097c0  4 @74 	FBL_UDS.o 
+  00000348 000008 000167c8 000097c8  4 @85 	FBL_UDS.o 
+  00000350 000008 000167d0 000097d0  4 @107 	FBL_UDS.o 
+  00000358 000008 000167d8 000097d8  4 @119 	FBL_UDS.o 
+  00000360 000008 000167e0 000097e0  4 @129 	FBL_UDS.o 
+  00000368 000008 000167e8 000097e8  4 @145 	FBL_UDS.o 
+  00000370 000008 000167f0 000097f0  4 @158 	FBL_UDS.o 
+  00000378 000008 000167f8 000097f8  4 @180 	FBL_UDS.o 
+  00000380 000008 00016800 00009800  1 extab 	DcDc.o 
+  00000380 000008 00016800 00009800  4 @45 	DcDc.o 
+  00000388 000008 00016808 00009808  1 extab 	OBC.o 
+  UNUSED   000008 ........ ........    @7 OBC.o 
+  00000388 000008 00016808 00009808  4 @13 	OBC.o 
+  00000390 000008 00016810 00009810  1 extab 	PianCi.o 
+  00000390 000008 00016810 00009810  4 @29 	PianCi.o 
+
+
+extabindex section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+
+
+.data section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000040 40001500 00009da0  1 .data 	m_ADC_Drv.o 
+  UNUSED   000020 ........ ........    @92 m_ADC_Drv.o 
+  UNUSED   000040 ........ ........    @117 m_ADC_Drv.o 
+  00000000 000040 40001500 00009da0  4 @163 	m_ADC_Drv.o 
+  UNUSED   000040 ........ ........    @188 m_ADC_Drv.o 
+  UNUSED   000040 ........ ........    @213 m_ADC_Drv.o 
+  00000040 000040 40001540 00009de0  1 .data 	m_CTU_Drv.o 
+  00000040 000020 40001540 00009de0  4 @47 	m_CTU_Drv.o 
+  00000060 000020 40001560 00009e00  4 @121 	m_CTU_Drv.o 
+  00000080 000034 40001580 00009e20  1 .data 	L4_ScheduleManagement.o 
+  00000080 000034 40001580 00009e20  4 L4_S_TaskFunction 	L4_ScheduleManagement.o 
+  000000b4 000004 400015b8 00009e58  8 *fill*
+  000000b8 000090 400015b8 00009e58  1 .data 	V_CCP.o 
+  000000b8 000090 400015b8 00009e58  4 @386 	V_CCP.o 
+  00000148 0000c0 40001648 00009ee8  1 .data 	L3_AdcIf.o 
+  00000148 000044 40001648 00009ee8  4 @63 	L3_AdcIf.o 
+  0000018c 00007c 4000168c 00009f2c  4 @91 	L3_AdcIf.o 
+  00000208 0000b0 40001708 00009fa8  1 .data 	Fls.o 
+  00000208 000028 40001708 00009fa8  8 ssdConfig 	Fls.o 
+  00000230 000028 40001730 00009fd0  8 ssdDataConfig 	Fls.o 
+  00000258 000060 40001758 00009ff8  8 Fls_Sector 	Fls.o 
+
+
+.sdata section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000004 400017b8 0000a058  1 .sdata 	L4_ScheduleManagement.o 
+  00000000 000004 400017b8 0000a058  4 L4_S_DcDcTaskFunction 	L4_ScheduleManagement.o 
+  UNUSED   000004 ........ ........    FunMinTimer_u32p06 L4_ScheduleManagement.o 
+  UNUSED   000002 ........ ........    FunMinTimer_u16p06 L4_ScheduleManagement.o 
+  00000004 000004 400017c0 0000a060  8 *fill*
+  00000008 000003 400017c0 0000a060  1 .sdata 	L4_WarmTask.o 
+  00000008 000002 400017c0 0000a060  2 k_PhaseAdvance_Ct_u16 	L4_WarmTask.o 
+  0000000a 000001 400017c2 0000a062  1 k_DcDcTaskPer_u08 	L4_WarmTask.o 
+  0000000b 000005 400017c8 0000a068  8 *fill*
+  00000010 000004 400017c8 0000a068  1 .sdata 	Fls.o 
+  UNUSED   000004 ........ ........    pFlashInit Fls.o 
+  00000010 000004 400017c8 0000a068  4 pFlashErase 	Fls.o 
+  UNUSED   000004 ........ ........    pFlashProgram Fls.o 
+  UNUSED   000004 ........ ........    pGetLock Fls.o 
+  UNUSED   000004 ........ ........    pSetLock Fls.o 
+  00000014 000004 400017d0 0000a070  8 *fill*
+  00000018 000003 400017d0 0000a070  1 .sdata 	FBL_UDS.o 
+  00000018 000001 400017d0 0000a070  1 lastDiagMode 	FBL_UDS.o 
+  00000019 000001 400017d1 0000a071  1 CommControlDiagMode 	FBL_UDS.o 
+  0000001a 000001 400017d2 0000a072  1 DTCSettingDiagMode 	FBL_UDS.o 
+  0000001b 000005 400017d8 0000a078  8 *fill*
+  00000020 000002 400017d8 0000a078  1 .sdata 	global.o 
+  00000020 000002 400017d8 0000a078  2 k_PfcCurErrDeadZone_Ct_s16 	global.o 
+  00000022 000006 400017e0 0000a080  8 *fill*
+  00000028 000004 400017e0 0000a080  1 .sdata 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+  00000028 000004 400017e0 0000a080  4 fragmentID 	Runtime.PPCEABI.VS.UC.a __init_cpp_exceptions.o
+
+
+.sbss section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000004 400017e8 0000a088  1 .sbss 	L4_ECUStateManagement.o 
+  UNUSED   000001 ........ ........    L4_S_NVMState_G_u08 L4_ECUStateManagement.o 
+  00000000 000002 400017e8 0000a088  2 L3_SleepWaitTime_Ct_u16 	L4_ECUStateManagement.o 
+  00000002 000001 400017ea 0000a08a  1 L4_S_ECUState_Pre_G_Enu 	L4_ECUStateManagement.o 
+  00000003 000001 400017eb 0000a08b  1 L4_S_ECUState_Now_G_Enu 	L4_ECUStateManagement.o 
+  00000004 000004 400017f0 0000a090  8 *fill*
+  00000008 000003 400017f0 0000a090  1 .sbss 	L4_ScheduleManagement.o 
+  00000008 000001 400017f0 0000a090  1 timer200us 	L4_ScheduleManagement.o 
+  00000009 000001 400017f1 0000a091  1 Cnt100us 	L4_ScheduleManagement.o 
+  0000000a 000001 400017f2 0000a092  1 TaskIndex 	L4_ScheduleManagement.o 
+  UNUSED   000004 ........ ........    FunMaxTimer_u32p06 L4_ScheduleManagement.o 
+  UNUSED   000004 ........ ........    FunRunTimer_u32p06 L4_ScheduleManagement.o 
+  UNUSED   000004 ........ ........    diff L4_ScheduleManagement.o 
+  UNUSED   000002 ........ ........    FunMaxTimer_u16p06 L4_ScheduleManagement.o 
+  UNUSED   000002 ........ ........    FunRunTimer_u16p06 L4_ScheduleManagement.o 
+  0000000b 000005 400017f8 0000a098  8 *fill*
+  00000010 000002 400017f8 0000a098  1 .sbss 	V_CCP.o 
+  00000010 000001 400017f8 0000a098  1 @LOCAL@CCP_Per__Fv@ccpTimer1 	V_CCP.o 
+  00000011 000001 400017f9 0000a099  1 @LOCAL@CCP_Per__Fv@ccpTimer2@0 	V_CCP.o 
+  00000012 000006 40001800 0000a0a0  8 *fill*
+  00000018 000003 40001800 0000a0a0  1 .sbss 	L4_FaultManager.o 
+  00000018 000002 40001800 0000a0a0  2 L3_N_EPSFaultBitCnt_Ct_G_u16 	L4_FaultManager.o 
+  0000001a 000001 40001802 0000a0a2  1 L4_S_SysFaultState_Uls_G_Enu 	L4_FaultManager.o 
+  0000001b 000005 40001808 0000a0a8  8 *fill*
+  00000020 000018 40001808 0000a0a8  1 .sbss 	L3_AdcIf.o 
+  00000020 000002 40001808 0000a0a8  2 L3_PriCurLow_Ct_u16 	L3_AdcIf.o 
+  00000022 000002 4000180a 0000a0aa  2 L3_PriCurHigh_Ct_u16 	L3_AdcIf.o 
+  00000024 000002 4000180c 0000a0ac  2 L3_Dcdc_Iout_Ct_u16 	L3_AdcIf.o 
+  00000026 000002 4000180e 0000a0ae  2 L3_Dcdc_Vout_Ct_u16 	L3_AdcIf.o 
+  00000028 000002 40001810 0000a0b0  2 L3_S_RlyCoil_Ct_G_u16 	L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_PhaseU_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_MotorCurrentW_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_MotorCurrentV_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_MotorCurrentU_Ct_G_u16 L3_AdcIf.o 
+  0000002a 000002 40001812 0000a0b2  2 L3_S_PcbTemp_Ct_G_u16 	L3_AdcIf.o 
+  0000002c 000002 40001814 0000a0b4  2 L3_S_IgnVolt_Ct_G_u16 	L3_AdcIf.o 
+  0000002e 000002 40001816 0000a0b6  2 L3_S_BatMosVolt_Ct_G_u16 	L3_AdcIf.o 
+  00000030 000002 40001818 0000a0b8  2 L3_S_BatCmmVolt_Ct_G_u16 	L3_AdcIf.o 
+  00000032 000002 4000181a 0000a0ba  2 L3_S_RslvVcc_Ct_G_u16 	L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_RslvS2_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_RslvS1_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_RslvR2_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   000002 ........ ........    L3_S_RslvR1_Ct_G_u16 L3_AdcIf.o 
+  00000034 000002 4000181c 0000a0bc  2 L3_S_Ref25V_Ct_G_u16 	L3_AdcIf.o 
+  00000036 000002 4000181e 0000a0be  2 L3_S_Sensor5V_Ct_G_u16 	L3_AdcIf.o 
+  00000038 000005 40001820 0000a0c0  1 .sbss 	L3_IgnitionSignal.o 
+  00000038 000001 40001820 0000a0c0  1 L3_S_IgnitionHWStateCnt_M_u08 	L3_IgnitionSignal.o 
+  0000003a 000002 40001822 0000a0c2  2 L3_S_IgnVolt_Volt_F_u16p10 	L3_IgnitionSignal.o 
+  0000003c 000001 40001824 0000a0c4  1 L3_S_IgnitionState_G_u08 	L3_IgnitionSignal.o 
+  0000003d 000003 40001828 0000a0c8  8 *fill*
+  00000040 000003 40001828 0000a0c8  1 .sbss 	L4_DTC.o 
+  00000040 000001 40001828 0000a0c8  1 @LOCAL@DTC_L4_POLLING_2ms__Fv@testIndex 	L4_DTC.o 
+  00000041 000001 40001829 0000a0c9  1 @LOCAL@DTC_L4_POLLING_2ms__Fv@testEnable@0 	L4_DTC.o 
+  00000042 000001 4000182a 0000a0ca  1 gIndex_u08 	L4_DTC.o 
+  00000043 000005 40001830 0000a0d0  8 *fill*
+  00000048 00002a 40001830 0000a0d0  1 .sbss 	L3_CAN.o 
+  00000048 000002 40001830 0000a0d0  2 L3_S_Ems1MsgTimeCnt_Uls_u16 	L3_CAN.o 
+  0000004a 000002 40001832 0000a0d2  2 L3_S_VehSpdMsgTimeCnt_Uls_u16 	L3_CAN.o 
+  0000004c 000001 40001834 0000a0d4  1 L3_S_CANEngineRunningSt_Uls_u08 	L3_CAN.o 
+  0000004e 000002 40001836 0000a0d6  2 L3_CanBusOffRecCnt_Ct_u16 	L3_CAN.o 
+  00000050 000001 40001838 0000a0d8  1 L3_S_CANVehicleSpeedValid_Ct_G_u08 	L3_CAN.o 
+  00000052 000002 4000183a 0000a0da  2 L3_S_CANVehicleSpeed_Kph_G_u16p06 	L3_CAN.o 
+  00000054 000001 4000183c 0000a0dc  1 L3_N_EngineType_Uls_u08 	L3_CAN.o 
+  00000055 000001 4000183d 0000a0dd  1 L3_S_CANEnAstSt_Uls_u08 	L3_CAN.o 
+  00000056 000001 4000183e 0000a0de  1 L3_S_CANEngineSpeedValid_Ct_G_u08 	L3_CAN.o 
+  00000058 000002 40001840 0000a0e0  2 L3_S_CANEngineSpeed_rpm_G_u16 	L3_CAN.o 
+  0000005a 000001 40001842 0000a0e2  1 L3_S_Esp3MsgTimeOut_Uls_G_u08 	L3_CAN.o 
+  0000005b 000001 40001843 0000a0e3  1 L3_S_Ems1MsgTimeOut_Uls_G_u08 	L3_CAN.o 
+  0000005c 000002 40001844 0000a0e4  2 L3_N_EpsTxMsgCnt_Ct_F_u16 	L3_CAN.o 
+  00000060 000008 40001848 0000a0e8  8 L3_S_EmsMsgBuf_F_u08 	L3_CAN.o 
+  00000068 000008 40001850 0000a0f0  8 L3_S_EspMsgBuf_F_u08 	L3_CAN.o 
+  00000070 000001 40001858 0000a0f8  1 L3_S_EPS_EPSFault_Ct_G_u08 	L3_CAN.o 
+  00000071 000001 40001859 0000a0f9  1 L3_S_CANSta_Ct_M_Enu 	L3_CAN.o 
+  00000072 000006 40001860 0000a100  8 *fill*
+  00000078 000008 40001860 0000a100  1 .sbss 	L4_WarmTask.o 
+  00000078 000002 40001860 0000a100  2 k_PianCiComp_Ct_s16 	L4_WarmTask.o 
+  0000007a 000002 40001862 0000a102  2 k_Dcdc_Vref_Ct_u16 	L4_WarmTask.o 
+  0000007c 000002 40001864 0000a104  2 k_Dcdc_Iref_Ct_u16 	L4_WarmTask.o 
+  0000007e 000001 40001866 0000a106  1 k_PwmSelect_u08 	L4_WarmTask.o 
+  0000007f 000001 40001867 0000a107  1 L3_DcDcTaskCt_u08 	L4_WarmTask.o 
+  00000080 000002 40001868 0000a108  1 .sbss 	L3_TemperatureSignal.o 
+  00000080 000002 40001868 0000a108  2 L3_S_MosfetTemp_DegC_G_s16p01 	L3_TemperatureSignal.o 
+  00000082 000006 40001870 0000a110  8 *fill*
+  00000088 000004 40001870 0000a110  1 .sbss 	L3_SensorVoltageSignal.o 
+  00000088 000002 40001870 0000a110  2 L3_S_RslvVcc_Volt_G_u16p08 	L3_SensorVoltageSignal.o 
+  0000008a 000002 40001872 0000a112  2 L3_S_Sensor5V_Volt_G_u16p08 	L3_SensorVoltageSignal.o 
+  0000008c 000004 40001878 0000a118  8 *fill*
+  00000090 000016 40001878 0000a118  1 .sbss 	L3_BattVolt_Diag.o 
+  00000090 000001 40001878 0000a118  1 L3_S_BatState_Uls_G_Enu 	L3_BattVolt_Diag.o 
+  00000091 000001 40001879 0000a119  1 L3_S_BatLevel_Uls_G_Enu 	L3_BattVolt_Diag.o 
+  00000092 000002 4000187a 0000a11a  2 L3_N_BatOver2ErrClearCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  00000094 000002 4000187c 0000a11c  2 L3_N_BatOver2ErrConfirmCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  00000096 000002 4000187e 0000a11e  2 L3_N_BatOver1ErrClearCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  00000098 000002 40001880 0000a120  2 L3_N_BatOver1ErrConfirmCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  0000009a 000002 40001882 0000a122  2 L3_N_BatNormal1ErrClearCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  0000009c 000002 40001884 0000a124  2 L3_N_BatNormal1ErrConfirmCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  0000009e 000002 40001886 0000a126  2 L3_N_BatLowErrClearCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  000000a0 000002 40001888 0000a128  2 L3_N_BatLowErrConfirmCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  000000a2 000002 4000188a 0000a12a  2 L3_N_BatOffErrClearCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  000000a4 000002 4000188c 0000a12c  2 L3_N_BatOffErrConfirmCnt_Ct_F_u16 	L3_BattVolt_Diag.o 
+  000000a6 000002 40001890 0000a130  8 *fill*
+  000000a8 00000e 40001890 0000a130  1 .sbss 	L3_Temperature_Diag.o 
+  000000a8 000004 40001890 0000a130  4 L3_S_TempSenDiagResult_Uls_G_Str 	L3_Temperature_Diag.o 
+  000000ac 000001 40001894 0000a134  1 L3_N_TempSenDiagLoopCt_Ct_u08 	L3_Temperature_Diag.o 
+  000000ae 000002 40001896 0000a136  2 L3_N_TempSenLowErrCnt_Ct_u16 	L3_Temperature_Diag.o 
+  000000b0 000002 40001898 0000a138  2 L3_N_TempSenHighErrCnt_Ct_u16 	L3_Temperature_Diag.o 
+  000000b2 000002 4000189a 0000a13a  2 L3_N_TempSenShVcErrCnt_Ct_u16 	L3_Temperature_Diag.o 
+  000000b4 000002 4000189c 0000a13c  2 L3_N_TempSenShGndErrCnt_Ct_u16 	L3_Temperature_Diag.o 
+  000000b6 000002 400018a0 0000a140  8 *fill*
+  000000b8 000009 400018a0 0000a140  1 .sbss 	L3_SbcDrv.o 
+  000000b8 000002 400018a0 0000a140  2 WdVal 	L3_SbcDrv.o 
+  000000ba 000002 400018a2 0000a142  2 IsVal 	L3_SbcDrv.o 
+  000000bc 000002 400018a4 0000a144  2 IcVal 	L3_SbcDrv.o 
+  000000be 000002 400018a6 0000a146  2 McVal 	L3_SbcDrv.o 
+  000000c0 000001 400018a8 0000a148  1 @LOCAL@SBC_L3_Per__Fv@ReadSbcRegIndex 	L3_SbcDrv.o 
+  000000c1 000007 400018b0 0000a150  8 *fill*
+  000000c8 000006 400018b0 0000a150  1 .sbss 	L3_VoltSignal.o 
+  UNUSED   000002 ........ ........    L3_N_RlyCoilVolt_Volt_G_u16p10 L3_VoltSignal.o 
+  000000c8 000002 400018b0 0000a150  2 L3_S_BatMosVolt_Volt_G_u16p10 	L3_VoltSignal.o 
+  000000ca 000002 400018b2 0000a152  2 L3_S_BatCmmVolt_Volt_G_u16p10 	L3_VoltSignal.o 
+  000000cc 000002 400018b4 0000a154  2 L3_S_BatCmmVolt_Volt_G_u16p08 	L3_VoltSignal.o 
+  000000ce 000002 400018b8 0000a158  8 *fill*
+  000000d0 000010 400018b8 0000a158  1 .sbss 	FBL_UDS.o 
+  000000d0 000008 400018b8 0000a158  8 fblUdsTxBuffer 	FBL_UDS.o 
+  000000d8 000004 400018c0 0000a160  4 emergency_buffer 	FBL_UDS.o 
+  000000dc 000004 400018c4 0000a164  4 fblUdsRxBuffer 	FBL_UDS.o 
+  000000e0 00000c 400018c8 0000a168  1 .sbss 	global.o 
+  000000e0 000002 400018c8 0000a168  2 k_CurKi_Uls_s16p12 	global.o 
+  000000e2 000002 400018ca 0000a16a  2 k_CurKp_Uls_s16p12 	global.o 
+  000000e4 000001 400018cc 0000a16c  1 k_DcDcLoopType_u08 	global.o 
+  000000e6 000002 400018ce 0000a16e  2 k_PfcCurKp_Uls_s16p10 	global.o 
+  000000e8 000002 400018d0 0000a170  2 k_VoltKi_Uls_s16p12 	global.o 
+  000000ea 000002 400018d2 0000a172  2 k_VoltKp_Uls_s16p12 	global.o 
+  000000ec 000004 400018d8 0000a178  8 *fill*
+  000000f0 000010 400018d8 0000a178  1 .sbss 	OBC.o 
+  000000f0 000004 400018d8 0000a178  4 OBC_Y 	OBC.o 
+  000000f4 000006 400018dc 0000a17c  4 OBC_U 	OBC.o 
+  000000fc 000004 400018e4 0000a184  4 OBC_DWork 	OBC.o 
+
+
+.sdata2 section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+
+
+.sbss2 section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+
+
+.bss section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 000010 400018e8 0000a088  1 .bss 	L4_Main.o 
+  00000000 000010 400018e8 0000a088  8 L3_UdsTxMsgBuf_Str1 	L4_Main.o 
+  00000010 000a48 400018f8 0000a098  1 .bss 	V_CCP.o 
+  00000010 000a38 400018f8 0000a098  8 ccp 	V_CCP.o 
+  00000a48 000010 40002330 0000aad0  8 CCP_CAN_TxBuf 	V_CCP.o 
+  00000a58 000058 40002340 0000aae0  1 .bss 	L3_AdcIf.o 
+  00000a58 00000c 40002340 0000aae0  4 L3_S_RslvR2Buf_Ct_G_u16 	L3_AdcIf.o 
+  00000a64 00000c 4000234c 0000aaec  4 L3_S_RslvR1Buf_Ct_G_u16 	L3_AdcIf.o 
+  UNUSED   00000c ........ ........    L3_S_RslvS2Buf_Ct_G_u16 L3_AdcIf.o 
+  UNUSED   00000c ........ ........    L3_S_RslvS1Buf_Ct_G_u16 L3_AdcIf.o 
+  00000a70 000030 40002358 0000aaf8  8 RxDataRam1 	L3_AdcIf.o 
+  00000aa0 000010 40002388 0000ab28  8 RxDataRam0 	L3_AdcIf.o 
+  00000ab0 00001e 40002398 0000ab38  1 .bss 	L4_DTC.o 
+  00000ab0 00000e 40002398 0000ab38  4 L4_S_DTCError_CTR_Ct_G_a 	L4_DTC.o 
+  00000ac0 00000e 400023a8 0000ab48  4 L4_S_DTCEnable_Ct_G_a 	L4_DTC.o 
+  00000ace 000002 400023b8 0000ab58  8 *fill*
+  00000ad0 000010 400023b8 0000ab58  1 .bss 	L3_CAN.o 
+  00000ad0 000010 400023b8 0000ab58  8 L3_N_EpsTxMsgBuf_F_Str 	L3_CAN.o 
+  00000ae0 000010 400023c8 0000ab68  1 .bss 	FBL_UDS.o 
+  00000ae0 000010 400023c8 0000ab68  8 L3_UdsTxMsgBuf_Str 	FBL_UDS.o 
+  00000af0 00000c 400023d8 0000ab78  1 .bss 	Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  00000af0 00000c 400023d8 0000ab78  4 fragmentinfo 	Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+
+
+extabindex section layout
+  Starting        Virtual  File
+  address  Size   address  offset
+  ---------------------------------
+  00000000 00000c 00016818 00009d9c  4 @219 	m_ADC_Drv.o 
+  0000000c 00000c 00016824 00009d9c  4 @225 	m_ADC_Drv.o 
+  00000018 00000c 00016830 00009d9c  4 @133 	m_CTU_Drv.o 
+  00000024 00000c 0001683c 00009d9c  4 @257 	m_CTU_Drv.o 
+  00000030 00000c 00016848 00009d9c  4 @36 	m_Clock_Drv.o 
+  0000003c 00000c 00016854 00009d9c  4 @62 	m_EDMA_Drv.o 
+  00000048 00000c 00016860 00009d9c  4 @50 	m_CAN_Drv.o 
+  00000054 00000c 0001686c 00009d9c  4 @66 	m_CAN_Drv.o 
+  00000060 00000c 00016878 00009d9c  4 @139 	m_CAN_Drv.o 
+  0000006c 00000c 00016884 00009d9c  4 @215 	m_CAN_Drv.o 
+  00000078 00000c 00016890 00009d9c  4 @250 	m_CAN_Drv.o 
+  00000084 00000c 0001689c 00009d9c  4 @269 	m_CAN_Drv.o 
+  00000090 00000c 000168a8 00009d9c  4 @345 	m_CAN_Drv.o 
+  0000009c 00000c 000168b4 00009d9c  4 @372 	m_CAN_Drv.o 
+  000000a8 00000c 000168c0 00009d9c  4 @91 	m_PWM_Drv.o 
+  000000b4 00000c 000168cc 00009d9c  4 @127 	m_PWM_Drv.o 
+  000000c0 00000c 000168d8 00009d9c  4 @177 	m_PWM_Drv.o 
+  000000cc 00000c 000168e4 00009d9c  4 @207 	m_PWM_Drv.o 
+  000000d8 00000c 000168f0 00009d9c  4 @263 	m_DSPI_Drv.o 
+  000000e4 00000c 000168fc 00009d9c  4 @455 	m_DSPI_Drv.o 
+  000000f0 00000c 00016908 00009d9c  4 @478 	m_DSPI_Drv.o 
+  000000fc 00000c 00016914 00009d9c  4 @540 	m_DSPI_Drv.o 
+  00000108 00000c 00016920 00009d9c  4 @552 	m_DSPI_Drv.o 
+  00000114 00000c 0001692c 00009d9c  4 @333 	L4_ECUStateManagement.o 
+  00000120 00000c 00016938 00009d9c  4 @346 	L4_ECUStateManagement.o 
+  0000012c 00000c 00016944 00009d9c  4 @356 	L4_ECUStateManagement.o 
+  00000138 00000c 00016950 00009d9c  4 @333 	L4_Main.o 
+  00000144 00000c 0001695c 00009d9c  4 @339 	L4_Main.o 
+  00000150 00000c 00016968 00009d9c  4 @142 	L3_ECAL.o 
+  0000015c 00000c 00016974 00009d9c  4 @294 	L2_MCAL.o 
+  00000168 00000c 00016980 00009d9c  4 @365 	L4_ScheduleManagement.o 
+  00000174 00000c 0001698c 00009d9c  4 @374 	L4_ScheduleManagement.o 
+  00000180 00000c 00016998 00009d9c  4 @6 	L4_SRVL.o 
+  0000018c 00000c 000169a4 00009d9c  4 @46 	V_CCP.o 
+  00000198 00000c 000169b0 00009d9c  4 @97 	V_CCP.o 
+  000001a4 00000c 000169bc 00009d9c  4 @111 	V_CCP.o 
+  000001b0 00000c 000169c8 00009d9c  4 @132 	V_CCP.o 
+  000001bc 00000c 000169d4 00009d9c  4 @149 	V_CCP.o 
+  000001c8 00000c 000169e0 00009d9c  4 @161 	V_CCP.o 
+  000001d4 00000c 000169ec 00009d9c  4 @195 	V_CCP.o 
+  000001e0 00000c 000169f8 00009d9c  4 @216 	V_CCP.o 
+  000001ec 00000c 00016a04 00009d9c  4 @237 	V_CCP.o 
+  000001f8 00000c 00016a10 00009d9c  4 @289 	V_CCP.o 
+  00000204 00000c 00016a1c 00009d9c  4 @388 	V_CCP.o 
+  00000210 00000c 00016a28 00009d9c  4 @402 	V_CCP.o 
+  0000021c 00000c 00016a34 00009d9c  4 @420 	V_CCP.o 
+  00000228 00000c 00016a40 00009d9c  4 @427 	V_CCP.o 
+  00000234 00000c 00016a4c 00009d9c  4 @434 	V_CCP.o 
+  00000240 00000c 00016a58 00009d9c  4 @444 	V_CCP.o 
+  0000024c 00000c 00016a64 00009d9c  4 @454 	V_CCP.o 
+  00000258 00000c 00016a70 00009d9c  4 @494 	V_CCP.o 
+  00000264 00000c 00016a7c 00009d9c  4 @91 	L4_FaultManager.o 
+  00000270 00000c 00016a88 00009d9c  4 @134 	L4_FaultManager.o 
+  0000027c 00000c 00016a94 00009d9c  4 @231 	L4_FaultManager.o 
+  00000288 00000c 00016aa0 00009d9c  4 @65 	L3_AdcIf.o 
+  00000294 00000c 00016aac 00009d9c  4 @93 	L3_AdcIf.o 
+  000002a0 00000c 00016ab8 00009d9c  4 @168 	L4_DTC.o 
+  000002ac 00000c 00016ac4 00009d9c  4 @185 	L4_DTC.o 
+  000002b8 00000c 00016ad0 00009d9c  4 @197 	L4_DTC.o 
+  000002c4 00000c 00016adc 00009d9c  4 @219 	L4_DTC.o 
+  000002d0 00000c 00016ae8 00009d9c  4 @230 	L4_DTC.o 
+  000002dc 00000c 00016af4 00009d9c  4 @287 	L4_DTC.o 
+  000002e8 00000c 00016b00 00009d9c  4 @298 	L4_DTC.o 
+  000002f4 00000c 00016b0c 00009d9c  4 @321 	L4_DTC.o 
+  00000300 00000c 00016b18 00009d9c  4 @333 	L4_DTC.o 
+  0000030c 00000c 00016b24 00009d9c  4 @8 	L5_APPL.o 
+  00000318 00000c 00016b30 00009d9c  4 @81 	L3_CAN.o 
+  00000324 00000c 00016b3c 00009d9c  4 @107 	L3_CAN.o 
+  00000330 00000c 00016b48 00009d9c  4 @123 	L3_CAN.o 
+  0000033c 00000c 00016b54 00009d9c  4 @135 	L3_CAN.o 
+  00000348 00000c 00016b60 00009d9c  4 @145 	L3_CAN.o 
+  00000354 00000c 00016b6c 00009d9c  4 @154 	L3_CAN.o 
+  00000360 00000c 00016b78 00009d9c  4 @166 	L3_CAN.o 
+  0000036c 00000c 00016b84 00009d9c  4 @172 	L3_CAN.o 
+  00000378 00000c 00016b90 00009d9c  4 @15 	L3_EmEep.o 
+  00000384 00000c 00016b9c 00009d9c  4 @21 	L3_EmEep.o 
+  00000390 00000c 00016ba8 00009d9c  4 @346 	L4_WarmTask.o 
+  0000039c 00000c 00016bb4 00009d9c  4 @352 	L4_WarmTask.o 
+  000003a8 00000c 00016bc0 00009d9c  4 @362 	L4_WarmTask.o 
+  000003b4 00000c 00016bcc 00009d9c  4 @368 	L4_WarmTask.o 
+  000003c0 00000c 00016bd8 00009d9c  4 @374 	L4_WarmTask.o 
+  000003cc 00000c 00016be4 00009d9c  4 @384 	L4_WarmTask.o 
+  000003d8 00000c 00016bf0 00009d9c  4 @333 	L4_StopTask.o 
+  000003e4 00000c 00016bfc 00009d9c  4 @339 	L4_StopTask.o 
+  000003f0 00000c 00016c08 00009d9c  4 @345 	L4_StopTask.o 
+  000003fc 00000c 00016c14 00009d9c  4 @351 	L4_StopTask.o 
+  00000408 00000c 00016c20 00009d9c  4 @357 	L4_StopTask.o 
+  00000414 00000c 00016c2c 00009d9c  4 @366 	L4_StopTask.o 
+  00000420 00000c 00016c38 00009d9c  4 @379 	L4_StopTask.o 
+  0000042c 00000c 00016c44 00009d9c  4 @98 	L3_BattVolt_Diag.o 
+  00000438 00000c 00016c50 00009d9c  4 @74 	L3_Temperature_Diag.o 
+  00000444 00000c 00016c5c 00009d9c  4 @157 	L3_SbcDrv.o 
+  00000450 00000c 00016c68 00009d9c  4 @174 	L3_SbcDrv.o 
+  0000045c 00000c 00016c74 00009d9c  4 @188 	L3_SbcDrv.o 
+  00000468 00000c 00016c80 00009d9c  4 @198 	L3_SbcDrv.o 
+  00000474 00000c 00016c8c 00009d9c  4 @160 	Fls.o 
+  00000480 00000c 00016c98 00009d9c  4 @327 	Fls.o 
+  0000048c 00000c 00016ca4 00009d9c  4 @207 	L2_Ecc.o 
+  00000498 00000c 00016cb0 00009d9c  4 @213 	L2_Ecc.o 
+  000004a4 00000c 00016cbc 00009d9c  4 @223 	L2_Ecc.o 
+  000004b0 00000c 00016cc8 00009d9c  4 @36 	Common.o 
+  000004bc 00000c 00016cd4 00009d9c  4 @56 	Common.o 
+  000004c8 00000c 00016ce0 00009d9c  4 @51 	FBL_UDS.o 
+  000004d4 00000c 00016cec 00009d9c  4 @63 	FBL_UDS.o 
+  000004e0 00000c 00016cf8 00009d9c  4 @75 	FBL_UDS.o 
+  000004ec 00000c 00016d04 00009d9c  4 @86 	FBL_UDS.o 
+  000004f8 00000c 00016d10 00009d9c  4 @108 	FBL_UDS.o 
+  00000504 00000c 00016d1c 00009d9c  4 @120 	FBL_UDS.o 
+  00000510 00000c 00016d28 00009d9c  4 @130 	FBL_UDS.o 
+  0000051c 00000c 00016d34 00009d9c  4 @146 	FBL_UDS.o 
+  00000528 00000c 00016d40 00009d9c  4 @159 	FBL_UDS.o 
+  00000534 00000c 00016d4c 00009d9c  4 @181 	FBL_UDS.o 
+  00000540 00000c 00016d58 00009d9c  4 @46 	DcDc.o 
+  0000054c 00000c 00016d64 00009d9c  4 @14 	OBC.o 
+  00000558 00000c 00016d70 00009d9c  4 @30 	PianCi.o 
+  00000564 000020 00016d7c 00009d9c  4 _eti_init_info 	Linker Generated Symbol File 
+  UNUSED   00000c ........ ........    @241 m_ADC_Drv.o 
+  UNUSED   00000c ........ ........    @257 m_ADC_Drv.o 
+  UNUSED   00000c ........ ........    @275 m_ADC_Drv.o 
+  UNUSED   00000c ........ ........    @229 m_CTU_Drv.o 
+  UNUSED   00000c ........ ........    @280 m_CTU_Drv.o 
+  UNUSED   00000c ........ ........    @101 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @112 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @123 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @162 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @169 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @223 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @231 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @288 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @310 m_CAN_Drv.o 
+  UNUSED   00000c ........ ........    @109 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @121 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @139 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @151 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @163 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @171 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @189 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @201 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @226 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @242 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @261 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @284 m_PWM_Drv.o 
+  UNUSED   00000c ........ ........    @131 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @157 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @170 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @187 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @209 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @218 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @227 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @250 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @280 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @302 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @311 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @320 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @343 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @369 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @392 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @402 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @412 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @436 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @488 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @498 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @522 m_DSPI_Drv.o 
+  UNUSED   00000c ........ ........    @148 L3_ECAL.o 
+  UNUSED   00000c ........ ........    @270 V_CCP.o 
+  UNUSED   00000c ........ ........    @180 L4_FaultManager.o 
+  UNUSED   00000c ........ ........    @237 L4_FaultManager.o 
+  UNUSED   00000c ........ ........    @243 L4_FaultManager.o 
+  UNUSED   00000c ........ ........    @208 L4_DTC.o 
+  UNUSED   00000c ........ ........    @251 L4_DTC.o 
+  UNUSED   00000c ........ ........    @273 L4_DTC.o 
+  UNUSED   00000c ........ ........    @192 Fls.o 
+  UNUSED   00000c ........ ........    @199 Fls.o 
+  UNUSED   00000c ........ ........    @215 Fls.o 
+  UNUSED   00000c ........ ........    @289 Fls.o 
+  UNUSED   00000c ........ ........    @296 Fls.o 
+  UNUSED   00000c ........ ........    @168 L2_Ecc.o 
+  UNUSED   00000c ........ ........    @185 L2_Ecc.o 
+  UNUSED   00000c ........ ........    @194 L2_Ecc.o 
+  UNUSED   00000c ........ ........    @76 Common.o 
+  UNUSED   00000c ........ ........    @133 Common.o 
+  UNUSED   00000c ........ ........    @8 OBC.o 
+  UNUSED   00000c ........ ........    @224 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @308 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @409 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @435 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @807 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @860 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @871 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @916 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @964 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @971 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1028 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1104 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1119 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1147 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1421 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1426 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1532 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+  UNUSED   00000c ........ ........    @1539 Runtime.PPCEABI.VS.UC.a ExceptionPPC.o
+
+
+Memory map:
+                       Starting Size     File     ROM      RAM Buffer  S-Record
+                       address           Offset   Address  Address     Line
+                 .boot 0000c000 00000008 00000400 0000c000 0000c000          2
+                 .init 0000c020 000000cc 00000408 0000c020 0000c020          3
+             .init_vle 0000c0ec 00000210 000004d4 0000c0ec 0000c0ec         14
+    .ivor_branch_table 0000d000 000000f4 000006f0 0000d000 0000d000         41
+        .ivor_handlers 0000d100 000000b0 000007f0 0000d100 0000d100         54
+  .intc_sw_isr_vector_table 0000e000 00000400 00001000 0000e000 0000e000         63
+             .text_vle 0000e400 00007dbc 00001400 0000e400 0000e400        115
+               .rodata 000161c0 000002b0 000091c0 000161c0 000161c0       1725
+                .ctors 00016470 00000008 00009470 00016470 00016470       1760
+                .dtors 00016478 00000008 00009478 00016478 00016478       1761
+                 extab 00016480 00000398 00009480 00016480 00016480       1762
+            extabindex 00016818 00000584 00009818 00016818 00016818       1808
+                 .data 40001500 000002b8 00009da0 00016da0 00016da0       1879
+                .sdata 400017b8 0000002c 0000a058 00017058 00017058       1914
+                 .sbss 400017e8 00000100 0000a088 00017088 00017088          0
+               .sdata2 400018e8 00000000 0000a088 00017088 00017088          0
+                .sbss2 400018e8 00000000 0000a088 00017088 00017088          0
+                  .bss 400018e8 00000afc 0000a088 00017088 00017088          0
+      .PPC.EMB.apuinfo 00024178 00000000 0002e200 0003b200 0003b200          0
+         .debug_abbrev          000001c7 0000a088
+           .debug_info          00008a71 0000a24f
+        .debug_aranges          00000040 00012cc0
+           .debug_line          00011881 00012d00
+            .debug_loc          0000253f 00024581
+       .debug_pubnames          000019b7 00026ac0
+
+
+Linker generated symbols:
+             __IVPR_VALUE 0000d000
+          L2SRAM_LOCATION 40000000
+                  _f_boot 0000c000
+              _f_boot_rom 0000c000
+                  _e_boot 0000c008
+                  _f_init 0000c020
+              _f_init_rom 0000c020
+                  _e_init 0000c0ec
+              _f_init_vle 0000c0ec
+          _f_init_vle_rom 0000c0ec
+              _e_init_vle 0000c2fc
+     _f_ivor_branch_table 0000d000
+ _f_ivor_branch_table_rom 0000d000
+     _e_ivor_branch_table 0000d0f4
+         _f_ivor_handlers 0000d100
+     _f_ivor_handlers_rom 0000d100
+         _e_ivor_handlers 0000d1b0
+_f_intc_sw_isr_vector_table 0000e000
+_f_intc_sw_isr_vector_table_rom 0000e000
+_e_intc_sw_isr_vector_table 0000e400
+                  _f_text 0000e400
+              _f_text_rom 0000e400
+                  _e_text 0000e400
+              _f_text_vle 0000e400
+          _f_text_vle_rom 0000e400
+              _e_text_vle 000161bc
+                _f_rodata 000161c0
+            _f_rodata_rom 000161c0
+                _e_rodata 00016470
+                 _f_ctors 00016470
+             _f_ctors_rom 00016470
+                 _e_ctors 00016478
+                 _f_dtors 00016478
+             _f_dtors_rom 00016478
+                 _e_dtors 00016480
+                  _fextab 00016480
+              _fextab_rom 00016480
+                  _eextab 00016818
+             _fextabindex 00016818
+         _fextabindex_rom 00016818
+             _eextabindex 00016d9c
+                  _f_data 40001500
+              _f_data_rom 00016da0
+                  _e_data 400017b8
+                 _f_sdata 400017b8
+             _f_sdata_rom 00017058
+                 _e_sdata 400017e4
+                  _f_sbss 400017e8
+                  _e_sbss 400018e8
+                _f_sdata2 400018e8
+            _f_sdata2_rom 00017088
+                _e_sdata2 400018e8
+                 _f_sbss2 400018e8
+                 _e_sbss2 400018e8
+                   _f_bss 400018e8
+                   _e_bss 400023e4
+              _stack_addr 4000a000
+               _stack_end 40009000
+               _heap_addr 003cfff0
+                _heap_end 003d7ff0
+             _nbfunctions 000000dd
+           SIZEOF_HEADERS 00000400
+               _SDA_BASE_ 400097b8
+              _SDA2_BASE_ 400098e8
+           _ABS_SDA_BASE_ 400097b8
+          _ABS_SDA2_BASE_ 400098e8

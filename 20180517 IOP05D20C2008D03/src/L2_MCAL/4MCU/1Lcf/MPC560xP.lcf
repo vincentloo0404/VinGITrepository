@@ -1,0 +1,129 @@
+/******************************************************************************
+*
+* ChuangQu Inc.
+* (c) Copyright 2012 ChuangQu, Inc.
+* ALL RIGHTS RESERVED.
+*
+***************************************************************************//*!
+*
+* @file    
+*
+* @brief   
+*
+*******************************************************************************
+*   Revision History:
+* 
+*    Version      Date          Author        CR#          Descriptions
+*   ---------   ----------    ------------  ----------  ---------------
+*     1.0        2012/06/19     Freescale      N/A          Original
+*     1.1        2012/09/14      jiaoyu		   N/A          Update
+******************************************************************************/
+
+/* 5500_VLE_flash.lcf - Simple minimal MPC5500 link file using 40 KB SRAM */
+/* Sept 20 2007 SM, DF initial version */
+/* May 09 208 SM: Put stack in it's own 1KB (0x400) memory segment */
+/*------------------------------------------------------------------------*/
+
+MEMORY
+{
+    /* flash ,spc5603p(384K,0x60000),spc5604p(512K,0x80000)*/
+    boot_flash:           org = 0x0000C000,   len = 0x00000008
+    init_flash:           org = 0x0000C020,   len = 0x00000FE0
+    interrupts_flash:     org = 0x0000D000,   len = 0x00001000
+    internal_flash:       org = 0x0000E000,   len = 0x00052000 
+    
+    /* data flash ,64K */
+    tuning_data_calib_flash:		org = 0x00800000,   len = 0xC00 /* tuning data  */
+    private_data_calib_flash:		org = 0x00804000,   len = 0xE00 /* private data */
+
+    eol_data_flash:		org = 0x00808000,   len = 0x200 /* eol data */
+    dtc_data_flash:     org = 0x0080C000,   len = 0x400 /* dtc data */
+    
+    /* SRAM: spc5603p(36K,0x9000),spc5604p(40K,0xA000) */
+    eps_data_ram:         org = 0x40000100,   len = 0x00001400  /* 3072 bytes */
+
+    internal_ram:         org = 0x40001500,   len = 0x00007B00
+    stack_ram:            org = 0x40009000,   len = 0x1000
+}
+
+/*------------------------------------------------------------------------*/
+/* This will ensure the rchw and reset vector are not stripped by the linker */
+FORCEACTIVE { "bam_rchw" "bam_resetvector"}
+
+/*------------------------------------------------------------------------*/
+SECTIONS
+{
+    .boot LOAD (ADDR(boot_flash)) : {} > boot_flash  /* LOAD (0x0) prevents relocation by ROM copy during startup */
+
+    GROUP :
+    {
+        .init LOAD (ADDR(init_flash)) : {}
+        .init_vle (VLECODE) LOAD (_e_init) :
+        {
+            *(.init)
+            *(.init_vle)
+        }
+    } > init_flash
+    
+/*------------------------------*/
+    GROUP :   /* Note: _e_ prefix enables load after END of that specified section */
+    {
+        .ivor_branch_table (VLECODE) LOAD (ADDR(interrupts_flash)) : {}
+        .ivor_handlers (VLECODE) LOAD (_e_ivor_branch_table) : {} /* Each MPC555x handler require 16B alignmt */
+    } > interrupts_flash
+  
+/*------------------------------*/   
+    GROUP :
+    {
+        .intc_sw_isr_vector_table ALIGN (2048) : {} /* For INTC in SW Vector Mode */
+
+        .text : {} 
+        .text_vle (VLECODE) ALIGN(0x08):
+        {
+            *(.text)
+            *(.text_vle)
+        }
+        .rodata (CONST) :
+        {
+            *(.rdata)
+            *(.rodata)
+        }
+        
+        .ctors : {}
+        .dtors : {}
+        
+        extab : {}
+        extabindex : {}
+    } > internal_flash
+    
+/*------------------------------*/
+	GROUP :
+	{
+        .data   : {}
+        .sdata  : {}
+        .sbss   : {}
+        .sdata2 : {}
+        .sbss2  : {}
+        .bss    : {}
+	} > internal_ram
+}   
+/*------------------------------------------------------------------------*/
+/* Freescale CodeWarrior compiler address designations */
+
+_stack_addr = ADDR(stack_ram)+SIZEOF(stack_ram);
+_stack_end  = ADDR(stack_ram);
+
+/*------------------------------------------------------------------------*/
+/* These are not currently being used
+_heap_addr  = ADDR(.bss)+SIZEOF(.bss);
+_heap_end   = ADDR(internal_ram)+SIZEOF(internal_ram);
+*/
+/*------------------------------------------------------------------------*/
+__IVPR_VALUE = ADDR(interrupts_flash);
+
+/*------------------------------------------------------------------------*/
+/* L2 SRAM Location (used for L2 SRAM initialization) */
+
+L2SRAM_LOCATION = 0x40000000;
+
+/*------------------------------------------------------------------------*/

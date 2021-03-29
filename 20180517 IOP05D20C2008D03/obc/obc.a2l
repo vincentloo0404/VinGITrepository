@@ -1,0 +1,1247 @@
+ASAP2_VERSION 1 51
+/begin PROJECT obc ""
+
+  /begin MODULE CPP ""
+
+    /begin A2ML
+
+      block "IF_DATA" taggedunion if_data {
+
+
+        "CANAPE_EXT" struct {
+          int;             /* version number */
+          taggedstruct {
+            "LINK_MAP" struct {
+              char[256];   /* segment name */
+              long;        /* base address of the segment */
+              uint;        /* address extension of the segment */
+              uint;        /* flag: address is relative to DS */
+              long;        /* offset of the segment address */
+              uint;        /* datatypValid */
+              uint;        /* enum datatyp */
+              uint;        /* bit offset of the segment */
+            };
+            "DISPLAY" struct {
+              long;        /* display color */
+              double;      /* minimal display value (phys)*/
+              double;      /* maximal display value (phys)*/
+            };
+            "VIRTUAL_CONVERSION" struct {
+              char[256];   /* name of the conversion formula */
+            };
+          };
+        };
+        "CANAPE_MODULE" struct {
+          taggedstruct {
+            ("RECORD_LAYOUT_STEPSIZE" struct {
+              char[256];   /* name of record layout*/
+              uint;        /* stepsize for FNC_VALUES */
+              uint;        /* stepsize for AXIS_PTS_X */
+              uint;        /* stepsize for AXIS_PTS_Y */
+              uint;        /* stepsize for AXIS_PTS_Z */
+              uint;        /* stepsize for AXIS_PTS_4 */
+              uint;        /* stepsize for AXIS_PTS_5 */
+            })*;
+          };
+        };
+
+        "ASAP1B_CCP" taggedstruct {
+          (block "SOURCE" struct {
+            char[101];
+            int;
+            long;
+            taggedstruct {
+              "DISPLAY_IDENTIFIER" char[32];
+              block "QP_BLOB" struct {
+                uint;
+                taggedstruct {
+                  "LENGTH" uint;
+                  "CAN_ID_VARIABLE" ;
+                  "CAN_ID_FIXED" ulong;
+                  ("RASTER" uchar)*;
+                  ("EXCLUSIVE" int)*;
+                  "REDUCTION_ALLOWED" ;
+                  "FIRST_PID" uchar;
+                };
+              };
+            };
+          })*;
+          (block "RASTER" struct {
+            char[101];
+            char[9];
+            uchar;
+            int;
+            long;
+            taggedstruct {
+              ("EXCLUSIVE" uchar)*;
+            };
+          })*;
+          (block "EVENT_GROUP" struct {
+            char[101];
+            char[9];
+            taggedstruct {
+              ("RASTER" uchar)*;
+            };
+          })*;
+          block "SEED_KEY" struct {
+            char[256];
+            char[256];
+            char[256];
+          };
+          block "CHECKSUM" struct {
+            char[256];
+          };
+          block "TP_BLOB" struct {
+            uint;
+            uint;
+            ulong;
+            ulong;
+            uint;
+            uint;
+            taggedstruct {
+              block "CAN_PARAM" struct {
+                uint;
+                uchar;
+                uchar;
+              };
+              "BAUDRATE" ulong;
+              "SAMPLE_POINT" uchar;
+              "SAMPLE_RATE" uchar;
+              "BTL_CYCLES" uchar;
+              "SJW" uchar;
+              "SYNC_EDGE" enum {
+                "SINGLE" = 0,
+                "DUAL" = 1
+              };
+              "DAQ_MODE" enum {
+                "ALTERNATING" = 0,
+                "BURST" = 1
+              };
+              "BYTES_ONLY" ;
+              "RESUME_SUPPORTED" ;
+              "STORE_SUPPORTED" ;
+              "CONSISTENCY" enum {
+                "DAQ" = 0,
+                "ODT" = 1
+              };
+              "ADDRESS_EXTENSION" enum {
+                "DAQ" = 0,
+                "ODT" = 1
+              };
+              block "CHECKSUM_PARAM" struct {
+                uint;
+                ulong;
+                taggedstruct {
+                  "CHECKSUM_CALCULATION" enum {
+                    "ACTIVE_PAGE" = 0,
+                    "BIT_OR_WITH_OPT_PAGE" = 1
+                  };
+                };
+              };
+              (block "DEFINED_PAGES" struct {
+                uint;
+                char[101];
+                uint;
+                ulong;
+                ulong;
+                taggedstruct {
+                  "RAM" ;
+                  "ROM" ;
+                  "FLASH" ;
+                  "EEPROM" ;
+                  "RAM_INIT_BY_ECU" ;
+                  "RAM_INIT_BY_TOOL" ;
+                  "AUTO_FLASH_BACK" ;
+                  "FLASH_BACK" ;
+                  "DEFAULT" ;
+                };
+              })*;
+              ("OPTIONAL_CMD" uint)*;
+            };
+          };
+          ("ADDR_MAPPING" struct {
+            ulong;
+            ulong;
+            ulong;
+          })*;
+          "DP_BLOB" struct {
+            uint;
+            ulong;
+            ulong;
+          };
+          "KP_BLOB" struct {
+            uint;
+            ulong;
+            ulong;
+            taggedstruct {
+              ("RASTER" uchar)*;
+            };
+          };
+        };
+        "CANAPE_GROUP" taggedstruct {
+          block "STRUCTURE_LIST" (char[1024])*;
+        };
+
+        "CANAPE_ADDRESS_UPDATE" taggedstruct {
+          ("EPK_ADDRESS" struct {
+            char[1024];
+            long;
+          })*;
+          "ECU_CALIBRATION_OFFSET" struct {
+            char[1024];
+            long;
+          };
+          (block "CALIBRATION_METHOD" taggedunion {
+            "AUTOSAR_SINGLE_POINTERED" struct {
+              char[1024];
+              long;
+              taggedstruct {
+                "ORIGINAL_POINTER_TABLE" struct {
+                  char[1024];
+                  long;
+                };
+              };
+            };
+            "InCircuit2" struct {
+              char[1024];
+              long;
+              taggedstruct {
+                "ORIGINAL_POINTER_TABLE" struct {
+                  char[1024];
+                  long;
+                };
+                "FLASH_SECTION" struct {
+                  ulong;
+                  ulong;
+                };
+              };
+            };
+          })*;
+          block "MAP_SYMBOL" taggedstruct {
+            "FIRST" struct {
+              char[1024];
+              long;
+            };
+            "LAST" struct {
+              char[1024];
+              long;
+            };
+            ("ADDRESS_MAPPING_XCP" struct {
+              char[1024];
+              char[1024];
+            })*;
+          };
+          (block "MEMORY_SEGMENT" struct {
+            char[1024];
+            taggedstruct {
+              "FIRST" struct {
+                char[1024];
+                long;
+              };
+              "LAST" struct {
+                char[1024];
+                long;
+              };
+              ("ADDRESS_MAPPING_XCP" struct {
+                char[1024];
+                char[1024];
+              })*;
+            };
+          })*;
+        };
+      };
+
+    /end A2ML
+
+    /begin MOD_COMMON ""
+      BYTE_ORDER MSB_FIRST
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end MOD_COMMON
+
+    
+    /begin IF_DATA ASAP1B_CCP 
+      /begin SOURCE 
+        "10ms" 0x4 0x1 
+          /begin QP_BLOB 
+            0x0 
+              LENGTH 0x14 
+              CAN_ID_FIXED 0x636 
+              RASTER 0x0 
+              FIRST_PID 0x0 
+          /end QP_BLOB
+      /end SOURCE
+      /begin SOURCE 
+        "100ms" 0x4 0xA 
+          /begin QP_BLOB 
+            0x1 
+              LENGTH 0x14 
+              CAN_ID_FIXED 0x636 
+              RASTER 0x1 
+              FIRST_PID 0x14 
+          /end QP_BLOB
+      /end SOURCE
+      /begin RASTER 
+        "10ms" "10ms" 0x0 0x4 0x1 
+      /end RASTER
+      /begin RASTER 
+        "100ms" "100ms" 0x1 0x4 0xA 
+      /end RASTER
+      /begin TP_BLOB 
+        0x201 0x206 0x635 0x636 0x23 0x1 
+          BAUDRATE 0x7A120 
+          SAMPLE_POINT 0x4B 
+          SAMPLE_RATE 0x1 
+          BTL_CYCLES 0x8 
+          SJW 0x2 
+          SYNC_EDGE SINGLE 
+          DAQ_MODE BURST 
+          CONSISTENCY ODT 
+          ADDRESS_EXTENSION DAQ 
+          /begin DEFINED_PAGES 
+            0x1 "reference page" 0x0 0x40000000 0x5FF0 
+              ROM 
+          /end DEFINED_PAGES
+          /begin DEFINED_PAGES 
+            0x2 "working page" 0x0 0x800000 0xC00 
+              RAM 
+              RAM_INIT_BY_ECU 
+          /end DEFINED_PAGES
+          OPTIONAL_CMD 0xE 
+          OPTIONAL_CMD 0x11 
+          OPTIONAL_CMD 0x9 
+          OPTIONAL_CMD 0xC 
+          OPTIONAL_CMD 0xD 
+      /end TP_BLOB
+    /end IF_DATA
+    /begin IF_DATA CANAPE_MODULE
+    /end IF_DATA
+
+    /begin MOD_PAR "基于s12x的发动机管理模块"
+      VERSION "0.5"
+      ADDR_EPK 0x0
+      SUPPLIER "Hualong AutoTech"
+      CUSTOMER "Huachen Auto"
+      CUSTOMER_NO "001"
+      USER "Jiao Yu"
+      PHONE_NO "01062670702"
+      ECU "EPS001"
+      CPU_TYPE "MPC560xP"
+      NO_OF_INTERFACES 1
+      /begin MEMORY_SEGMENT
+        EFLASHDATA "" DATA FLASH EXTERN 0x40000000 0x5FF0 -1 -1 -1 -1 -1 
+      /end MEMORY_SEGMENT
+      /begin MEMORY_SEGMENT
+        ERAMDATA "" DATA RAM EXTERN 0x800000 0xC00 -1 -1 -1 -1 -1 
+      /end MEMORY_SEGMENT
+    /end MOD_PAR
+
+
+
+    /begin COMPU_TAB Enable "" TAB_NOINTP 2
+      0 0 
+      1 1 
+      DEFAULT_VALUE "1"
+    /end COMPU_TAB
+
+    /begin COMPU_VTAB En "" TAB_VERB 2
+      0 "Disable"
+      1 "Enable"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 4
+      0 "e_TRIM_INIT"
+      1 "e_TRIM_NOT_COMPLETED"
+      2 "e_TRIM_SUCCESS"
+      3 "e_TRIM_FAIL"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_METHOD Amp_p07 ""
+      RAT_FUNC "%3.1" "Amp"
+      COEFFS 0 128 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DcDcVout ""
+      RAT_FUNC "%3.2" "Volt"
+      COEFFS 0 2.048 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DcDc_Current ""
+      RAT_FUNC "%3.3" "Amp"
+      COEFFS 0 71.67999999 179.2 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DegC_p01 ""
+      RAT_FUNC "%3.1" "DegC"
+      COEFFS 0 2 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DegC_p06 ""
+      RAT_FUNC "%3.1" "DegC"
+      COEFFS 0 64 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DegpSec ""
+      RAT_FUNC "%3.1" "DegpSec"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Degree_Uls_s16p15 ""
+      RAT_FUNC "%3.1" "Degree"
+      COEFFS 0 182.0444444 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD FRAC16 ""
+      RAT_FUNC "%3.8" ""
+      COEFFS 0 32768 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD FRAC32 ""
+      RAT_FUNC "%3.8" ""
+      COEFFS 0 2147483648 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Kph_p01 ""
+      RAT_FUNC "%3.1" "Kmp"
+      COEFFS 0 2 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD MtrNm_p11 ""
+      RAT_FUNC "%3.2" "Nm"
+      COEFFS 0 2048 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Rad_p10 ""
+      RAT_FUNC "%3.2" "rad"
+      COEFFS 0 1024 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p02 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 4 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p03 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 8 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p04 ""
+      RAT_FUNC "%3.2" "RadpSec"
+      COEFFS 0 16 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p05 ""
+      RAT_FUNC "%3.1" "RadpSec"
+      COEFFS 0 32 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uint ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p04 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 16 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p08 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 256 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p10 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 1024 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p11 ""
+      RAT_FUNC "%4.4" "Uls"
+      COEFFS 0 2048 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p12 ""
+      RAT_FUNC "%5.5" "Uls"
+      COEFFS 0 4096 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p14 ""
+      RAT_FUNC "%3.3" "Uls"
+      COEFFS 0 16384 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p15 ""
+      RAT_FUNC "%3.3" "Uls"
+      COEFFS 0 32767.99999 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p16 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 65536 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p19 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 524288 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p20 ""
+      RAT_FUNC "%8.8" "Uls"
+      COEFFS 0 1048576 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p06 ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 64 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p07 ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 128 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p08 ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 256 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p10 ""
+      RAT_FUNC "%3.3" "volt"
+      COEFFS 0 1024 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD rpm ""
+      RAT_FUNC "%1.1" "rpm"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD uls_p26 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 67108864 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin MEASUREMENT L3_Dcdc_Iout_Ct_u16 ""
+      UWORD DcDc_Current 0 0 0 20
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x4000180C
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.3"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_Dcdc_Iout_Ct_u16" 0x4000180C 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 20
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_Dcdc_Vout_Ct_u16 ""
+      UWORD DcDcVout 0 0 0 800
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x4000180E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.2"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_Dcdc_Vout_Ct_u16" 0x4000180E 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 800
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_PriCurHigh_Ct_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x4000180A
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_PriCurHigh_Ct_u16" 0x4000180A 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_PriCurLow_Ct_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x40001808
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_PriCurLow_Ct_u16" 0x40001808 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_BatCmmVolt_Ct_G_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x40001818
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_BatCmmVolt_Ct_G_u16" 0x40001818 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_BatMosVolt_Ct_G_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x40001816
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_BatMosVolt_Ct_G_u16" 0x40001816 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_BatMosVolt_Volt_G_u16p10 ""
+      UWORD Volt_p10 0 0 0 20
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x400018B0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.3"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_BatMosVolt_Volt_G_u16p10" 0x400018B0 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 20
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_IgnVolt_Ct_G_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x40001814
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_IgnVolt_Ct_G_u16" 0x40001814 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_IgnitionState_G_u08 ""
+      UBYTE NO_COMPU_METHOD 0 0 0 255
+      BIT_MASK 0xFF
+      ECU_ADDRESS 0x40001824
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_IgnitionState_G_u08" 0x40001824 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_PcbTemp_Ct_G_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x40001812
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_PcbTemp_Ct_G_u16" 0x40001812 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_Sensor5V_Ct_G_u16 ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x4000181E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_Sensor5V_Ct_G_u16" 0x4000181E 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_S_Sensor5V_Volt_G_u16p08 ""
+      UWORD Volt_p08 0 0 0 6
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x40001872
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.1"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_S_Sensor5V_Volt_G_u16p08" 0x40001872 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 6
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L4_S_ECUState_Now_G_Enu ""
+      SBYTE NO_COMPU_METHOD 0 0 -128 127
+      BIT_MASK 0xFF
+      ECU_ADDRESS 0x400017EB
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L4_S_ECUState_Now_G_Enu" 0x400017EB 0x0 0 0x0 1 0xC7 0x0
+        DISPLAY 0 -128 127
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L4_S_ECUState_Pre_G_Enu ""
+      SBYTE NO_COMPU_METHOD 0 0 -128 127
+      READ_WRITE
+      BIT_MASK 0xFF
+      ECU_ADDRESS 0x400017EA
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L4_S_ECUState_Pre_G_Enu" 0x400017EA 0x0 0 0x0 1 0xC7 0x0
+        DISPLAY 0 -128 127
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_U.IoErr ""
+      SWORD DcDc_Current 0 0 -20 20
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x400018DE
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.3"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_U.IoErr" 0x400018DE 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_U.PfcCurErr ""
+      SWORD NO_COMPU_METHOD 0 0 -32768 32767
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x400018E0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_U.PfcCurErr" 0x400018E0 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_U.VoErr ""
+      SWORD DcDcVout 0 0 -500 500
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x400018DC
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.2"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_U.VoErr" 0x400018DC 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_Y.Ct ""
+      UWORD NO_COMPU_METHOD 0 0 0 65535
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x400018D8
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_Y.Ct" 0x400018D8 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_Y.Ct1 ""
+      SWORD NO_COMPU_METHOD 0 0 -32768 32767
+      BIT_MASK 0xFFFF
+      ECU_ADDRESS 0x400018DA
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_Y.Ct1" 0x400018DA 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC k_CurKi_Uls_s16p12 ""
+      VALUE 0x400018C8 __SWORD_S 0 NO_COMPU_METHOD -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_CurKi_Uls_s16p12" 0x400018C8 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_CurKp_Uls_s16p12 ""
+      VALUE 0x400018CA __SWORD_S 0 NO_COMPU_METHOD -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_CurKp_Uls_s16p12" 0x400018CA 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_DcDcLoopType_u08 ""
+      VALUE 0x400018CC __UBYTE_S 0 NO_COMPU_METHOD 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      BIT_MASK 0xFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_DcDcLoopType_u08" 0x400018CC 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_DcDcTaskPer_u08 ""
+      VALUE 0x400017C2 __UBYTE_S 0 NO_COMPU_METHOD 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      BIT_MASK 0xFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_DcDcTaskPer_u08" 0x400017C2 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_Dcdc_Iref_Ct_u16 ""
+      VALUE 0x40001864 __UWORD_S 0 DcDc_Current 0 20
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 20
+      BIT_MASK 0xFFFF
+      FORMAT "%3.3"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_Dcdc_Iref_Ct_u16" 0x40001864 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_Dcdc_Vref_Ct_u16 ""
+      VALUE 0x40001862 __UWORD_S 0 DcDcVout 0 500
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 500
+      BIT_MASK 0xFFFF
+      FORMAT "%3.2"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_Dcdc_Vref_Ct_u16" 0x40001862 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PfcCurErrDeadZone_Ct_s16 ""
+      VALUE 0x400017D8 __SWORD_S 0 NO_COMPU_METHOD 0 1024
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 1024
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PfcCurErrDeadZone_Ct_s16" 0x400017D8 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PfcCurKp_Uls_s16p10 ""
+      VALUE 0x400018CE __SWORD_S 0 NO_COMPU_METHOD -1024 1024
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -1024 1024
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PfcCurKp_Uls_s16p10" 0x400018CE 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -1024 1024
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PhaseAdvance_Ct_u16 ""
+      VALUE 0x400017C0 __UWORD_S 0 NO_COMPU_METHOD 0 600
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 600
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PhaseAdvance_Ct_u16" 0x400017C0 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 600
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PianCiComp_Ct_s16 ""
+      VALUE 0x40001860 __SWORD_S 0 NO_COMPU_METHOD -100 100
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -100 100
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PianCiComp_Ct_s16" 0x40001860 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -100 100
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PwmSelect_u08 ""
+      VALUE 0x40001866 __UBYTE_S 0 NO_COMPU_METHOD 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      BIT_MASK 0xFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PwmSelect_u08" 0x40001866 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_VoltKi_Uls_s16p12 ""
+      VALUE 0x400018D0 __SWORD_S 0 NO_COMPU_METHOD -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_VoltKi_Uls_s16p12" 0x400018D0 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_VoltKp_Uls_s16p12 ""
+      VALUE 0x400018D2 __SWORD_S 0 NO_COMPU_METHOD -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      BIT_MASK 0xFFFF
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_VoltKp_Uls_s16p12" 0x400018D2 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin GROUP DCDC "Comment"
+      ROOT
+      /begin SUB_GROUP
+      /end SUB_GROUP
+      /begin FUNCTION_LIST
+      /end FUNCTION_LIST
+      /begin REF_CHARACTERISTIC
+        k_CurKi_Uls_s16p12 k_CurKp_Uls_s16p12 k_DcDcLoopType_u08 k_DcDcTaskPer_u08 k_Dcdc_Iref_Ct_u16 k_Dcdc_Vref_Ct_u16 k_PfcCurErrDeadZone_Ct_s16 k_PfcCurKp_Uls_s16p10 
+        k_PhaseAdvance_Ct_u16 k_PianCiComp_Ct_s16 k_PwmSelect_u08 k_VoltKi_Uls_s16p12 k_VoltKp_Uls_s16p12 
+      /end REF_CHARACTERISTIC
+      /begin REF_MEASUREMENT
+        L3_Dcdc_Iout_Ct_u16 L3_Dcdc_Vout_Ct_u16 L3_PriCurHigh_Ct_u16 L3_PriCurLow_Ct_u16 OBC_U.IoErr OBC_U.PfcCurErr OBC_U.VoErr OBC_Y.Ct 
+        OBC_Y.Ct1 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP Signal "Comment"
+      ROOT
+      /begin SUB_GROUP
+      /end SUB_GROUP
+      /begin FUNCTION_LIST
+      /end FUNCTION_LIST
+      /begin REF_CHARACTERISTIC
+      /end REF_CHARACTERISTIC
+      /begin REF_MEASUREMENT
+        L3_S_BatCmmVolt_Ct_G_u16 L3_S_Sensor5V_Volt_G_u16p08 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP Signal1 "Comment"
+      ROOT
+      /begin SUB_GROUP
+      /end SUB_GROUP
+      /begin FUNCTION_LIST
+      /end FUNCTION_LIST
+      /begin REF_CHARACTERISTIC
+      /end REF_CHARACTERISTIC
+      /begin REF_MEASUREMENT
+        L3_S_BatCmmVolt_Ct_G_u16 L3_S_BatMosVolt_Ct_G_u16 L3_S_BatMosVolt_Volt_G_u16p10 L3_S_IgnVolt_Ct_G_u16 L3_S_IgnitionState_G_u08 L3_S_PcbTemp_Ct_G_u16 L3_S_Sensor5V_Ct_G_u16 L3_S_Sensor5V_Volt_G_u16p08 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+
+    /begin RECORD_LAYOUT ECTEK_AscII16 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+      FIX_NO_AXIS_PTS_X 16
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_s16u16 
+      FNC_VALUES 3 SWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_s16u32 
+      FNC_VALUES 3 SWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 ULONG INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_u16u16 
+      FNC_VALUES 3 UWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_u16u32 
+      FNC_VALUES 3 UWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 ULONG INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_s16s16s16 
+      FNC_VALUES 5 SWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 SWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 SWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_s16u16u16 
+      FNC_VALUES 5 SWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 UWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_u16u16s16 
+      FNC_VALUES 5 UWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 UWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 SWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_u16u16u16 
+      FNC_VALUES 5 UWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 UWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_ValueBlock12_u8 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+      FIX_NO_AXIS_PTS_X 12
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 1
+      ALIGNMENT_LONG 1
+      ALIGNMENT_FLOAT32_IEEE 1
+      ALIGNMENT_FLOAT64_IEEE 1
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_s16 
+      FNC_VALUES 1 SWORD ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_s32 
+      FNC_VALUES 1 SLONG ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_u16 
+      FNC_VALUES 1 UWORD ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_u32 
+      FNC_VALUES 1 ULONG ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_u8 
+      FNC_VALUES 1 UBYTE ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UBYTE_Z 
+      FNC_VALUES 1 UBYTE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UWORD_Z 
+      FNC_VALUES 1 UWORD ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __ULONG_Z 
+      FNC_VALUES 1 ULONG ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SBYTE_Z 
+      FNC_VALUES 1 SBYTE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SWORD_Z 
+      FNC_VALUES 1 SWORD ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SLONG_Z 
+      FNC_VALUES 1 SLONG ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT32_IEEE_Z 
+      FNC_VALUES 1 FLOAT32_IEEE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT64_IEEE_Z 
+      FNC_VALUES 1 FLOAT64_IEEE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UBYTE_S 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UWORD_S 
+      FNC_VALUES 1 UWORD COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __ULONG_S 
+      FNC_VALUES 1 ULONG COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SBYTE_S 
+      FNC_VALUES 1 SBYTE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SWORD_S 
+      FNC_VALUES 1 SWORD COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SLONG_S 
+      FNC_VALUES 1 SLONG COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT32_IEEE_S 
+      FNC_VALUES 1 FLOAT32_IEEE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT64_IEEE_S 
+      FNC_VALUES 1 FLOAT64_IEEE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__UBYTE_S 
+      AXIS_PTS_X 1 UBYTE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__UWORD_S 
+      AXIS_PTS_X 1 UWORD INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__ULONG_S 
+      AXIS_PTS_X 1 ULONG INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SBYTE_S 
+      AXIS_PTS_X 1 SBYTE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SWORD_S 
+      AXIS_PTS_X 1 SWORD INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SLONG_S 
+      AXIS_PTS_X 1 SLONG INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__FLOAT32_IEEE_S 
+      AXIS_PTS_X 1 FLOAT32_IEEE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__FLOAT64_IEEE_S 
+      AXIS_PTS_X 1 FLOAT64_IEEE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+  /end MODULE
+/end PROJECT

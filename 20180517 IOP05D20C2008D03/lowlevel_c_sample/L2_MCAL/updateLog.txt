@@ -1,3 +1,0 @@
-2018/05/07 YCH
-  版本更新：lowlevel_c_sample V1.0
-   1.obc lowlevel_c_sample初版上传GIT

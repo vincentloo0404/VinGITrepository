@@ -15,10 +15,10 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt       	   	N/A          Original
-*     1.1        2012/10/11      JiaoYu			N/A          Modify SPI Config
-*     1.2        2012/11/02      Lwt			N/A          Add History Comment
-*     1.3        2013/03/01      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.0        2012/09/27      CODER2       	   	N/A          Original
+*     1.1        2012/10/11      ----			N/A          Modify SPI Config
+*     1.2        2012/11/02      CODER2			N/A          Add History Comment
+*     1.3        2013/03/01      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
 *     1.4        2017/03/020     YCH			N/A          obc spi config
 ************************************************************************************************/
 

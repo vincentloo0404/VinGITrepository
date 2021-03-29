@@ -15,10 +15,10 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/10/09      Lwt       	   	N/A          Original
-*     1.1        2012/11/02      Lwt			N/A          Add History Comment
-*     1.2        2013/02/01      Lwt			N/A          Code Simplify, Delete "MPC560xP.h" Reg_Struct
-*     1.3        2013/06/06      Lwt			N/A          Add DeadTime Value Macro, Modify Full-duty Macro (2^15)
+*     1.0        2012/10/09      CODER2       	   	N/A          Original
+*     1.1        2012/11/02      CODER2			N/A          Add History Comment
+*     1.2        2013/02/01      CODER2			N/A          Code Simplify, Delete "MPC560xP.h" Reg_Struct
+*     1.3        2013/06/06      CODER2			N/A          Add DeadTime Value Macro, Modify Full-duty Macro (2^15)
 ************************************************************************************************/
 #ifndef _M_PWM_DRV_INITVAL_H_
 #define _M_PWM_DRV_INITVAL_H_

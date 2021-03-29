@@ -15,7 +15,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2016/11/12      JiaoYu    	   	N/A          Original
+*     1.0        2016/11/12      ----    	   	N/A          Original
 *	  1.0        2017/02/20      YCH    	   	N/A          Original
 ************************************************************************************************/
 
@@ -212,6 +212,7 @@ void DcDc_Task_L4_Per(void)
 	//mPWM_Sub_AB_PWM_Stop();
 	//mPWM_Sub_CD_PWM_Stop();
 	//mPWM_Sub_All_Stop();
+	//TEST1 = HIGH;
 	L3_HW_DCDC_OCP_u08 = I_DCDC_OCP;
 	L3_HW_DCDC_OVP_u08 = I_DCDC_OVP;
    AdcSigSample_L3_Per();
@@ -243,7 +244,7 @@ void DcDc_Task_L4_Per(void)
 		//OBC_initialize();
 	//	(void)mPWM_offset_Advance((0),0);
 		//return;
-		
+		//Driver13V_diag_handle();
 
 		#ifndef PFC_DIAG_ENABLE
 			if(1)
@@ -480,17 +481,18 @@ void DcDc_Task_L4_Per(void)
 				
 				
 					
-			if(k_PwmSelect_u08 == 0)
+			if(k_PwmSelect_u08 == 1)
 			   {
-			       /* less than 600 Ct */
-			       (void)mPWM_offset_Advance((k_PhaseAdvance_Ct_u16),k_PianCiComp_Ct_s16);
-			   }
-			   else if(k_PwmSelect_u08 == 1)
-			   {
-			   	   (void)mPWM_offset_Advance((OBC_Y.Ct),OBC_Y.Ct1);
+			       
+			       (void)mPWM_offset_Advance((OBC_Y.Ct),OBC_Y.Ct1);
 			   	   //(DUTY_FULL * PWM_SUB_3_A_DUTY_PERCENT_RUN/PWM__DUTY_PERCENT_FULL)
 			   	   //mPWM_Sub_3_B_Updata_Duty((uint16)((uint32)(voltCurrentdiffCt >> 15)*DUTY_FULL/600));
-			   	   
+			   	  
+			   }
+			   else if(k_PwmSelect_u08 == 0)
+			   {
+ 					/* less than 600 Ct */
+			       (void)mPWM_offset_Advance((k_PhaseAdvance_Ct_u16),k_PianCiComp_Ct_s16);
 			   }
 			   /*
 			   else if(k_PwmSelect_u08 == 2){
@@ -506,7 +508,7 @@ void DcDc_Task_L4_Per(void)
 				//	DcDc_Task_frist_run = 0;
 					//mPWM_Sub_0_AB_Advance_pianci((OBC_Y.Ct),OBC_Y.Ct1,k_pianCiCnt_u08);
 			//	}
-
+			/*
 				if(k_deadTime != k_deadTime_lastFlag)
 				{
 
@@ -514,34 +516,34 @@ void DcDc_Task_L4_Per(void)
 					{
 						//100ns <= x <= 300ns
 						k_deadTime_lastFlag = k_deadTime;
-						/* DeadTime config (DeadTime = DTCNTx / 120MHz ; unit: sencond) Ref Fig_26-53 */
-						/* Duty Cycle with DeadTime ( duty% * Period - DeadTime) / Period  */
+						//DeadTime config (DeadTime = DTCNTx / 120MHz ; unit: sencond) Ref Fig_26-53 
+						// Duty Cycle with DeadTime ( duty% * Period - DeadTime) / Period  
 					
 						#ifdef AB_before_CD
 							#ifdef	PWM_SUB_1_DEADTIME_EN
-							PWM_DISMAP(1) = DISMAP_VALUE;								/* ReSet PWMA & PWMB Fault Disable Mask */
-							PWM_DTCNT0(1) = k_deadTime_lastFlag;					/* PWMA Dead Time */
-							PWM_DTCNT1(1) = k_deadTime_lastFlag;					/* PWMB Dead Time */
+							PWM_DISMAP(1) = DISMAP_VALUE;								// ReSet PWMA & PWMB Fault Disable Mask //
+							PWM_DTCNT0(1) = k_deadTime_lastFlag;					// PWMA Dead Time//
+							PWM_DTCNT1(1) = k_deadTime_lastFlag;					// PWMB Dead Time ///
 							#else
-							PWM_DISMAP(1) = DISMAP_VALUE;								/* ReSet PWMA & PWMB Fault Disable Mask */
-							PWM_DTCNT0(1) = 0x0000;								/* PWMA Dead Time */
-							PWM_DTCNT1(1) = 0x0000;								/* PWMB Dead Time */
+							PWM_DISMAP(1) = DISMAP_VALUE;								// ReSet PWMA & PWMB Fault Disable Mask //
+							PWM_DTCNT0(1) = 0x0000;								// PWMA Dead Time /
+							PWM_DTCNT1(1) = 0x0000;								// PWMB Dead Time /
 							#endif
 						#else	
 							#ifdef	PWM_SUB_0_DEADTIME_EN
-							PWM_DISMAP(0) = DISMAP_VALUE;								/* ReSet PWMA & PWMB Fault Disable Mask */
-							PWM_DTCNT0(0) = k_deadTime_lastFlag;					/* PWMA Dead Time */
-							PWM_DTCNT1(0) = k_deadTime_lastFlag;					/* PWMB Dead Time */
+							PWM_DISMAP(0) = DISMAP_VALUE;								// ReSet PWMA & PWMB Fault Disable Mask //
+							PWM_DTCNT0(0) = k_deadTime_lastFlag;				// PWMA Dead Time //
+							PWM_DTCNT1(0) = k_deadTime_lastFlag;					// PWMB Dead Time //
 							#else
-							PWM_DISMAP(0) = DISMAP_VALUE;								/* ReSet PWMA & PWMB Fault Disable Mask */
-							PWM_DTCNT0(0) = 0x0000;								/* PWMA Dead Time */
-							PWM_DTCNT1(0) = 0x0000;								/* PWMB Dead Time */
+							PWM_DISMAP(0) = DISMAP_VALUE;							//ReSet PWMA & PWMB Fault Disable Mask //
+							PWM_DTCNT0(0) = 0x0000;							// PWMA Dead Time //
+							PWM_DTCNT1(0) = 0x0000;							// PWMB Dead Time //
 							#endif
 						#endif
 						
 					}
 					
-				}
+				}*/
 		   	}
 		}
 		else
@@ -568,7 +570,7 @@ void DcDc_Task_L4_Per(void)
    else if(stSysFSMCtrl.ucCurrentState  == STATE_PRECHARGE2)
    {
    	
-  		
+  		//Driver13V_diag_handle();
   		if(L3_Dcdc_Vout_Ct_u16 >= L3_Dcdc_Vout_Precharge2High)
   		{
   			//O_DCDC_DRV_EN = LOW;
@@ -618,8 +620,7 @@ void DcDc_Task_L4_Per(void)
    }
    
    
-   /* caculate torque */
-   L2_eTimer_Per1();
+  
 	/*
 
    if(k_O_S_RlyCT != k_O_S_RlyCT_lastFlag)
@@ -647,8 +648,7 @@ void DcDc_Task_L4_Per(void)
 		k_CurKp_Uls_s16p12 = parameter_CurKp_Uls_s16p12;
 	}
 	*/
-
-	
+	//TEST1 = LOW;
 }
 /*****************************************************************************
 *
@@ -683,7 +683,9 @@ void DTCManage_WTask_L4_Per(void)
 *****************************************************************************/
 void SignalSampling_WTask_L4_Per(void)
 {
-	AdcSigSample_L3_Per1();
+	//AdcSigSample_L3_Per1();
+	 /* caculate CP */
+   L2_eTimer_Per1();
 
 }
 /*****************************************************************************
@@ -738,12 +740,12 @@ void FaultManage_WTask_L4_Per(void)
 *****************************************************************************/
 void CAN_Comm_WTask_L4_Per(void)
 {
-
+		//TEST2 = HIGH;
 		SBC_L3_Per();
 		//AdcSigSample_L3_Per1();
        /*CAN Communication Loop*/
        CAN_L3_Per();
-       
+       //TEST2 = LOW;
     
        //SAFEPORT_CAN_L3_Per();
    
@@ -782,9 +784,9 @@ void UDS_ON_CAN_WTask_L4_Per(void)
 *****************************************************************************/
 void app_stateflow_task_L5_Per(void)
 {
-   
+   	//TEST2 = HIGH;
    app_stateflow_task();
-   
+   //	TEST2 = LOW;
 }
 
 

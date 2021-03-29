@@ -15,13 +15,13 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/07      Lwt       	   	N/A          Original
-*     1.1        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.2        2012/10/10      Lwt			N/A          Modify CAN Cfg
-*     1.3        2012/10/19      JiaoYu			N/A          Modify for CCP Protocol
-*     1.4        2012/11/02      Lwt			N/A          Add History Comment
-*     1.5        2013/01/11      Lwt			N/A          CAN Update, Separate SendMess and MB_ISR 
-*     1.6        2013/01/14      Lwt			N/A          Add BusOff Recover Function
+*     1.0        2012/09/07      CODER2       	   	N/A          Original
+*     1.1        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.2        2012/10/10      CODER2			N/A          Modify CAN Cfg
+*     1.3        2012/10/19      ----			N/A          Modify for CCP Protocol
+*     1.4        2012/11/02      CODER2			N/A          Add History Comment
+*     1.5        2013/01/11      CODER2			N/A          CAN Update, Separate SendMess and MB_ISR 
+*     1.6        2013/01/14      CODER2			N/A          Add BusOff Recover Function
 ************************************************************************************************/
 
 #ifndef _M_CAN_DRV_H_

@@ -5,6 +5,7 @@
  *      Author: YCH
  */
 #include "L5_can.h"
+#include "dDiagDec.h"
 CanTxFrameTag mCanTxFrameTag = {0};
 
 CanTxFrameTag1 mCanTxFrameTag1 = {0};
@@ -434,8 +435,11 @@ void CAN_L5_TxMsg()
     L5_ObcTxMsgBuf_Str.DATA.Bytes[6] = mCanTxFrameTag.ucDara[6];
     L5_ObcTxMsgBuf_Str.DATA.Bytes[7] = mCanTxFrameTag.ucDara[7];
 
-
-    (void)mCAN_MB_08_11_Send_Message(&L5_ObcTxMsgBuf_Str);
+	if(SYS_MSG_SND_FLG==SEND_ENABLE)
+	{
+		(void)mCAN_MB_08_11_Send_Message(&L5_ObcTxMsgBuf_Str);
+	}
+    
 }
 
 void CAN_L5_TxMsg1()
@@ -444,6 +448,7 @@ void CAN_L5_TxMsg1()
 	L5_ObcTxMsgBuf_Str.CS.Bits.SRR = CAN_CS_SRR;
 	L5_ObcTxMsgBuf_Str.CS.Bits.IDE = CAN_CS_IDE;
 	L5_ObcTxMsgBuf_Str.CS.Bits.RTR = CAN_CS_RTR;
+	//L5_ObcTxMsgBuf_Str.CS.Bits.TIMESTAMP = 0;
 	L5_ObcTxMsgBuf_Str.CS.Bits.LENGTH = 8;
 	L5_ObcTxMsgBuf_Str.ID.Bits.PRIO = CAN_ID_APP_PRIO;
 	//L5_ObcTxMsgBuf_Str.ID.Bits.PRIO = CAN_ID_BOOT_PRIO;
@@ -463,8 +468,15 @@ void CAN_L5_TxMsg1()
     L5_ObcTxMsgBuf_Str.DATA.Bytes[6] = mCanTxFrameTag1.ucDara[6];
     L5_ObcTxMsgBuf_Str.DATA.Bytes[7] = mCanTxFrameTag1.ucDara[7];
 
-
-    (void)mCAN_MB_08_11_Send_Message(&L5_ObcTxMsgBuf_Str);
+	if(SYS_MSG_SND_FLG==SEND_ENABLE)
+	{
+		(void)mCAN_MB_08_11_Send_Message(&L5_ObcTxMsgBuf_Str);
+		//(void)mCAN_MB_04_07_Send_Message(&L5_ObcTxMsgBuf_Str);
+		
+		//(void)mCAN_MB_16_31_Send_Message(&L5_ObcTxMsgBuf_Str);
+		
+	}
+	    
 }
 
 

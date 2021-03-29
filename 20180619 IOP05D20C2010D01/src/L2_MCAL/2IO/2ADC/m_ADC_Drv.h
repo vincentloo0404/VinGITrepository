@@ -15,13 +15,13 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/06/07      Lwt       	   	N/A          Original
-*     1.1        2012/08/03      Lwt       	   	N/A          Modify, ADC_CTU and ADC single
-*     1.2        2012/09/05      Lwt			N/A          Modify include file
-*     1.3        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.4        2012/10/09      Lwt			N/A          Modify Macro Defination
-*     1.5        2012/11/02      Lwt			N/A          Add History Comment
-*     1.6        2013/02/26      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.0        2012/06/07      CODER2       	   	N/A          Original
+*     1.1        2012/08/03      CODER2       	   	N/A          Modify, ADC_CTU and ADC single
+*     1.2        2012/09/05      CODER2			N/A          Modify include file
+*     1.3        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.4        2012/10/09      CODER2			N/A          Modify Macro Defination
+*     1.5        2012/11/02      CODER2			N/A          Add History Comment
+*     1.6        2013/02/26      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
 ************************************************************************************************/
 
 #ifndef _M_ADC_DRV_H_

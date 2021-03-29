@@ -15,12 +15,12 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/05      Lwt       	   	N/A          Original
-*     1.1        2012/09/27      Lwt       	   	N/A          Add Cfg file
-*     1.2        2012/11/02      Lwt			N/A          Add History Comment
-*     1.3        2013/03/11      Lwt			N/A          Add SWT_En and Feed_SWT fuction
-*     1.4        2013/03/12      Lwt			N/A          Modify SWT_En fuction (Feed Key)
-*     1.5        2013/04/23      Lwt			N/A          Add SWT_TimeOut_ISR fuction
+*     1.0        2012/09/05      CODER2       	   	N/A          Original
+*     1.1        2012/09/27      CODER2       	   	N/A          Add Cfg file
+*     1.2        2012/11/02      CODER2			N/A          Add History Comment
+*     1.3        2013/03/11      CODER2			N/A          Add SWT_En and Feed_SWT fuction
+*     1.4        2013/03/12      CODER2			N/A          Modify SWT_En fuction (Feed Key)
+*     1.5        2013/04/23      CODER2			N/A          Add SWT_TimeOut_ISR fuction
 *******************************************************************************/
 
 #ifndef M_WATCHDOG_DRV_C

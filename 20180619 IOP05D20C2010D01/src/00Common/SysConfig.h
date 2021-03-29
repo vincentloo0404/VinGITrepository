@@ -16,7 +16,7 @@
 * 
 *    Version      Date          Author        	CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2016/09/23      Jerry			N/A          Original
+*     1.0        2016/09/23      CODER4			N/A          Original
 *     1.1        2017/01/23      YCH			N/A          Original
 ************************************************************************************************/
 #ifndef   _SYSCONFIG_H_
@@ -59,10 +59,12 @@
 //#define		SYS_CTU_THRESH_0		(6-1)		/* M=5+1 times ADC Sample (for DMA) */
 //#define		SYS_CTU_THRESH_0		(12-1)		/* M=11+1 times ADC Sample (for DMA) */
 //#define		SYS_CTU_THRESH_0		(10-1)		/* M=7+1 times ADC Sample (for DMA) */
-#define		SYS_CTU_THRESH_0		(8-1)		/* M=7+1 times ADC Sample (for DMA) */
-#define		SYS_CTU_THRESH_1		(6-1)		/* N=3+1 times ADC Sample (for DMA) */
+//#define		SYS_CTU_THRESH_0		(8-1)		/* M=7+1 times ADC Sample (for DMA) */
+//#define		SYS_CTU_THRESH_1		(6-1)		/* N=3+1 times ADC Sample (for DMA) */
 //#define		SYS_CTU_THRESH_0		(6-1)		/* M=7+1 times ADC Sample (for DMA) */
 //#define		SYS_CTU_THRESH_1		(8-1)		/* N=3+1 times ADC Sample (for DMA) */
+#define		SYS_CTU_THRESH_0		(4-1)		/* M=7+1 times ADC Sample (for DMA) */
+#define		SYS_CTU_THRESH_1		(10-1)		/* N=3+1 times ADC Sample (for DMA) */
 #define		SYS_CTU_THRESH_2		0
 #define		SYS_CTU_THRESH_3		0
 
@@ -70,6 +72,9 @@
 /***	EDMA Intc Source Enabled Macro                                     ***/
 /*---------------------------------------------------------------------------*/
 #define		EDMA_CH0_ISR_EN
-
+#define		PIT_CH1_ISR_EN
+#define		PIT_CH2_ISR_EN
+#define     CAN_MB_ISR_EN
+#define TIMER_BASE 1
 #endif  
 /* End of file */

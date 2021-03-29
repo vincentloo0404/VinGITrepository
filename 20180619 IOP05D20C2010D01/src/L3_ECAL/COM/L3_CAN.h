@@ -120,6 +120,7 @@ extern void CANRx_L3_Ecm1Msg(uint8* pRxData);
 
 extern uint8 L3_S_BMSMsgTimeOut_Uls_G_u08;
 extern uint8 L3_CanBusOff_error_Ct_u8;
+extern uint16 L3_S_BMSMsgTimeCnt_Uls_u16;
 /*For CAN Test*/
 
 #endif

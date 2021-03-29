@@ -66,11 +66,13 @@ static void DataCopy(void)
 	
 	#define CAL_DATA_FLASH_ADDR ((uint32)(0x00804000))
 	#define CAL_DATA_RAM_ADDR   ((uint32)(0x40000100))
-	#define CAL_DATA_SIZE       (uint16)(0x1400)
-	
+//	#define CAL_DATA_SIZE       (uint16)(0x1400)
+	#define CAL_DATA_SIZE       (uint16)(0x1300)
+
 	uint16 temp;
 	
-	for(temp = 0; temp < 0x1400; temp++)
+	//for(temp = 0; temp < 0x1400; temp++)
+	for(temp = 0; temp < CAL_DATA_SIZE; temp++)
 	{
 		*((uint8*)(CAL_DATA_RAM_ADDR + temp)) = *((uint8*)(CAL_DATA_FLASH_ADDR + temp));
 	}

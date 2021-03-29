@@ -21,7 +21,7 @@
 #define V12_DIAG_Volt_MIN (9)
 
 #define V13_DIAG_Volt_MAX (14)
-#define V13_DIAG_Volt_MIN (10)
+#define V13_DIAG_Volt_MIN (10.5)
 
 
 #define VRelayCoil1_DIAG_Volt_OPEN_AD_OFFSET (102)
@@ -185,6 +185,25 @@ typedef union
 
 
 extern FaultCodeTag faultCodeTag;
+
+
+typedef union
+{
+    struct
+    {
+    	uint8_t bLV12VUnderFault		:1;
+    	uint8_t bLV12VOverFault			:1;
+    	uint8_t bLV13VUnderFault		:1;
+    	uint8_t bLV13VOverFault			:1;
+    	uint8_t bDCDCPrechargeTimeout	:1;
+		uint8_t bReserve1				:3;
+		uint8_t bReserve2				;
+        uint16_t bReserve       		;
+    }bit;
+    uint32_t uDWORD;
+}FaultCodeMoreTag;
+extern FaultCodeMoreTag faultCodeMoreTag;
+
 //0001 0000 0000 0000 0000 0001 00000000
 #define ONLY_AC_OPEN_FAULT_CODE_FLAG (0x00000100)
 

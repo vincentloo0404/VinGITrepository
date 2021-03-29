@@ -201,6 +201,8 @@ void in_INIT(void) {
 	 k_software_data_version = 	SOFTWARE_DATA_VERSION;
 	 FSM_changeDelayCnt = DELAY_60S_TIME;
 	 (void) memset((void *)&faultCodeTag, 0,sizeof(faultCodeTag));
+	 (void) memset((void *)&faultCodeMoreTag, 0,sizeof(faultCodeMoreTag));
+	 
 	 
 	HW_O_PFC_EN = O_PFC_EN;
 	HW_O_MCU_FAT= O_MCU_FAT;
@@ -894,6 +896,7 @@ void in_PRECHARGE2() {
 		mVARCntrTag.pre_changer2PGKeepCntr = 0;
 //		osalThreadSleepMilliseconds(10);
 		//O_DCDC_DRV_EN = HIGH;
+		faultCodeMoreTag.bit.bDCDCPrechargeTimeout = FALSE;
 
 	}else{
 
@@ -1077,9 +1080,9 @@ void in_PRECHARGE2() {
 				
 			if(mVARCntrTag.pre_changer2PGKeepCntr>=mVARTimerTag.pre_changer2PGKeepTime)
 			{
-				
+				faultCodeMoreTag.bit.bDCDCPrechargeTimeout = TRUE;
 				//stSysFSMCtrl.ucCurrentState = STATE_AFTER_RUN;//超过3min钟 进入 afterRun
-				stSysFSMCtrl.ucCurrentState = STATE_STANDBY;//超过3min钟 进入 STANDBY
+				//stSysFSMCtrl.ucCurrentState = STATE_STANDBY;//超过3min钟 进入 STANDBY
 			}
 			else
 			{
@@ -1380,7 +1383,8 @@ void in_FAILURE() {
 		if(CONNECT_BMS_OK == TRUE)
 		{
 			//与BMS通信建立完好，接受BMS 指令 正常下电,响应瞬速
-			if(BMSTag.EnCharger == BMS_DIS_CHARGER || L3_S_BMSMsgTimeOut_Uls_G_u08 )
+			//if(BMSTag.EnCharger == BMS_DIS_CHARGER || L3_S_BMSMsgTimeOut_Uls_G_u08 )
+			if(BMSTag.EnCharger == BMS_DIS_CHARGER  )
 			{
 				//stSysFSMCtrl.ucCurrentState = STATE_AFTER_RUN;
 				//O_PG = LOW;
@@ -1818,7 +1822,8 @@ BOOL glbDiag(uint8_t ucStateRecd) {
 		if(CONNECT_BMS_OK == TRUE )
 		{
 			//与BMS通信建立完好，接受BMS 指令 正常下电,响应瞬速
-			if(BMSTag.EnCharger == BMS_DIS_CHARGER || L3_S_BMSMsgTimeOut_Uls_G_u08 )
+			//if(BMSTag.EnCharger == BMS_DIS_CHARGER || L3_S_BMSMsgTimeOut_Uls_G_u08 )
+			if(BMSTag.EnCharger == BMS_DIS_CHARGER  )
 			{
 				/*
 				stSysFSMCtrl.ucCurrentState = STATE_AFTER_RUN;
@@ -1845,7 +1850,7 @@ BOOL glbDiag(uint8_t ucStateRecd) {
 		{
 			//与BMS通信还未建立好 任何状态不轻易进入afterRun，当检测到充电枪断开时候。再进入afterRun
 			
-		
+			L3_S_BMSMsgTimeCnt_Uls_u16 = 0;//没有将BMS唤醒前不检测CAN TIMEOUT
 			if(ChrPlugIn_diag_handle() == TRUE)
 			{
 				stSysFSMCtrl.ucCurrentState = STATE_AFTER_RUN;

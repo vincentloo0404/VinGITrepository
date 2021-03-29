@@ -15,12 +15,12 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt       	   	N/A          Original
-*     1.1        2012/10/10      Lwt			N/A          Modify CAN Cfg
-*     1.2        2012/10/19      JiaoYu			N/A          Modify for CCP Protocol
-*     1.3        2012/11/02      Lwt			N/A          Add History Comment
-*     1.4        2013/01/11      Lwt			N/A          CAN Update, Separate SendMess and MB_ISR 
-*     1.5        2013/01/14      Lwt			N/A          Add BusOff Recover Function 
+*     1.0        2012/09/27      CODER2       	   	N/A          Original
+*     1.1        2012/10/10      CODER2			N/A          Modify CAN Cfg
+*     1.2        2012/10/19      ----			N/A          Modify for CCP Protocol
+*     1.3        2012/11/02      CODER2			N/A          Add History Comment
+*     1.4        2013/01/11      CODER2			N/A          CAN Update, Separate SendMess and MB_ISR 
+*     1.5        2013/01/14      CODER2			N/A          Add BusOff Recover Function 
 ************************************************************************************************/
 
 #ifndef _M_CAN_CFG_H_
@@ -124,6 +124,8 @@
 	#define 	CAN_MB_00_03_USE	MB_USE_RX
 	#define 	CAN_MB_04_07_USE	MB_USE_RX
 #endif
+
+//#define 	CAN_MB_04_07_USE		MB_USE_TX
 #define 	CAN_MB_08_11_USE		MB_USE_TX
 #define 	CAN_MB_12_15_USE		MB_USE_TX
 #define 	CAN_MB_16_31_USE		MB_USE_TX
@@ -168,7 +170,7 @@
 	#define		CAN_ID_TABLE_1			0x7DF    //  ABS_DSC_HSC_FrP01 WheelSpd 
 	#define		CAN_ID_TABLE_2			0x395    //  ABS_DSC_HSC_FrP02 WheelRollingCount 
 	#define		CAN_ID_TABLE_3			0x7DF    //  UDS Fun Request 
-	#define		CAN_ID_TABLE_4			0x723     //  0x6E
+	#define		CAN_ID_TABLE_4			0x7A5     //  0x6E
 	#define		CAN_ID_TABLE_5			0x723    //  EMS_HSC_FrP05,EnASSStaHSC
 	#define		CAN_ID_TABLE_6			0x723    //  UDS Phy Request 
 	#define		CAN_ID_TABLE_7			0x635    //  MG GT CCP CRO 

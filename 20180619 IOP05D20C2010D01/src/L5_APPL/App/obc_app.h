@@ -263,7 +263,7 @@
 	#define NEED_SLEEP          1
 	//#define HAS_INPUT_POWER_LIMT      1
 	#define BMS_CAN_ENABLE      1
-	#define NEED_DCDCPrechange2   1
+	//#define NEED_DCDCPrechange2   1
 	#define DCDC_UNDER_VOLT_DIAG_SELECT   FALSE//FALSE OR TRUE
 	//#define DCDC_UNDER_VOLT_DIAG_SELECT   TRUE//FALSE OR TRUE
 	#define AC_DIAG_ENABLE      1
@@ -281,6 +281,7 @@
 	
 	#define DCDC_DIAG_VOUT_MAX (450)
 	#define DCDC_DIAG_VOUT_MIN (250)
+	#define DCDC_DIAGShortCircuitVOUT_MIN (30)
 	
 #elif LAB_POWER_TEST
 	#define POWEROFF         	TRUE

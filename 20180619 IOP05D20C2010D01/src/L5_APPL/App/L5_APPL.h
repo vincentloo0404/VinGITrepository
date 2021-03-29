@@ -44,6 +44,10 @@
 *   Global Function Declarations
 *****************************************************************************/
 extern void APPL_L5_Init(void);
-
+extern void APPL_1ms_task(void);
+extern void APPL_softwareRest(void);
+extern uint16 UDS_TimeOutCnt; 
+extern uint8 UDS_TimeOutFlag; 
+extern void APPL_100us_task(void);
 #endif 
  /* End of L5_APPL.h file */

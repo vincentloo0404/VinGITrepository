@@ -1,0 +1,3341 @@
+/* @@@@ File written by CANAPE_VERSION 13 0 11 @@@@ */
+
+ASAP2_VERSION 1 51
+/begin PROJECT obc ""
+
+  /begin MODULE CPP ""
+
+    /begin A2ML
+
+
+      block "IF_DATA" taggedunion if_data {
+
+        "CANAPE_EXT" struct {
+          int;             /* version number */
+          taggedstruct {
+            "LINK_MAP" struct {
+              char[256];   /* segment name */
+              long;        /* base address of the segment */
+              uint;        /* address extension of the segment */
+              uint;        /* flag: address is relative to DS */
+              long;        /* offset of the segment address */
+              uint;        /* datatypValid */
+              uint;        /* enum datatyp */
+              uint;        /* bit offset of the segment */
+            };
+            "DISPLAY" struct {
+              long;        /* display color */
+              double;      /* minimal display value (phys)*/
+              double;      /* maximal display value (phys)*/
+            };
+            "VIRTUAL_CONVERSION" struct {
+              char[256];   /* name of the conversion formula */
+            };
+          };
+        };
+        "CANAPE_MODULE" struct {
+          taggedstruct {
+            ("RECORD_LAYOUT_STEPSIZE" struct {
+              char[256];   /* name of record layout*/
+              uint;        /* stepsize for FNC_VALUES */
+              uint;        /* stepsize for AXIS_PTS_X */
+              uint;        /* stepsize for AXIS_PTS_Y */
+              uint;        /* stepsize for AXIS_PTS_Z */
+              uint;        /* stepsize for AXIS_PTS_4 */
+              uint;        /* stepsize for AXIS_PTS_5 */
+            })*;
+          };
+        };
+        "CANAPE_ADDRESS_UPDATE" taggedstruct {
+          ("EPK_ADDRESS" struct {
+            char[1024];         /* name of the corresponding symbol in MAP file */
+            long;               /* optional address offset */
+          })*;
+          "ECU_CALIBRATION_OFFSET" struct {
+            char[1024];         /* name of the corresponding symbol in MAP file */
+            long;               /* optional address offset */
+          };
+          (block "CALIBRATION_METHOD" taggedunion {
+            "AUTOSAR_SINGLE_POINTERED" struct {
+              char[1024];         /* MAP symbol name for pointer table in RAM */
+              long;               /* optional address offset */
+              taggedstruct {
+                "ORIGINAL_POINTER_TABLE" struct {
+                  char[1024];    /* MAP symbol name for pointer table in FLASH */
+                  long;          /* optional address offset */
+                };
+              };
+            };
+            "InCircuit2" struct {
+              char[1024];         /* MAP symbol name for pointer table in RAM */
+              long;               /* optional address offset */
+              taggedstruct {
+                "ORIGINAL_POINTER_TABLE" struct {
+                  char[1024];    /* MAP symbol name for pointer table in FLASH */
+                  long;          /* optional address offset */
+                };
+                "FLASH_SECTION" struct {
+                  ulong;       /* start address of flash section */
+                  ulong;       /* length of flash section */
+                };
+              };
+            };
+          })*;
+          block "MAP_SYMBOL" taggedstruct {
+            "FIRST" struct {
+              char[1024];  /* symbol name of the corresponding segment in MAP file */
+              long;        /* offset */
+            };
+            "LAST" struct {
+              char[1024];  /* symbol name of the corresponding segment in MAP file */
+              long;        /* offset */
+            };
+            ("ADDRESS_MAPPING_XCP" struct {
+              char[1024];  /* symbol name of source range in MAP file */
+              char[1024];  /* symbol name of destination range in MAP file */
+            })*;
+          };
+          (block "MEMORY_SEGMENT" struct {
+            char[1024];         /* name of the memory segment */
+            taggedstruct {
+              "FIRST" struct {
+                char[1024];  /* symbol name of the corresponding segment in MAP file */
+                long;        /* offset */
+              };
+              "LAST" struct {
+                char[1024];  /* symbol name of the corresponding segment in MAP file */
+                long;        /* offset */
+              };
+              ("ADDRESS_MAPPING_XCP" struct {
+                char[1024];  /* symbol name of source range in MAP file */
+                char[1024];  /* symbol name of destination range in MAP file */
+              })*;
+            };
+          })*;
+        };
+        "CANAPE_GROUP" taggedstruct {
+          block "STRUCTURE_LIST" (char[1024])*;
+        };
+
+        "ASAP1B_CCP" taggedstruct {
+          (block "SOURCE" struct {
+            char[101];  /* Name of the DAQ list (data acquisition list), measurement source */
+            int;  /* Period definition : Basic scaling unit in CSE */
+            long;  /* Period definition : Rate in Scaling Units */
+            taggedstruct {
+              "DISPLAY_IDENTIFIER" char[32];  /* display identifier of DAQ list*/
+              block "QP_BLOB" struct {
+                uint;  /* Number of the DAQ list 0..n */
+                taggedstruct {
+                  "LENGTH" uint;  /* Length of the DAQ list, maximum number of the useable ODTs */
+                  "CAN_ID_VARIABLE" ;  /* CAN-Message-ID is variable */
+                  "CAN_ID_FIXED" ulong;  /* CAN-Message-ID of the DTOs if fixed */
+                  ("RASTER" uchar)*;  /* Supported CCP Event Channel Names of this DAQ List */
+                  ("EXCLUSIVE" int)*;  /* Exclusion of other DAQ-Lists */
+                  "REDUCTION_ALLOWED" ;  /* Data reduction possible */
+                  "FIRST_PID" uchar;  /* First Packet ID (PID) of this DAQ List */
+                };
+              };
+            };  /* optional parameters for this DAQ list  */
+          })*;  /* DAQ list description*/
+          (block "RASTER" struct {
+            char[101];  /* CCP Event Channel Name */
+            char[9];  /* Short Display Name of the Event Channel Name */
+            uchar;  /* Event Channel No., used for CCP START_STOP) */
+            int;  /* Period definition :  basic scaling unit in CSE as defined in ASAP1b */
+            long;  /* ECU sample rate of the event channel */
+            taggedstruct {
+              ("EXCLUSIVE" uchar)*;  /* Exclusion of other CCP Event Channels */
+            };  /* optional parameters*/
+          })*;  /* Event channel description*/
+          (block "EVENT_GROUP" struct {
+            char[101];  /* Event group name */
+            char[9];  /* Short name for the event group */
+            taggedstruct {
+              ("RASTER" uchar)*;  /* event channel number*/
+            };  /* list of all event channels beloging to the group*/
+          })*;  /* Group several event channels to form one combined event*/
+          block "SEED_KEY" struct {
+            char[256];  /* Name of the Seed&Key DLL for CAL Priviledge, including file-Extension without path */
+            char[256];  /* Name of the Seed&Key DLL for DAQ Priviledge, including file-Extension without path */
+            char[256];  /* Name of the Seed&Key DLL for PGM Priviledge, including file-Extension without path */
+          };  /* Description of the authentification process*/
+          block "CHECKSUM" struct {
+            char[256];  /* Name of the Checksum DLL representing the ECU Algorithm, including file-Extension without path */
+          };  /* Description of the checksum calculation process*/
+          block "TP_BLOB" struct {
+            uint;  /* CCP Version, High Byte: Version, Low Byte : subversion (dec.) */
+            uint;  /* Blob-Version, High Byte: Version, Low Byte : subversion (dec.) */
+            ulong;  /* CAN-Message ID for 'Transmitting to ECU (CRM)' */
+            ulong;  /* CAN-Message ID for 'Receiving from ECU (DTM)' */
+            uint;  /* Logical CCP-Address of the (station address) */
+            uint;  /* Byte order of Multiple-byte-items 1 = high Byte first, 2 = low byte first */
+            taggedstruct {
+              block "CAN_PARAM" struct {
+                uint;  /* Quartz freq. of the elec. control unit  */
+                uchar;  /* BTR0: Bit timing register */
+                uchar;  /* BTR1: Bit timing register */
+              };  /* CAN parameters*/
+              "BAUDRATE" ulong;  /* Baud rate in Hz. */
+              "SAMPLE_POINT" uchar;  /* sampling point of time in percent */
+              "SAMPLE_RATE" uchar;  /* number of samples per Bit (1 oder 3) */
+              "BTL_CYCLES" uchar;  /* number of BTL-cycles */
+              "SJW" uchar;  /* SJW-parameter in BTL-cycles */
+              "SYNC_EDGE" enum {
+                "SINGLE" = 0,
+                "DUAL" = 1
+              };  /* Synchronisation (SINGLE: on falling edge only, DUAL: on falling and rising edge)*/
+              "DAQ_MODE" enum {
+                "ALTERNATING" = 0,
+                "BURST" = 1
+              };  /* mode of cylcic data acquisition (ALTERNATING: ECU is sending one ODT per cycle, BURST: ECU is sending a complete DAQ)*/
+              "BYTES_ONLY" ;  /* ECU supports max. elements of one Byte size otherwise ECU supports different dataTypes */
+              "RESUME_SUPPORTED" ;  /* ECU supports the Resume function */
+              "STORE_SUPPORTED" ;  /* ECU supports the Store function */
+              "CONSISTENCY" enum {
+                "DAQ" = 0,
+                "ODT" = 1
+              };  /* guaranteed consistency (DAQ: consistency of a complete DAQ is guaranteed, ODT: consistency of a complete ODT is guaranteed)*/
+              "ADDRESS_EXTENSION" enum {
+                "DAQ" = 0,
+                "ODT" = 1
+              };  /* ECU supported address extension (DAQ: only one address extension within a DAQ, ODT: only one address extension within an ODT)*/
+              block "CHECKSUM_PARAM" struct {
+                uint;  /* checksum calculation procedure standard types not yet defined, if greater of equal 1000 : manufacturer specific  */
+                ulong;  /* Maximum block length used by an ASAP1a-CCP command, for checksum calculation procedure  */
+                taggedstruct {
+                  "CHECKSUM_CALCULATION" enum {
+                    "ACTIVE_PAGE" = 0,
+                    "BIT_OR_WITH_OPT_PAGE" = 1
+                  };  /* checksum calculation method*/
+                };  /* optional*/
+              };  /* checksum parameters */
+              (block "DEFINED_PAGES" struct {
+                uint;  /* logical number of the memory page (1,2,..) */
+                char[101];  /* name of the memory page */
+                uint;  /* adress-Extension of the memory page (only Low Byte significant) */
+                ulong;  /* base address of the memory page */
+                ulong;  /* length of the memory page in Bytes */
+                taggedstruct {
+                  "RAM" ;  /* memory page in RAM */
+                  "ROM" ;  /* memory page in ROM */
+                  "FLASH" ;  /* memory page in FLASH */
+                  "EEPROM" ;  /* memory page in EEPROM */
+                  "RAM_INIT_BY_ECU" ;  /* memory page is initialised by ECU start-up */
+                  "RAM_INIT_BY_TOOL" ;  /* RAM- memory page is initialised by the MCS */
+                  "AUTO_FLASH_BACK" ;  /* RAM memory page is automatically flashed back */
+                  "FLASH_BACK" ;  /* feature available to flash back the RAM memory page */
+                  "DEFAULT" ;  /* memory page is standard (fallback mode) */
+                };  /* optional parameters */
+              })*;  /* memory page description */
+              ("OPTIONAL_CMD" uint)*;  /* CCP-Code of the optional command available */
+            };  /* optional parameters */
+          };
+          ("ADDR_MAPPING" struct {
+            ulong;  /* base address of the memory segment to be mapped*/
+            ulong;  /* address to which the base address is to be mapped*/
+            ulong;  /* length of the segment to be mapped*/
+          })*;  /* address mapping for memory segment*/
+          "DP_BLOB" struct {
+            uint;  /* address extension of the calibration data (only low byte significant) */
+            ulong;  /* base address of the calibration data */
+            ulong;  /* number of Bytes belonging to the calibration data  */
+          };  /* address information for calibration objects and memory segments*/
+          "KP_BLOB" struct {
+            uint;  /* address extension of the online data (only Low Byte significant) */
+            ulong;  /* base address of the online data   */
+            ulong;  /* number of bytes belonging to the online data (1,2 or 4) */
+            taggedstruct {
+              ("RASTER" uchar)*;  /* event channel number*/
+            };
+          };  /* address information for measure objects (online data)*/
+        };
+      };
+
+    /end A2ML
+
+    /begin MOD_COMMON ""
+      BYTE_ORDER MSB_FIRST
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end MOD_COMMON
+
+    /begin IF_DATA ASAP1B_CCP
+      /begin SOURCE
+        "10ms"
+        4
+        1
+        /begin QP_BLOB
+          0x00
+          LENGTH 0x14
+          CAN_ID_FIXED 0x0636
+          RASTER 0x00
+          FIRST_PID 0x00
+        /end QP_BLOB
+      /end SOURCE
+      /begin SOURCE
+        "100ms"
+        4
+        10
+        /begin QP_BLOB
+          0x01
+          LENGTH 0x14
+          CAN_ID_FIXED 0x0636
+          RASTER 0x01
+          FIRST_PID 0x14
+        /end QP_BLOB
+      /end SOURCE
+      /begin RASTER
+        "10ms"
+        "10ms"
+        0x00
+        4
+        1
+      /end RASTER
+      /begin RASTER
+        "100ms"
+        "100ms"
+        0x01
+        4
+        10
+      /end RASTER
+      /begin TP_BLOB
+        0x0201
+        0x0206
+        0x0635
+        0x0636
+        0x23
+        0x01
+        BAUDRATE 0x07A120
+        SAMPLE_POINT 0x4B
+        SAMPLE_RATE 0x01
+        BTL_CYCLES 0x08
+        SJW 0x02
+        SYNC_EDGE SINGLE
+        DAQ_MODE BURST
+        CONSISTENCY ODT
+        ADDRESS_EXTENSION DAQ
+        /begin DEFINED_PAGES
+          0x01
+          "reference page"
+          0x00
+          0x40000000
+          0x5FF0
+          ROM
+        /end DEFINED_PAGES
+        /begin DEFINED_PAGES
+          0x02
+          "working page"
+          0x00
+          0x800000
+          0x0C00
+          RAM
+          RAM_INIT_BY_ECU
+        /end DEFINED_PAGES
+        OPTIONAL_CMD 0x000E
+        OPTIONAL_CMD 0x0011
+        OPTIONAL_CMD 0x0009
+        OPTIONAL_CMD 0x000C
+        OPTIONAL_CMD 0x000D
+      /end TP_BLOB
+    /end IF_DATA
+    /begin IF_DATA CANAPE_MODULE
+      RECORD_LAYOUT_STEPSIZE "ValA_Wu16" 2 0 0 0 0 0
+    /end IF_DATA
+
+    /begin IF_DATA CANAPE_ADDRESS_UPDATE
+    /end IF_DATA
+
+    /begin MOD_PAR "基于s12x的发动机管理模块"
+      VERSION "0.5"
+      SUPPLIER "Hualong AutoTech"
+      CUSTOMER "Huachen Auto"
+      CUSTOMER_NO "001"
+      USER "Jiao Yu"
+      PHONE_NO "01062670702"
+      ECU "EPS001"
+      CPU_TYPE "MPC560xP"
+      NO_OF_INTERFACES 1
+      ADDR_EPK 0x0
+      /begin MEMORY_SEGMENT
+        EFLASHDATA ""
+        DATA FLASH EXTERN 0x40000000 0x5FF0 -1 -1 -1 -1 -1
+      /end MEMORY_SEGMENT
+      /begin MEMORY_SEGMENT
+        ERAMDATA ""
+        DATA RAM EXTERN 0x800000 0xC00 -1 -1 -1 -1 -1
+      /end MEMORY_SEGMENT
+    /end MOD_PAR
+
+
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 4
+      0 "e_TRIM_INIT"
+      1 "e_TRIM_NOT_COMPLETED"
+      2 "e_TRIM_SUCCESS"
+      3 "e_TRIM_FAIL"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB _enum "" TAB_VERB 9
+      0 "PowerOff_State"
+      1 "CodeInit_State"
+      2 "WarmInit_State"
+      3 "Run_State"
+      4 "SoftDisable_State"
+      5 "HardDisable_State"
+      6 "CtrlDisable_State"
+      7 "ShutDown_State"
+      8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB_RANGE _enum "" 9
+      0 0 "PowerOff_State"
+      1 1 "CodeInit_State"
+      2 2 "WarmInit_State"
+      3 3 "Run_State"
+      4 4 "SoftDisable_State"
+      5 5 "HardDisable_State"
+      6 6 "CtrlDisable_State"
+      7 7 "ShutDown_State"
+      8 8 "SystemTest_State"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB_RANGE
+
+    /begin COMPU_VTAB boolean "" TAB_VERB 2
+      0 "false"
+      1 "true"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB En "" TAB_VERB 2
+      0 "Disable"
+      1 "Enable"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_TAB Enable "" TAB_NOINTP 2
+      0 0 
+      1 1 
+      DEFAULT_VALUE "1"
+    /end COMPU_TAB
+
+    /begin COMPU_VTAB OBC_STATE "" TAB_VERB 9
+      0 "STATE_INIT"
+      1 "STATE_STANDBY"
+      2 "STATE_PRECHARGE1"
+      3 "STATE_PFC_RUN"
+      4 "STATE_PRECHARGE2"
+      5 "STATE_OPETRATION"
+      6 "STATE_AFTER_RUN"
+      7 "STATE_SLEEP"
+      8 "STATE_FAILURE"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB obcState "" TAB_VERB 10
+      0 "STATE_INIT"
+      1 "STATE_STANDBY"
+      2 "STATE_PRECHARGE1"
+      3 "STATE_PFC_RUN"
+      4 "STATE_PRECHARGE2"
+      5 "STATE_OPETRATION"
+      6 "STATE_AFTER_RUN"
+      7 "STATE_SLEEP"
+      8 "STATE_FAILURE"
+      9 "STATE_PREFAILURE"
+      DEFAULT_VALUE "NONE"
+    /end COMPU_VTAB
+
+    /begin COMPU_VTAB relayCtrl "继电器控制状态" TAB_VERB 2
+      0 "open"
+      1 "close"
+      DEFAULT_VALUE ""
+    /end COMPU_VTAB
+
+    /begin COMPU_METHOD _bool "enumeration table"
+      TAB_VERB "%.15" ""
+      COMPU_TAB_REF boolean
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy1 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy10 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy11 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy12 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy13 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy14 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy15 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy16 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy17 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy18 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy19 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy2 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy20 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy21 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy22 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy23 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy24 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy25 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy26 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy27 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy28 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy29 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy3 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy30 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy31 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy32 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy33 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy34 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy35 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy36 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy37 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy38 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy39 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy4 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy40 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy41 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy42 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy43 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy44 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy45 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy46 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy47 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy48 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy49 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy5 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy50 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy51 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy52 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy53 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy54 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy55 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy56 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy57 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy58 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy59 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy6 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy60 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy61 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy62 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy63 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy64 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy65 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy66 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy67 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy68 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy69 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy7 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy70 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy71 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy72 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy73 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy8 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _enum_Copy9 "enumeration table"
+      TAB_VERB "" ""
+      COMPU_TAB_REF _enum
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD _relayCtrl "enumeration table"
+      TAB_VERB "%.15" ""
+      COMPU_TAB_REF relayCtrl
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD AC_Volt_CONVE ""
+      RAT_FUNC "%3.1" "V"
+      COEFFS 0 1 512 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Amp_p07 ""
+      RAT_FUNC "%3.1" "Amp"
+      COEFFS 0 128 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DcDc_Current ""
+      RAT_FUNC "%3.3" "Amp"
+      COEFFS 0 71.67999999 179.2 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DcDc_Current_Ref ""
+      RAT_FUNC "%.15" "Amp"
+      COEFFS 0 71.6799999899 179.2 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DcDcVout ""
+      RAT_FUNC "%3.2" "Volt"
+      COEFFS 0 2.18111999975 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DcDcVout_Ref ""
+      RAT_FUNC "%.15" "Volt"
+      COEFFS 0 2.18111999975 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD deadTimeConv ""
+      RAT_FUNC "%.15" "ns"
+      COEFFS 0 0.12 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DegC_p01 ""
+      RAT_FUNC "%3.1" "DegC"
+      COEFFS 0 2 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DegC_p06 ""
+      RAT_FUNC "%3.1" "DegC"
+      COEFFS 0 64 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD DegpSec ""
+      RAT_FUNC "%3.1" "DegpSec"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Degree_Uls_s16p15 ""
+      RAT_FUNC "%3.1" "Degree"
+      COEFFS 0 182.0444444 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD factorOne ""
+      RAT_FUNC "%12.4" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD FRAC16 ""
+      RAT_FUNC "%3.8" ""
+      COEFFS 0 32768 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD FRAC32 ""
+      RAT_FUNC "%3.8" ""
+      COEFFS 0 2147483648 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Kph_p01 ""
+      RAT_FUNC "%3.1" "Kmp"
+      COEFFS 0 2 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD MtrNm_p11 ""
+      RAT_FUNC "%3.2" "Nm"
+      COEFFS 0 2048 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD obcState ""
+      TAB_VERB "%3.1" ""
+      COMPU_TAB_REF obcState
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD OBCTag.chrFB_TEM.CONVERSION "@@@@RuleName created by CANape"
+      RAT_FUNC "%12.4" "℃"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD OBCTag.chrPFC_TEM.CONVERSION "@@@@RuleName created by CANape"
+      RAT_FUNC "%12.4" "℃"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD PFC_Volt_CONVE ""
+      RAT_FUNC "%3.1" "V"
+      COEFFS 0 1.69983999899 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD PFCVout ""
+      RAT_FUNC "%3.2" "Volt"
+      COEFFS 0 1.69983999899 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD pici_Current ""
+      RAT_FUNC "%3.2" "Volt"
+      COEFFS 0 34.88426667 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Rad_p10 ""
+      RAT_FUNC "%3.2" "rad"
+      COEFFS 0 1024 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p02 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 4 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p03 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 8 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p04 ""
+      RAT_FUNC "%3.2" "RadpSec"
+      COEFFS 0 16 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD RadpSec_p05 ""
+      RAT_FUNC "%3.1" "RadpSec"
+      COEFFS 0 32 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD rpm ""
+      RAT_FUNC "%1.1" "rpm"
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uint ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 1 0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p04 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 16 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p08 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 256 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p10 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 1024 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p11 ""
+      RAT_FUNC "%4.4" "Uls"
+      COEFFS 0 2048 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p12 ""
+      RAT_FUNC "%5.5" "Uls"
+      COEFFS 0 4096 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p14 ""
+      RAT_FUNC "%3.3" "Uls"
+      COEFFS 0 16384 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p15 ""
+      RAT_FUNC "%3.3" "Uls"
+      COEFFS 0 32767.99999 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p16 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 65536 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p19 ""
+      RAT_FUNC "%3.1" "Uls"
+      COEFFS 0 524288 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Uls_p20 ""
+      RAT_FUNC "%8.8" "Uls"
+      COEFFS 0 1048576 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD uls_p26 ""
+      RAT_FUNC "%3.1" ""
+      COEFFS 0 67108864 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p06 ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 64 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p07 ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 128 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p08 ""
+      RAT_FUNC "%3.1" "Volt"
+      COEFFS 0 256 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin COMPU_METHOD Volt_p10 ""
+      RAT_FUNC "%3.3" "volt"
+      COEFFS 0 1024 -0 0 0 1
+    /end COMPU_METHOD
+
+    /begin CHARACTERISTIC Board_T_ADC_Count_X ""
+      CURVE 0x40001780 ECTEK_Value_u16 0 factorOne  0 65535
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 65535
+      /begin AXIS_DESCR
+        FIX_AXIS NO_INPUT_QUANTITY NO_COMPU_METHOD  46 0 255
+        EXTENDED_LIMITS 0 255
+        READ_ONLY
+        FORMAT "%.15"
+        FIX_AXIS_PAR_DIST 0 1 46
+      /end AXIS_DESCR
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "Board_T_ADC_Count_X" 0x40001780 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+      FORMAT "%12.4"
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC Board_T_DegC_Y ""
+      CURVE 0x400017D8 ECTEK_Curve_s16u16 0 factorOne  -127 127
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -127 127
+      /begin AXIS_DESCR
+        STD_AXIS L3_I_AD_PFC_TEM NO_COMPU_METHOD  1 0 255
+        EXTENDED_LIMITS 0 255
+        READ_ONLY
+        DEPOSIT ABSOLUTE
+        FORMAT "%.15"
+      /end AXIS_DESCR
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "Board_T_DegC_Y" 0x400017D8 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 -127 127
+      /end IF_DATA
+      FORMAT "%12.4"
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT K_I_GLB_EN ""
+      UBYTE factorOne 0 0 0 255
+      ECU_ADDRESS 0x4000181C
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT K_OVER_CUR_TRIG ""
+      UBYTE factorOne 0 0 0 255
+      ECU_ADDRESS 0x4000181D
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "K_OVER_CUR_TRIG" 0x4000181D 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_AD0_AC_Volt_fast_Ct_u16 ""
+      UWORD AC_Volt_CONVE 0 0 0 0
+      ECU_ADDRESS 0x40001A8E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.1"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_AD0_AC_Volt_fast_Ct_u16" 0x40001A8E 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_AD0_AC_Volt_fast_max_Ct_u16 ""
+      UWORD AC_Volt_CONVE 0 0 0 63487.0234375
+      ECU_ADDRESS 0x40001A8C
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.1"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_AD0_AC_Volt_fast_max_Ct_u16" 0x40001A8C 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_CP_Duty_ms_u16p12 ""
+      UWORD factorOne 0 0 0 65535
+      READ_WRITE
+      ECU_ADDRESS 0x40001B9A
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_CP_Duty_ms_u16p12" 0x40001B9A 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_CP_Per_ms_u16p12 ""
+      UWORD factorOne 0 0 0 65535
+      ECU_ADDRESS 0x40001B9C
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_CP_Per_ms_u16p12" 0x40001B9C 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_Dcdc_Iout_Ct_u16 ""
+      UWORD DcDc_Current 0 0 0 20
+      ECU_ADDRESS 0x40001A94
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.3"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_Dcdc_Iout_Ct_u16" 0x40001A94 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 20
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_Dcdc_Vout_Ct_u16 ""
+      UWORD DcDcVout 0 0 0 800
+      ECU_ADDRESS 0x40001A96
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.2"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_Dcdc_Vout_Ct_u16" 0x40001A96 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 800
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_I_AD_FB_TEM ""
+      UWORD factorOne 0 0 0 65535
+      ECU_ADDRESS 0x40001A82
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_I_AD_FB_TEM" 0x40001A82 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_I_AD_PFC_TEM ""
+      UBYTE factorOne 0 0 0 255
+      ECU_ADDRESS 0x40001A84
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%12.4"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_I_AD_PFC_TEM" 0x40001A84 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_I_AD_PFC_slow_Ct_u16 ""
+      UWORD PFC_Volt_CONVE 0 0 0 32516.771467
+      ECU_ADDRESS 0x40001A8A
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.1"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_I_AD_PFC_slow_Ct_u16" 0x40001A8A 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_PriCurHigh_Ct_u16 ""
+      UWORD pici_Current 0 0 0 1878.64060953
+      ECU_ADDRESS 0x40001A92
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_PriCurHigh_Ct_u16" 0x40001A92 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L3_PriCurLow_Ct_u16 ""
+      UWORD pici_Current 0 0 0 1878.64060953
+      ECU_ADDRESS 0x40001A90
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L3_PriCurLow_Ct_u16" 0x40001A90 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT L5_AC_Volt_fast_max_buff ""
+      UWORD AC_Volt_CONVE 0 0 0 63487.0234375
+      ECU_ADDRESS 0x40001B82
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.1"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "L5_AC_Volt_fast_max_buff" 0x40001B82 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.ChrOpMode ""
+      UBYTE obcState 0 0 0 255
+      ECU_ADDRESS 0x400026AB
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.ChrOpMode" 0x400026AB 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.ChrTemp ""
+      UBYTE NO_COMPU_METHOD 0 0 0 255
+      ECU_ADDRESS 0x400026AA
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.ChrTemp" 0x400026AA 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.FaultID ""
+      UBYTE factorOne 0 0 0 255
+      ECU_ADDRESS 0x400026A9
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.FaultID" 0x400026A9 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.PowerLimit ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A1
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.PowerLimit" 0x400026A1 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.ReqCloseRly ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A2
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.ReqCloseRly" 0x400026A2 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.actChrCurrent ""
+      UWORD DcDc_Current 0 0 0 911.77176352
+      ECU_ADDRESS 0x400026AE
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.actChrCurrent" 0x400026AE 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.actChrVolt ""
+      UWORD DcDcVout 0 0 0 30046.4898802
+      ECU_ADDRESS 0x400026AC
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.2"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.actChrVolt" 0x400026AC 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bErrorCOM ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A8
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bErrorCOM" 0x400026A8 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bFaultAC ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A5
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bFaultAC" 0x400026A5 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bFaultCable ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bFaultCable" 0x400026A0 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bFaultDC ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A4
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bFaultDC" 0x400026A4 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bFaultHW ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A6
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bFaultHW" 0x400026A6 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bOverTempCool ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A7
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bOverTempCool" 0x400026A7 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.bWakeUp ""
+      UBYTE _bool 0 0 0 255
+      ECU_ADDRESS 0x400026A3
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.bWakeUp" 0x400026A3 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.chrFB_TEM ""
+      SWORD OBCTag.chrFB_TEM.CONVERSION 0 0 -32768 32767
+      ECU_ADDRESS 0x400026B0
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.chrFB_TEM" 0x400026B0 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBCTag.chrPFC_TEM ""
+      SWORD OBCTag.chrPFC_TEM.CONVERSION 0 0 -32768 32767
+      ECU_ADDRESS 0x400026B2
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBCTag.chrPFC_TEM" 0x400026B2 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_U.IoErr ""
+      SWORD DcDc_Current 0 0 -20 20
+      ECU_ADDRESS 0x40001B62
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.3"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_U.IoErr" 0x40001B62 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_U.PfcCurErr ""
+      SWORD factorOne 0 0 -32768 32767
+      ECU_ADDRESS 0x40001B64
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_U.PfcCurErr" 0x40001B64 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_U.VoErr ""
+      SWORD DcDcVout 0 0 -500 500
+      ECU_ADDRESS 0x40001B60
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%3.2"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_U.VoErr" 0x40001B60 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_Y.Ct ""
+      UWORD factorOne 0 0 0 65535
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001B58
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_Y.Ct" 0x40001B58 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT OBC_Y.Ct1 ""
+      SWORD factorOne 0 0 -32768 32767
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001B5C
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "OBC_Y.Ct1" 0x40001B5C 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC PFC_T_ADC_Count_X ""
+      CURVE 0x40001880 ECTEK_Value_u16 0 factorOne  0 65535
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 65535
+      /begin AXIS_DESCR
+        FIX_AXIS NO_INPUT_QUANTITY NO_COMPU_METHOD  42 0 255
+        EXTENDED_LIMITS 0 255
+        READ_ONLY
+        FORMAT "%.15"
+        FIX_AXIS_PAR_DIST 0 1 42
+      /end AXIS_DESCR
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "PFC_T_ADC_Count_X" 0x40001880 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+      FORMAT "%.15"
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC PFC_T_DegC_Y._0_ ""
+      CURVE 0x400018E0 __SLONG_Z 0 factorOne  -2147483648 2147483647
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -2147483648 2147483647
+      /begin AXIS_DESCR
+        FIX_AXIS NO_INPUT_QUANTITY NO_COMPU_METHOD  1 0 255
+        EXTENDED_LIMITS 0 255
+        READ_ONLY
+        FORMAT "%.15"
+        FIX_AXIS_PAR_DIST 0 1 1
+      /end AXIS_DESCR
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "PFC_T_DegC_Y._0_" 0x400018E0 0x0 0 0x0 1 0xDF 0x0
+        DISPLAY 0 -2147483648 2147483647
+      /end IF_DATA
+      FORMAT "%.15"
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT faultCodeTag.bit.bOCP ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x2
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001944
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bOCP" 0x40001944 0x0 0 0x0 1 0x80 0x6
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bOverTempCool ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x80
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001B88
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bOverTempCool" 0x40001B88 0x0 0 0x0 1 0x80 0x7
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bOverUinVolt ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x20
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001B88
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bOverUinVolt" 0x40001B88 0x0 0 0x0 1 0x80 0x2
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bOverUoutVolt ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x8
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001944
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bOverUoutVolt" 0x40001944 0x0 0 0x0 1 0x80 0x4
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bOvercurrent1 ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x1
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001944
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bOvercurrent1" 0x40001944 0x0 0 0x0 1 0x80 0x0
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bOvercurrent2 ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x2
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001944
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bOvercurrent2" 0x40001944 0x0 0 0x0 1 0x80 0x1
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bUnderUinVolt ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x10
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001B88
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bUnderUinVolt" 0x40001B88 0x0 0 0x0 1 0x80 0x3
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bUnderUoutVolt ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x4
+      BYTE_ORDER MSB_FIRST
+      ECU_ADDRESS 0x40001944
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bUnderUoutVolt" 0x40001944 0x0 0 0x0 1 0x80 0x5
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT faultCodeTag.bit.bloadDump ""
+      UBYTE _bool 0 0 0 1
+      BIT_MASK 0x80
+      ECU_ADDRESS 0x40001B89
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "faultCodeTag.bit.bloadDump" 0x40001B89 0x0 0 0x0 1 0x80 0x0
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin CHARACTERISTIC k_CurKi_Uls_s16p15 ""
+      VALUE 0x40001A18 __SWORD_S 0 factorOne -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_CurKi_Uls_s16p15" 0x40001A18 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_CurKp_Uls_s16p12 ""
+      VALUE 0x40001A1A __SWORD_S 0 factorOne -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_CurKp_Uls_s16p12" 0x40001A1A 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_DcDcLoopType_u08 ""
+      VALUE 0x40001A1C __UBYTE_S 0 factorOne 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_DcDcLoopType_u08" 0x40001A1C 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_DcDcTaskPer_u08 ""
+      VALUE 0x400019FB __UBYTE_S 0 factorOne 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_DcDcTaskPer_u08" 0x400019FB 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_Dcdc_Iref_Ct_u16 ""
+      VALUE 0x400019F4 ECTEK_Value_u16 0 DcDc_Current_Ref 0 911.771763521
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 911.771763521
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_Dcdc_Iref_Ct_u16" 0x400019F4 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_Dcdc_Vref_Ct_u16 ""
+      VALUE 0x400019F2 ECTEK_Value_u16 0 DcDcVout_Ref 0 30046.4898802
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 30046.4898802
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_Dcdc_Vref_Ct_u16" 0x400019F2 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_O_S_RlyCT ""
+      VALUE 0x40001824 __UBYTE_S 0 _relayCtrl 0 1
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 1
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_O_S_RlyCT" 0x40001824 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 1
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PfcCurErrDeadZone_Ct_s16 ""
+      VALUE 0x400017E6 __SWORD_S 0 factorOne 0 1024
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 1024
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PfcCurErrDeadZone_Ct_s16" 0x400017E6 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PfcCurKp_Uls_s16p10 ""
+      VALUE 0x400018D8 __SWORD_S 0 factorOne -1024 1024
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -1024 1024
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PfcCurKp_Uls_s16p10" 0x400018D8 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -1024 1024
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PhaseAdvance_Ct_u16 ""
+      VALUE 0x400019F0 __UWORD_S 0 factorOne 0 65535
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 65535
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PhaseAdvance_Ct_u16" 0x400019F0 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PianCiComp_Ct_s16 ""
+      VALUE 0x40001AE0 __SWORD_S 0 factorOne -100 100
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -100 100
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PianCiComp_Ct_s16" 0x40001AE0 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -100 100
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_PwmSelect_u08 ""
+      VALUE 0x400019FA __UBYTE_S 0 factorOne 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_PwmSelect_u08" 0x400019FA 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_VoltKi_Uls_s16p15 ""
+      VALUE 0x40001A1E __SWORD_S 0 factorOne -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_VoltKi_Uls_s16p15" 0x40001A1E 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_VoltKp_Uls_s16p12 ""
+      VALUE 0x40001A20 __SWORD_S 0 factorOne -32768 32767
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS -32768 32767
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_VoltKp_Uls_s16p12" 0x40001A20 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_deadTime ""
+      VALUE 0x400019FC __UWORD_S 0 deadTimeConv 0 546125
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 546125
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_deadTime" 0x400019FC 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535000
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin CHARACTERISTIC k_pianCiCnt_u08 ""
+      VALUE 0x400017CC __UBYTE_S 0 factorOne 0 255
+      ECU_ADDRESS_EXTENSION 0x0
+      EXTENDED_LIMITS 0 255
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "k_pianCiCnt_u08" 0x400017CC 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end CHARACTERISTIC
+
+    /begin MEASUREMENT loadDumpUpMaxVal ""
+      SWORD DcDcVout_Ref 0 0 -15023.4741801 15023.0157001
+      ECU_ADDRESS 0x40001942
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "loadDumpUpMaxVal" 0x40001942 0x0 0 0x0 1 0xCF 0x0
+        DISPLAY 0 -32768 32767
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT loadDumpUpVal ""
+      UWORD DcDcVout_Ref 0 0 0 30046.4898802
+      ECU_ADDRESS 0x4000182E
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "loadDumpUpVal" 0x4000182E 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT mStateCntrTag.PFC_RUNCntr ""
+      UWORD factorOne 0 0 0 65535
+      ECU_ADDRESS 0x400026C6
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "mStateCntrTag.PFC_RUNCntr" 0x400026C6 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT mVARCntrTag.ACVoltCntr ""
+      UWORD factorOne 0 0 0 65535
+      ECU_ADDRESS 0x40001B78
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "mVARCntrTag.ACVoltCntr" 0x40001B78 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT mVARCntrTag.acVolt_pfcVol_errCntr ""
+      UWORD factorOne 0 0 0 65535
+      ECU_ADDRESS 0x40001B7A
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "mVARCntrTag.acVolt_pfcVol_errCntr" 0x40001B7A 0x0 0 0x0 1 0x8F 0x0
+        DISPLAY 0 0 65535
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT stSysFSMCtrl.ucCurrentState ""
+      UBYTE obcState 0 0 0 255
+      ECU_ADDRESS 0x40001B86
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "stSysFSMCtrl.ucCurrentState" 0x40001B86 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 8
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT stSysFSMCtrl.ucLastState ""
+      UBYTE obcState 0 0 0 255
+      ECU_ADDRESS 0x40001B85
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "stSysFSMCtrl.ucLastState" 0x40001B85 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin MEASUREMENT startOver ""
+      UBYTE factorOne 0 0 0 255
+      ECU_ADDRESS 0x40001AE2
+      ECU_ADDRESS_EXTENSION 0x0
+      FORMAT "%.15"
+      /begin IF_DATA CANAPE_EXT
+        100
+        LINK_MAP "startOver" 0x40001AE2 0x0 0 0x0 1 0x87 0x0
+        DISPLAY 0 0 255
+      /end IF_DATA
+    /end MEASUREMENT
+
+    /begin GROUP CurrentLoop "Comment"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        k_CurKi_Uls_s16p15 k_CurKp_Uls_s16p12 k_Dcdc_Iref_Ct_u16 
+      /end REF_CHARACTERISTIC
+    /end GROUP
+
+    /begin GROUP DCDC "Comment"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        k_DcDcLoopType_u08 k_DcDcTaskPer_u08 k_PfcCurErrDeadZone_Ct_s16 k_PfcCurKp_Uls_s16p10 k_PhaseAdvance_Ct_u16 k_PianCiComp_Ct_s16 k_PwmSelect_u08 k_deadTime 
+        k_pianCiCnt_u08 
+      /end REF_CHARACTERISTIC
+      /begin REF_MEASUREMENT
+        L3_Dcdc_Iout_Ct_u16 L3_Dcdc_Vout_Ct_u16 L3_PriCurHigh_Ct_u16 L3_PriCurLow_Ct_u16 OBC_U.IoErr OBC_U.PfcCurErr OBC_U.VoErr OBC_Y.Ct 
+        OBC_Y.Ct1 startOver 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP diag "Comment"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        Board_T_ADC_Count_X Board_T_DegC_Y PFC_T_ADC_Count_X PFC_T_DegC_Y._0_ 
+      /end REF_CHARACTERISTIC
+      /begin REF_MEASUREMENT
+        K_I_GLB_EN K_OVER_CUR_TRIG L3_AD0_AC_Volt_fast_Ct_u16 L3_CP_Duty_ms_u16p12 L3_CP_Per_ms_u16p12 L3_I_AD_FB_TEM L3_I_AD_PFC_TEM L3_I_AD_PFC_slow_Ct_u16 
+        OBCTag.ChrOpMode OBCTag.ChrTemp OBCTag.FaultID OBCTag.PowerLimit OBCTag.ReqCloseRly OBCTag.actChrCurrent OBCTag.actChrVolt OBCTag.bErrorCOM 
+        OBCTag.bFaultAC OBCTag.bFaultCable OBCTag.bFaultDC OBCTag.bFaultHW OBCTag.bOverTempCool OBCTag.bWakeUp OBCTag.chrFB_TEM OBCTag.chrPFC_TEM 
+        faultCodeTag.bit.bOCP faultCodeTag.bit.bOverTempCool faultCodeTag.bit.bOverUinVolt faultCodeTag.bit.bOverUoutVolt faultCodeTag.bit.bOvercurrent1 faultCodeTag.bit.bOvercurrent2 faultCodeTag.bit.bUnderUinVolt faultCodeTag.bit.bUnderUoutVolt 
+        faultCodeTag.bit.bloadDump loadDumpUpMaxVal loadDumpUpVal mStateCntrTag.PFC_RUNCntr 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP Relay "Comment"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        k_O_S_RlyCT 
+      /end REF_CHARACTERISTIC
+    /end GROUP
+
+    /begin GROUP stateflow "Comment"
+      ROOT
+      /begin REF_MEASUREMENT
+        L3_AD0_AC_Volt_fast_max_Ct_u16 L5_AC_Volt_fast_max_buff mVARCntrTag.ACVoltCntr mVARCntrTag.acVolt_pfcVol_errCntr stSysFSMCtrl.ucCurrentState stSysFSMCtrl.ucLastState 
+      /end REF_MEASUREMENT
+    /end GROUP
+
+    /begin GROUP VoltLoop "Comment"
+      ROOT
+      /begin REF_CHARACTERISTIC
+        k_Dcdc_Vref_Ct_u16 k_VoltKi_Uls_s16p15 k_VoltKp_Uls_s16p12 
+      /end REF_CHARACTERISTIC
+    /end GROUP
+
+
+    /begin RECORD_LAYOUT ECTEK_AscII16 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+      FIX_NO_AXIS_PTS_X 16
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_s16u16 
+      FNC_VALUES 3 SWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 2 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_s16u32 
+      FNC_VALUES 3 SWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 ULONG INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_u16s16 
+      FNC_VALUES 3 SWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 2 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_u16u16 
+      FNC_VALUES 3 UWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Curve_u16u32 
+      FNC_VALUES 3 UWORD ROW_DIR DIRECT
+      AXIS_PTS_X 2 ULONG INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_s16s16s16 
+      FNC_VALUES 5 SWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 SWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 SWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_s16u16u16 
+      FNC_VALUES 5 SWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 UWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_u16u16s16 
+      FNC_VALUES 5 UWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 UWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 SWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Map_u16u16u16 
+      FNC_VALUES 5 UWORD COLUMN_DIR DIRECT
+      AXIS_PTS_X 3 UWORD INDEX_INCR DIRECT
+      AXIS_PTS_Y 4 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      NO_AXIS_PTS_Y 2 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_s16 
+      FNC_VALUES 1 SWORD ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_s32 
+      FNC_VALUES 1 SLONG ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_s8 
+      FNC_VALUES 1 SBYTE COLUMN_DIR DIRECT
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_u16 
+      FNC_VALUES 1 UWORD COLUMN_DIR DIRECT
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_u32 
+      FNC_VALUES 1 ULONG ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_Value_u8 
+      FNC_VALUES 1 UBYTE ROW_DIR DIRECT
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ECTEK_ValueBlock12_u8 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+      FIX_NO_AXIS_PTS_X 12
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 1
+      ALIGNMENT_LONG 1
+      ALIGNMENT_FLOAT32_IEEE 1
+      ALIGNMENT_FLOAT64_IEEE 1
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT STANDARD_CURVE_U16S32 
+      FNC_VALUES 3 SLONG COLUMN_DIR DIRECT
+      AXIS_PTS_X 2 UWORD INDEX_INCR DIRECT
+      NO_AXIS_PTS_X 1 UWORD
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT STANDARD_GROUP_S16 
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT ValA_Wu16 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+      ALIGNMENT_BYTE 1
+      ALIGNMENT_WORD 2
+      ALIGNMENT_LONG 4
+      ALIGNMENT_FLOAT32_IEEE 4
+      ALIGNMENT_FLOAT64_IEEE 8
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UBYTE_Z 
+      FNC_VALUES 1 UBYTE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UWORD_Z 
+      FNC_VALUES 1 UWORD ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __ULONG_Z 
+      FNC_VALUES 1 ULONG ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SBYTE_Z 
+      FNC_VALUES 1 SBYTE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SWORD_Z 
+      FNC_VALUES 1 SWORD ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SLONG_Z 
+      FNC_VALUES 1 SLONG ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT32_IEEE_Z 
+      FNC_VALUES 1 FLOAT32_IEEE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT64_IEEE_Z 
+      FNC_VALUES 1 FLOAT64_IEEE ROW_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UBYTE_S 
+      FNC_VALUES 1 UBYTE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __UWORD_S 
+      FNC_VALUES 1 UWORD COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __ULONG_S 
+      FNC_VALUES 1 ULONG COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SBYTE_S 
+      FNC_VALUES 1 SBYTE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SWORD_S 
+      FNC_VALUES 1 SWORD COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __SLONG_S 
+      FNC_VALUES 1 SLONG COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT32_IEEE_S 
+      FNC_VALUES 1 FLOAT32_IEEE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT __FLOAT64_IEEE_S 
+      FNC_VALUES 1 FLOAT64_IEEE COLUMN_DIR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__UBYTE_S 
+      AXIS_PTS_X 1 UBYTE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__UWORD_S 
+      AXIS_PTS_X 1 UWORD INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__ULONG_S 
+      AXIS_PTS_X 1 ULONG INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SBYTE_S 
+      AXIS_PTS_X 1 SBYTE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SWORD_S 
+      AXIS_PTS_X 1 SWORD INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__SLONG_S 
+      AXIS_PTS_X 1 SLONG INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__FLOAT32_IEEE_S 
+      AXIS_PTS_X 1 FLOAT32_IEEE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+    /begin RECORD_LAYOUT SSV__FLOAT64_IEEE_S 
+      AXIS_PTS_X 1 FLOAT64_IEEE INDEX_INCR DIRECT
+    /end RECORD_LAYOUT
+
+  /end MODULE
+/end PROJECT

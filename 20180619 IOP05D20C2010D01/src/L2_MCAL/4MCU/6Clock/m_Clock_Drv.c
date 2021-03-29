@@ -15,7 +15,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2016/09/23     Jerry     		N/A          Original
+*     1.0        2016/09/23     CODER4     		N/A          Original
 *******************************************************************************/
 #ifndef	M_CLOCK_DRV_C
 #define M_CLOCK_DRV_C

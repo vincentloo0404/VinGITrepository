@@ -15,7 +15,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/10/23      JiaoYu       N/A          Original
+*     1.0        2012/10/23      ----       N/A          Original
 *     
 *******************************************************************************/
 
@@ -163,7 +163,7 @@ void AdcSigSample_L3_Per(void)
               L3_PriCurLow_Ct_u16 = ((uint16)RxDataRam0[i]) & (0x3FF<<0) ;   	 	
 	   	 }
 	   	 break;	   	 
-
+		/*
 	   	 case ADC1_CH3:     //I_AD_PFC_slow
 	   	 {
 			   L3_I_AD_PFC_slow_Ct_u16 = ((uint16)RxDataRam0[i]) & (0x3FF<<0) ;   
@@ -196,19 +196,11 @@ void AdcSigSample_L3_Per(void)
 				}
 		   	  
 		     }
-		     /*
-		     if(L3_AD0_AC_Volt_fast_Ct_u16 > L3_AD0_AC_Volt_fast_finshmax_Ct_u16)
-		     {
-		     	L3_AD0_AC_Volt_fast_finshmax_Ct_u16 = L3_AD0_AC_Volt_fast_Ct_u16;
-		     }
-		     */
-			  
-			  
-			  
 
 	   	 }
-	   	 break;	   	 
-	   	 
+	   	 break;	
+	   	 */   	 
+	   	 /*
  		 case ADC0_CH3:     //I_AD_CP
 	   	 {
 			  L3_I_AD_CP = ((uint16)RxDataRam0[i]) & (0x3FF<<0) ;
@@ -231,7 +223,7 @@ void AdcSigSample_L3_Per(void)
 	   	 }
 	   	 break;
 	   	
-	   	 
+	   	 */
 	   
 	   	 
 	   	 default:
@@ -297,7 +289,7 @@ void AdcSigSample_L3_Per1(void)
 			  
 	   	 }
 	   	 break;
-	   	 /*
+	   	 
 	   	 case ADC0_CH3:     //I_AD_CP
 	   	 {
 			  L3_I_AD_CP = ((uint16)RxDataRam1[i]) & (0x3FF<<0) ;
@@ -319,7 +311,7 @@ void AdcSigSample_L3_Per1(void)
 
 	   	 }
 	   	 break;
-	   	 */
+	   	 
 	   	 
 	   	 case ADC0_CH13:     //I_AD_RelayCoil1
 	   	 {
@@ -333,6 +325,44 @@ void AdcSigSample_L3_Per1(void)
 
 	   	 }
 	   	 break;
+	   	 
+	   	 	
+	   	 case ADC1_CH3:     //I_AD_PFC_slow
+	   	 {
+			   L3_I_AD_PFC_slow_Ct_u16 = ((uint16)RxDataRam1[i]) & (0x3FF<<0) ;   
+	   	 }
+	   	 break;	   	 
+
+	   	 case ADC0_CH11:   //AD0_AC_Volt_fast       
+	   	 {
+			  L3_AD0_AC_Volt_fast_Ct_u16 = ((uint16)RxDataRam1[i]) & (0x3FF<<0) ;
+			  if(L3_AD0_AC_Volt_fast_Ct_u16 > L3_AD0_AC_Volt_fast_max_Ct_u16)
+			  {
+			  	L3_AD0_AC_Volt_fast_max_Ct_u16 = L3_AD0_AC_Volt_fast_Ct_u16;
+			  }
+		     if(stSysFSMCtrl.ucCurrentState  == STATE_PFC_RUN)
+		     {
+		   		if(mStateCntrTag.PFC_RUNCntr > mStateTimerTag.PFC_RUNTime)
+				{
+					if(L3_AD0_AC_Volt_fast_zeroN_Ct_u16 <= L3_AD0_AC_Volt_fast_Ct_u16 && L3_AD0_AC_Volt_fast_Ct_u16 <= L3_AD0_AC_Volt_fast_zeroP_Ct_u16)
+				   {
+				  	  pfcEnAtACzeroState = TRUE;
+				  	  //TEST1 = HIGH;
+				  	  O_PFC_EN = HIGH;
+				  	  HW_O_PFC_EN = O_PFC_EN;
+				   }
+				}
+				else
+				{
+					pfcEnAtACzeroState = FALSE;
+					//TEST1 = LOW;
+				}
+		   	  
+		     }
+
+	   	 }
+	   	 break;	
+	   	  	 
 	   	 	   	 	   	 
 	   	 default:
 	   	 break;

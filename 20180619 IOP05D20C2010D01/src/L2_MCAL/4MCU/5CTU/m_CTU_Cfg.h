@@ -15,12 +15,12 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt			N/A          Original
-*     1.1        2012/10/09      Lwt	       	N/A          simplified, added Comment for CTU Events, CLR...
+*     1.0        2012/09/27      CODER2			N/A          Original
+*     1.1        2012/10/09      CODER2	       	N/A          simplified, added Comment for CTU Events, CLR...
 *     1.2        2012/10/22      WanXinshan    	N/A          Modify CTR0 for Motor
-*     1.3        2012/11/02      Lwt			N/A          Add History Comment
-*     1.4        2013/02/26      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
-*     1.5        2013/04/15      Lwt			N/A			 Add CTU_FIFO_Thresh Macro from SysConfig.h
+*     1.3        2012/11/02      CODER2			N/A          Add History Comment
+*     1.4        2013/02/26      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.5        2013/04/15      CODER2			N/A			 Add CTU_FIFO_Thresh Macro from SysConfig.h
 ************************************************************************************************/
 
 #ifndef _M_CTU_CFG_H_
@@ -72,7 +72,7 @@
 	/* First Command Address of Trigger N Commands List, N(0--7) */
 	#define		CLC_T0_FST_ADDR		CLR_CH1
 	#define		CLC_T1_FST_ADDR		CLR_CH2
-	#define		CLC_T2_FST_ADDR		CLR_CH5
+	#define		CLC_T2_FST_ADDR		CLR_CH3
 	#define		CLC_T3_FST_ADDR		CLR_CH10
 	#define		CLC_T4_FST_ADDR		CLR_CH10
 	#define		CLC_T5_FST_ADDR		CLR_CH10
@@ -84,13 +84,13 @@
 /*---------------------------------------------------------------------------*/
 	/* Set Handler: first TrigN Enabled, then EXT OutEN, eTimer1 OutEN, eTimer0 OutEN, ADC OutEN */
 	#define		THC_T0_HANDLE_EN	ENABLE
-	#define		THC_T0_EXT_EN		ENABLE
+	#define		THC_T0_EXT_EN		DISABLE
 	#define		THC_T0_ET1_EN		DISABLE
 	#define		THC_T0_ET0_EN		DISABLE
 	#define		THC_T0_ADC_EN		ENABLE	
 	
 	#define		THC_T1_HANDLE_EN	ENABLE
-	#define		THC_T1_EXT_EN		ENABLE
+	#define		THC_T1_EXT_EN		DISABLE
 	#define		THC_T1_ET1_EN		DISABLE
 	#define		THC_T1_ET0_EN		DISABLE
 	#define		THC_T1_ADC_EN		ENABLE		
@@ -120,10 +120,10 @@
 	#define		THC_T5_ADC_EN		DISABLE		
 	
 	#define		THC_T6_HANDLE_EN	DISABLE
-	#define		THC_T6_EXT_EN		ENABLE
+	#define		THC_T6_EXT_EN		DISABLE
 	#define		THC_T6_ET1_EN		DISABLE
 	#define		THC_T6_ET0_EN		DISABLE
-	#define		THC_T6_ADC_EN		ENABLE		
+	#define		THC_T6_ADC_EN		DISABLE		
 	
 	#define		THC_T7_HANDLE_EN	DISABLE
 	#define		THC_T7_EXT_EN		DISABLE
@@ -173,8 +173,8 @@
 /***	CLR 3				                                               ***/
 /*---------------------------------------------------------------------------*/
 		#define		CLR_CH3_INTC_EN		DISABLE
-		#define		CLR_CH3_FST_CMD		DISABLE
-		#define		CLR_CH3_FIFO_N		CTU_FIFO0
+		#define		CLR_CH3_FST_CMD		ENABLE
+		#define		CLR_CH3_FIFO_N		CTU_FIFO1
 		//#define		CLR_CH3_ADC_B		AD_CH11     /* AD0_AC_Volt_fast */
 		//#define		CLR_CH3_ADC_A		AD_CH4    /* I_AD_FB_TEM */
 		#define		CLR_CH3_ADC_B		AD_CH3     /* AD0_AC_Volt_fast */
@@ -184,9 +184,9 @@
 /***	CLR 4				                                               ***/
 /*---------------------------------------------------------------------------*/
 		#define		CLR_CH4_INTC_EN		DISABLE
-		#define		CLR_CH4_FST_CMD		DISABLE
 		//#define		CLR_CH4_FST_CMD		DISABLE
-		#define		CLR_CH4_FIFO_N		CTU_FIFO0
+		#define		CLR_CH4_FST_CMD		DISABLE
+		#define		CLR_CH4_FIFO_N		CTU_FIFO1
 		#define		CLR_CH4_ADC_B		AD_CH0    //I_AD_Curr_Input
 		#define		CLR_CH4_ADC_A		AD_CH3     	//I_AD_CP
 
@@ -194,7 +194,7 @@
 /***	CLR 5				                                               ***/
 /*---------------------------------------------------------------------------*/
 		#define		CLR_CH5_INTC_EN		DISABLE	
-		#define		CLR_CH5_FST_CMD		ENABLE
+		#define		CLR_CH5_FST_CMD		DISABLE
 		//#define		CLR_CH5_FST_CMD		ENABLE
 		#define		CLR_CH5_FIFO_N		CTU_FIFO1
 		//#define		CLR_CH5_ADC_B		AD_CH14 //I_AD_PFC_TEM

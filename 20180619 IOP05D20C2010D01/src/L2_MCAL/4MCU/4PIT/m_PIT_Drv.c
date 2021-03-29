@@ -15,11 +15,11 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/08/30      Lwt       	   	N/A          Original
-*     1.1        2012/09/14      jiaoyu			N/A          deliver to ChuangQu
-*     1.3        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.2        2012/11/02      Lwt			N/A          Add History Comment
-*     1.3        2013/03/05      Lwt			N/A          Add Comment
+*     1.0        2012/08/30      CODER2       	   	N/A          Original
+*     1.1        2012/09/14      ----			N/A          deliver to ChuangQu
+*     1.3        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.2        2012/11/02      CODER2			N/A          Add History Comment
+*     1.3        2013/03/05      CODER2			N/A          Add Comment
 *******************************************************************************/
 
 #ifndef M_PIT_DRV_C
@@ -112,7 +112,7 @@ void	mPit_Timer1_Init(uint16	mInterval)
 {
     PIT.CH[1].TFLG.B.TIF = 1;							/* CLear PIT Flag */
 	PIT.PITMCR.R      = 0x00000001;       				/* Enable PIT and configure to stop in debug mode */
-	PIT.CH[1].LDVAL.R = (mInterval * TIMER_1MS_CYC);	/* Timeout= 64000 sysclks x 1sec/64M sysclks = 1 ms */
+	PIT.CH[1].LDVAL.R = (mInterval * TIMER_100US_CYC);	/* Timeout= 64000 sysclks x 1sec/64M sysclks = 1 ms */
 	PIT.CH[1].TCTRL.R = 0x000000003;      				/* Enable PIT1 interrupt & start PIT counting */
 }
 
@@ -147,6 +147,7 @@ void	mPit_Timer2_ISR(void)
    ***************************************************************************** */
 void	mPit_Timer2_Init(uint16	mInterval)
 {
+	PIT.CH[2].TFLG.B.TIF = 1;
 	PIT.PITMCR.R      = 0x00000001;       				/* Enable PIT and configure to stop in debug mode */
 	PIT.CH[2].LDVAL.R = (mInterval * TIMER_1MS_CYC);	/* Timeout= 64000 sysclks x 1sec/64M sysclks = 1 ms */
 	PIT.CH[2].TCTRL.R = 0x000000003;      				/* Enable PIT1 interrupt & start PIT counting */

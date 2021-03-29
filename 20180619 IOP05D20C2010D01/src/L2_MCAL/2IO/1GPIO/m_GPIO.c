@@ -15,7 +15,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/05/25      jiaoyu       N/A          Original
+*     1.0        2012/05/25      ----       N/A          Original
 *     1.1        2017/01/6       ych       N/A          Original     
 *******************************************************************************/
 
@@ -45,7 +45,9 @@ void 	PORT_L2_Init(void)
 	
 	A6_OUT = LOW;
 	PCR_CFG(A6,PCR_PIN_OUT_WPE);
-	
+	//TES2
+	A5_OUT = LOW;
+	PCR_CFG(A5,PCR_PIN_OUT_WPE);
 	
 	D2_OUT = HIGH;
 	PCR_CFG(D2,PCR_PIN_OUT_WPE);

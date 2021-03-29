@@ -16,7 +16,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2014/12/20      JiaoYu    	   	N/A          Original
+*     1.0        2014/12/20      ----    	   	N/A          Original
 ****************************************************************************/
 
 /*****************************************************************************
@@ -104,7 +104,8 @@ void MCU_L2_Init(void)
 		
 		/* ecc */
 		ECSM_Init();
-		
+		mPit_Timer1_Init(1);
+		mPit_Timer2_Init(1);
 		/* enable global interrupt */
 		//mINTC_SetCurrPriority_Irq(PRIOR_0);
 		//IRQ_ENABLE();

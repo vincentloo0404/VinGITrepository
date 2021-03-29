@@ -15,11 +15,11 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt       	   	N/A          Original
-*     1.1        2012/10/09      Lwt           	N/A          simplified
-*     1.2        2012/11/02      Lwt			N/A          Add History Comment
-*     1.3        2013/02/26      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
-*     1.4        2014/07/21      Lwt			N/A          Modify ADC Config for WanDu Analog Sensor, V1.6 HW
+*     1.0        2012/09/27      CODER2       	   	N/A          Original
+*     1.1        2012/10/09      CODER2           	N/A          simplified
+*     1.2        2012/11/02      CODER2			N/A          Add History Comment
+*     1.3        2013/02/26      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.4        2014/07/21      CODER2			N/A          Modify ADC Config for WanDu Analog Sensor, V1.6 HW
 *     1.5        2016/02/26      ych			N/A          OBC PIN ADC
 ************************************************************************************************/
 

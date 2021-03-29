@@ -15,13 +15,13 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/06/17      Lwt       	   	N/A          Original
-*     1.1        2012/08/16      Lwt			N/A          Modify Drv, Add ADC_FIFO, Add Poll
-*     1.2        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.3        2012/11/02      Lwt			N/A          Add History Comment
-*     1.4        2013/02/26      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
-*     1.5        2013/03/06      Lwt			N/A          Modify FTH_VAL and FIFO_OF_Intc bug, Use EMPTY_Flag for FIFO Reading
-*     1.6        2013/04/19      Lwt			N/A          Add eDMA_CTU_FIFO Config
+*     1.0        2012/06/17      CODER2       	   	N/A          Original
+*     1.1        2012/08/16      CODER2			N/A          Modify Drv, Add ADC_FIFO, Add Poll
+*     1.2        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.3        2012/11/02      CODER2			N/A          Add History Comment
+*     1.4        2013/02/26      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.5        2013/03/06      CODER2			N/A          Modify FTH_VAL and FIFO_OF_Intc bug, Use EMPTY_Flag for FIFO Reading
+*     1.6        2013/04/19      CODER2			N/A          Add eDMA_CTU_FIFO Config
 *******************************************************************************/
 
 #ifndef M_CTU_DRV_C

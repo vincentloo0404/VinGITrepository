@@ -6,7 +6,9 @@
  */
 
 #include "diag.h"
-static void Driver13V_diag_handle(void);
+#include "dDiagDec.h"
+#include "L5_APPL.h"
+void Driver13V_diag_handle(void);
 static void LV_12V_diag_handle(void);
 
 static void PG_diag_handle(void);
@@ -46,8 +48,11 @@ uint8 ChrPlugIn_diag_handle(void);
 uint8_t powerStartCnt = POWER_CNT;
 
 
-uint16_t Driver13V_limtLow_Ct_u16 = V13_VOLT_AD_CONVERT(V13_DIAG_Volt_MIN);  
-uint16_t Driver13V_maxHigh_Ct_u16 = V13_VOLT_AD_CONVERT(V13_DIAG_Volt_MAX);  
+//uint16_t Driver13V_limtLow_Ct_u16 = V13_VOLT_AD_CONVERT(V13_DIAG_Volt_MIN);  
+//uint16_t Driver13V_maxHigh_Ct_u16 = V13_VOLT_AD_CONVERT(V13_DIAG_Volt_MAX);  
+
+uint16_t Driver13V_limtLow_Ct_u16 = 190;  
+uint16_t Driver13V_maxHigh_Ct_u16 = 266; 
 
 uint16_t LV_12V_limtLow_Ct_u16 = V12_VOLT_AD_CONVERT(V12_DIAG_Volt_MIN);  
 uint16_t LV_12V_maxHigh_Ct_u16 = V12_VOLT_AD_CONVERT(V12_DIAG_Volt_MAX); 
@@ -92,6 +97,7 @@ volatile uint16 loadDumpRefK = 20;
 volatile uint16 loadDumpUpVal =   DCDC_VOLT_AD_CONVERT(90);
 volatile sint16 loadDumpUpMaxVal = 0;
 FaultCodeTag faultCodeTag = { 0 };
+FaultCodeMoreTag faultCodeMoreTag = {0};
 DiagCtrlTag diagCtrlTag = { 0 };
 DiagRecoverTag diagRecoverTag = { 0 };
 
@@ -151,7 +157,9 @@ const DiagTimerTag diagTimerTag = {
 		1000 * 10 / DIAG_THREAD_CYCLE_TIME, //OverTempCoolTime
 
 		1000 * 10 / DIAG_THREAD_CYCLE_TIME, //loadDumpTime
-		1000 * 10 / DIAG_THREAD_CYCLE_TIME, //Driver13VFaultTime
+		//1000 * 10 / DIAG_THREAD_CYCLE_TIME, //Driver13VFaultTime//
+		//80 / 80, //Driver13VFaultTime//优先级比较高移动到80us
+		0, //Driver13VFaultTime//优先级比较高移动到20us
 		1000 * 10 / DIAG_THREAD_CYCLE_TIME, //LV12VFaultTime
 		1000 * 10 / DIAG_THREAD_CYCLE_TIME, //HWPFC_OVPTime
 		1000 * 10 / DIAG_THREAD_CYCLE_TIME, //HWPFC_OCPTime
@@ -175,8 +183,10 @@ const DiagRecoverTimerTag diagRecoverTimerTag = {
 		0 / DIAG_THREAD_CYCLE_TIME, //OverTempCoolRecoverTime
 
 		0 / DIAG_THREAD_CYCLE_TIME, //loadDumpRecoverTime
-		0 / DIAG_THREAD_CYCLE_TIME, //Driver13VFaultRecoverTime
-		0 / DIAG_THREAD_CYCLE_TIME, //LV12VFaultRecoverTime
+	//	0 / DIAG_THREAD_CYCLE_TIME, //Driver13VFaultRecoverTime//
+	//	6250,//500*1000 / 80, //Driver13VFaultRecoverTime//优先级比较高移动到80us
+		0,//500*1000 / 20, //Driver13VFaultRecoverTime//优先级比较高移动到20us
+		500 / DIAG_THREAD_CYCLE_TIME, //LV12VFaultRecoverTime
 		0 / DIAG_THREAD_CYCLE_TIME, //HWPFC_OVPRecoverTime
 		0 / DIAG_THREAD_CYCLE_TIME, //HWPFC_OCPRecoverTime
 		0 / DIAG_THREAD_CYCLE_TIME, //OverPFCUoutVoltRecoverTime
@@ -295,55 +305,82 @@ const int PCB_T_DegC_Y[46] = { 125, 120, 115, 110, 105, 100, 95, 90, 85, 80,79,7
 
 
 void Driver13V_diag_handle(){
-	static uint8_t Driver13VInFAILUREFlag = 0;
+//	static uint8_t Driver13VInFAILUREFlag = 0;
 //	if (!Driver13VInFAILUREFlag) 
 	{
-		if (L3_I_AD_Driver13V > Driver13V_maxHigh_Ct_u16) {
+		//if (L3_I_AD_Driver13V > Driver13V_maxHigh_Ct_u16) {
+		if (L3_I_AD_Driver13V > 266) {
+		
 		//过压
-			diagCtrlTag.Driver13VFaultCntr++; //开始计数
+		
 			diagRecoverTag.Driver13VFault_RecoverCntr = 0; //恢复清0
-			if (diagCtrlTag.Driver13VFaultCntr >= diagTimerTag.Driver13VFaultTime) {
+			//if (diagCtrlTag.Driver13VFaultCntr >= diagTimerTag.Driver13VFaultTime) {
+		if (diagCtrlTag.Driver13VFaultCntr >= 2) {//100*2 = 200us
+
 				//等于计数时间 判断错误
 				faultCodeTag.bit.bDriver13VFault = 1;
 				diagCtrlTag.Driver13VFaultCntr = 0;
-				Driver13VInFAILUREFlag = 1;
+				//Driver13VInFAILUREFlag = 1;
 				//不可恢复
-				stSysFSMCtrl.ucCurrentState = STATE_FAILURE;
-				FSM_run();
+				//stSysFSMCtrl.ucCurrentState = STATE_FAILURE;
+			//	FSM_run();
+			powerDown();
 			}
-		} else if (L3_I_AD_Driver13V < Driver13V_limtLow_Ct_u16) {
+			else
+			{
+					diagCtrlTag.Driver13VFaultCntr++; //开始计数
+			}
+		} 
+		//else if (L3_I_AD_Driver13V < Driver13V_limtLow_Ct_u16)
+		else if (L3_I_AD_Driver13V < 190) 
+		 {
 			//欠压
-			diagCtrlTag.Driver13VFaultCntr++; //开始计数
+			
 			diagRecoverTag.Driver13VFault_RecoverCntr = 0; //恢复清0
-			if (diagCtrlTag.Driver13VFaultCntr >= diagTimerTag.Driver13VFaultTime) {
+			//if (diagCtrlTag.Driver13VFaultCntr >= diagTimerTag.Driver13VFaultTime) {
+			if (diagCtrlTag.Driver13VFaultCntr >= 2) {//100*2 = 200us
 				//等于计数时间 判断错误
 				faultCodeTag.bit.bDriver13VFault = 1;
 				diagCtrlTag.Driver13VFaultCntr = 0;
-				Driver13VInFAILUREFlag = 1;
+				//Driver13VInFAILUREFlag = 1;
 				//不可恢复
-				stSysFSMCtrl.ucCurrentState = STATE_FAILURE;
-				FSM_run();
+				//stSysFSMCtrl.ucCurrentState = STATE_FAILURE;
+				//FSM_run();
+				powerDown();
+			}
+			else
+			{
+				diagCtrlTag.Driver13VFaultCntr++; //开始计数
 			}
 		} else {
+		/*
 			if (L3_I_AD_Driver13V >= Driver13V_limtLow_Ct_u16
 					&& L3_I_AD_Driver13V <= Driver13V_maxHigh_Ct_u16) {
-				if (faultCodeTag.bit.bDriver13VFault == 1) {
+				//if (faultCodeTag.bit.bDriver13VFault == 1) {
 					diagRecoverTag.Driver13VFault_RecoverCntr++;
-				}
+				//}
 				diagCtrlTag.Driver13VFaultCntr = 0;
-			}
-			if (diagRecoverTag.Driver13VFault_RecoverCntr
-					>= diagRecoverTimerTag.Driver13VFaultRecoverTime) {
+			}*/
+			
+			diagCtrlTag.Driver13VFaultCntr = 0;
+			//if (diagRecoverTag.Driver13VFault_RecoverCntr >= diagRecoverTimerTag.Driver13VFaultRecoverTime) {
+	 		//if (diagRecoverTag.Driver13VFault_RecoverCntr >= 6250) {//500*1000/80 = 6250
+			//if (diagRecoverTag.Driver13VFault_RecoverCntr >= 1250) {//100*1000/80 = 6250
+			if (diagRecoverTag.Driver13VFault_RecoverCntr >= 1000) {//100*1000/100 = 1000
 				faultCodeTag.bit.bDriver13VFault = 0;
 				diagRecoverTag.Driver13VFault_RecoverCntr = 0;
 
+			}
+			else
+			{
+				diagRecoverTag.Driver13VFault_RecoverCntr++;
 			}
 		}
 	}
 
 }
 void LV_12V_diag_handle(){
-	static uint8_t LV12VInFAILUREFlag = 0;
+	//static uint8_t LV12VInFAILUREFlag = 0;
 	//	if (!LV12VInFAILUREFlag) 
 		{
 			if (L3_I_AD_12V_CMM > LV_12V_maxHigh_Ct_u16) {
@@ -354,7 +391,7 @@ void LV_12V_diag_handle(){
 					//等于计数时间 判断错误
 					faultCodeTag.bit.bLV12VFault = 1;
 					diagCtrlTag.LV12VFaultCntr = 0;
-					LV12VInFAILUREFlag = 1;
+					//LV12VInFAILUREFlag = 1;
 					//不可恢复
 				//	stSysFSMCtrl.ucCurrentState = STATE_FAILURE;
 				//	FSM_run();
@@ -367,19 +404,22 @@ void LV_12V_diag_handle(){
 					//等于计数时间 判断错误
 					faultCodeTag.bit.bLV12VFault = 1;
 					diagCtrlTag.LV12VFaultCntr = 0;
-					LV12VInFAILUREFlag = 1;
+					//LV12VInFAILUREFlag = 1;
 					//不可恢复
 				//	stSysFSMCtrl.ucCurrentState = STATE_FAILURE;
 				//	FSM_run();
 				}
 			} else {
+			/*
 				if (L3_I_AD_12V_CMM >= LV_12V_limtLow_Ct_u16
 						&& L3_I_AD_12V_CMM <= LV_12V_maxHigh_Ct_u16) {
 					if (faultCodeTag.bit.bLV12VFault == 1) {
 						diagRecoverTag.LV12VFault_RecoverCntr++;
 					}
 					diagCtrlTag.LV12VFaultCntr = 0;
-				}
+				}*/
+				diagRecoverTag.LV12VFault_RecoverCntr++;
+				diagCtrlTag.LV12VFaultCntr = 0;
 				if (diagRecoverTag.LV12VFault_RecoverCntr
 						>= diagRecoverTimerTag.LV12VFaultRecoverTime) {
 					faultCodeTag.bit.bLV12VFault = 0;
@@ -509,7 +549,7 @@ BOOL outputCurrentSen_diag_handle(){
 void CAN_diag_handle()
 {
 
-	if(bms_can_available && stSysFSMCtrl.ucCurrentState == STATE_OPETRATION)
+	if(bms_can_available && stSysFSMCtrl.ucCurrentState == STATE_OPETRATION )
 	{
 		//if(L3_S_BMSMsgTimeOut_Uls_G_u08 == TRUE && enable_DCM_DTC == TRUE)
 		if(L3_S_BMSMsgTimeOut_Uls_G_u08 == TRUE )
@@ -524,7 +564,8 @@ void CAN_diag_handle()
 	}
 	
 	//if(L3_CanBusOff_error_Ct_u8 == TRUE && enable_DCM_DTC == TRUE)
-	if(L3_CanBusOff_error_Ct_u8 == TRUE )
+	//if(hCanBus_u8GetBusOffState() == TRUE )//BUSOFF recovery mechanism 2, the code is not verified
+	if(L3_CanBusOff_error_Ct_u8 == TRUE ) //BUSOFF recovery mechanism 1, the code is  verified
 	{
 		//DCM_FaultCode_La[faultCode_bCANBUSOFF] = TRUE;
 		faultCodeTag.bit.bCANBUSOFF = TRUE;
@@ -545,6 +586,7 @@ uint8 ChrPlugIn_diag_handle()
 	static uint16 chrPluginTimeoutCnt = 0;
 		
 	if(faultCodeTag.bit.bUinVoltOpen == TRUE)
+	//if(L5_AC_Volt_fast_maxBuffCPS < AC_Volt_fast_OpenVolt_Ct_u16)
 	{
 		/*
 		stSysFSMCtrl.ucCurrentState = STATE_AFTER_RUN;
@@ -554,7 +596,15 @@ uint8 ChrPlugIn_diag_handle()
 			*/
 		if(L3_I_AD_CP_max_buff_Ct_u16 < CP1V_VOLT_AD_SET_MAX)
 		{
-			chrPluginTimeoutCnt++;
+			if(UDS_TimeOutFlag == TRUE)
+			{
+				chrPluginTimeoutCnt++;
+			}
+			else
+			{
+				chrPluginTimeoutCnt = 0;
+			}
+			
 			if(chrPluginTimeoutCnt >= 30000)//60*10000/2
 			{
 				ret = TRUE;
@@ -699,7 +749,8 @@ void CMDState_diag_handle()
 	
 	if(CMDEnchargeStateDiagStart == TRUE)
 	{
-		if(BMSTag.EnCharger == BMS_DIS_CHARGER || L3_S_BMSMsgTimeOut_Uls_G_u08 )
+		//if(BMSTag.EnCharger == BMS_DIS_CHARGER || L3_S_BMSMsgTimeOut_Uls_G_u08 )
+		if(BMSTag.EnCharger == BMS_DIS_CHARGER )
 			{
 				O_PG = LOW;
 				HW_O_PG = O_PG;
@@ -2677,7 +2728,25 @@ void sys_diag_task(void) {
 }
 
 BOOL powerOnDiag(void) {
-	 return outputCurrentSen_diag_handle();
+	BOOL ret = FALSE;
+	static uint16 lv12KeepCnt = 0;
+	if (L3_I_AD_12V_CMM >= LV_12V_limtLow_Ct_u16
+						&& L3_I_AD_12V_CMM <= LV_12V_maxHigh_Ct_u16) 
+	{
+		
+		if(lv12KeepCnt >= 250)//500/2//500ms
+		{
+				ret = TRUE;
+				lv12KeepCnt=0;
+		}
+		else
+		{
+			lv12KeepCnt++;
+		}
+	
+	
+	}
+	 return ret&&outputCurrentSen_diag_handle();
 }
 
 

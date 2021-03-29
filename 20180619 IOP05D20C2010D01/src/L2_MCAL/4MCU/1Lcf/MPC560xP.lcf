@@ -16,7 +16,7 @@
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
 *     1.0        2012/06/19     Freescale      N/A          Original
-*     1.1        2012/09/14      jiaoyu		   N/A          Update
+*     1.1        2012/09/14      coder4		   N/A          Update
 ******************************************************************************/
 
 /* 5500_VLE_flash.lcf - Simple minimal MPC5500 link file using 40 KB SRAM */
@@ -40,9 +40,13 @@ MEMORY
     dtc_data_flash:     org = 0x0080C000,   len = 0x400 /* dtc data */
     
     /* SRAM: spc5603p(36K,0x9000),spc5604p(40K,0xA000) */
-    eps_data_ram:         org = 0x40000100,   len = 0x00001400  /* 3072 bytes */
-
-    internal_ram:         org = 0x40001500,   len = 0x00007B00
+    //eps_data_ram:         org = 0x40000100,   len = 0x00001400  // 3072 bytes 
+	//internal_ram:         org = 0x40001500,   len = 0x00007B00
+	//stack_ram:            org = 0x40009000,   len = 0x1000
+    //eps_data_ram:			org = 0x40000100,   len = 0x00001000  /* 3072 bytes */
+    //internal_ram:         org = 0x40001100,   len = 0x00007F00
+    eps_data_ram:         org = 0x40000100,   len = 0x00001300  /* 3072 bytes */
+	internal_ram:         org = 0x40001400,   len = 0x00007D00
     stack_ram:            org = 0x40009000,   len = 0x1000
 }
 

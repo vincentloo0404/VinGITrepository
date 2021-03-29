@@ -15,13 +15,13 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt       	   	N/A          Original
-*     1.1        2012/11/02      Lwt			N/A          Add History Comment
-*     1.2        2012/12/04      Lwt			N/A          Modify eTimer Capt_Cfg, INTC and PIN_SEL
-*     1.3        2012/12/11      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
-*     1.4        2012/12/24      Lwt			N/A          Modify eTimer CAPT's Mode and CFWM=0 ;
-*     1.5        2013/01/18      Lwt			N/A          And CTU-eTimer Unit for 10KHz 50% Square Wave Out
-*     1.6        2014/07/21      Lwt			N/A          Add and Modify eTimer Config for V1.6 HW
+*     1.0        2012/09/27      CODER2       	   	N/A          Original
+*     1.1        2012/11/02      CODER2			N/A          Add History Comment
+*     1.2        2012/12/04      CODER2			N/A          Modify eTimer Capt_Cfg, INTC and PIN_SEL
+*     1.3        2012/12/11      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.4        2012/12/24      CODER2			N/A          Modify eTimer CAPT's Mode and CFWM=0 ;
+*     1.5        2013/01/18      CODER2			N/A          And CTU-eTimer Unit for 10KHz 50% Square Wave Out
+*     1.6        2014/07/21      CODER2			N/A          Add and Modify eTimer Config for V1.6 HW
 ************************************************************************************************/
 #ifndef _M_ETIMER_CFG_H_
 #define _M_ETIMER_CFG_H_

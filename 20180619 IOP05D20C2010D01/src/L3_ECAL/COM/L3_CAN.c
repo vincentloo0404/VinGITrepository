@@ -316,7 +316,19 @@ void pFUN_mCAN_MB_FIFO_Hook(stc_CAN_MB *tCanBuf)
         break; 
     }
 }
-
+/* *****************************************************************************
+Function:     pFUN_mCAN_MB_04_07_Hook   
+Description:   CAN MSG send ISR Hook  
+Parameters:      Input:     pointer point to the Can Msg. Obj
+                Output:   None
+Notes:           
+               
+***************************************************************************** */
+void pFUN_mCAN_MB_04_07_Hook(stc_CAN_MB *tCanBuf)
+{
+    tCanBuf;/**/
+    //hCanBus_u8UpdateBusOKCnt();
+}
 /* *****************************************************************************
 Function:     pFUN_mCAN_MB_08_11_Hook   
 Description:   CAN MSG send ISR Hook  
@@ -453,7 +465,7 @@ static void CAN_L3_TxMsg(void)
 {
    CanTx_L2_Confirm();
 
-   if(L3_S_IgnitionState_G_u08 == STD_ON)
+   if(L3_S_IgnitionState_G_u08 == STD_ON )
    {
 		/* update can tx msg signal */
 

@@ -15,7 +15,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2014/12/20      JiaoYu    	   	N/A          Original
+*     1.0        2014/12/20      ----    	   	N/A          Original
 ************************************************************************************************/
 
 /*****************************************************************************
@@ -260,6 +260,7 @@ void ScheduleManagement_L4_Per(void)
 {
 	for(;;)
 	{
+		//TEST2 = HIGH;
 	   if(timer200us != 0)
 	   {
 	   	  timer200us = 0;
@@ -279,6 +280,7 @@ void ScheduleManagement_L4_Per(void)
 	   {
 	   	
 	   }
+	   //TEST2 = LOW;
 	}
 }
 /*****************************************************************************
@@ -286,18 +288,19 @@ void ScheduleManagement_L4_Per(void)
 *   Function:     ScheduleManagement_L4_Per
 *
 *   Description:  This function is use to Manage the Task Schedule
-*
+*TEST2 = HIGH;
 *   Inputs:       None
 *
 *   Outputs:      None
 *
-*   Notes:        Period 50us
+*   Notes:        Period 20us
 *
 *****************************************************************************/
 void pFUN_mEDMA_IRQ11_CH0_Hook(void)
 {
+	//TEST2 = HIGH;
 	 L4_S_DcDcTaskFunction();
-	
+		/*
 	 if((++Cnt100us) >= 10)
 	 {
 	    Cnt100us = 0;
@@ -308,8 +311,59 @@ void pFUN_mEDMA_IRQ11_CH0_Hook(void)
 	 }
 	 else
 	 {
-	 }
+	 }*/
+	 if((++Cnt100us) >= 10)
+	 {
+	    Cnt100us = 0;
 
+	    //A5_OUT = ~A5_OUT;
+	    
+	    timer200us = 1;
+	 }
+	 else
+	 {
+	 	//Cnt100us++;
+	 }
+//	 TEST2 = LOW;
+
+}
+
+
+/*****************************************************************************
+*
+*   Function:     pFUN_mPIT_IRQ60_T1_Hook
+*
+*   Description:  This function is ISR h
+*
+*   Inputs:       None
+*
+*   Outputs:      None
+*
+*   Notes:        Period 
+*
+*****************************************************************************/
+void pFUN_mPIT_IRQ60_T1_Hook()
+{
+	APPL_100us_task();
+}
+/*****************************************************************************
+*
+*   Function:     pFUN_mPIT_IRQ61_T2_Hook
+*
+*   Description:  This function is ISR h
+*
+*   Inputs:       None
+*
+*   Outputs:      None
+*
+*   Notes:        Period 1ms
+*
+*****************************************************************************/
+void pFUN_mPIT_IRQ61_T2_Hook()
+{
+//	TEST2 = HIGH;
+	APPL_1ms_task();
+//	TEST2 = LOW;
 }
 #define d_L4SCHEDULEMANAGEMENT_STOP_SEC_CODE
 #include "MemMap.h"

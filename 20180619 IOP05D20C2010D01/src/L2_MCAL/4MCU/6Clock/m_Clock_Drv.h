@@ -15,11 +15,11 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/05/23      Lwt       		N/A          Original
-*     1.1        2012/09/05      Lwt			N/A          Modify include file
-*     1.2        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.3        2012/11/02      Lwt			N/A          Add History Comment
-*     1.4        2013/03/12      Lwt			N/A          Add KEY and Mode's Macro
+*     1.0        2012/05/23      CODER2       		N/A          Original
+*     1.1        2012/09/05      CODER2			N/A          Modify include file
+*     1.2        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.3        2012/11/02      CODER2			N/A          Add History Comment
+*     1.4        2013/03/12      CODER2			N/A          Add KEY and Mode's Macro
 ************************************************************************************************/
 
 #ifndef _M_CLOCK_DRV_H_

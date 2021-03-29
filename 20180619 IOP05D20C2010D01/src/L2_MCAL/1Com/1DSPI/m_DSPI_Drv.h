@@ -15,14 +15,14 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/07/06      Lwt       	   	N/A          Original
-*     1.1        2012/09/05      Lwt			N/A          Modify include file
-*     1.2        2012/09/13      Lwt			N/A          Add CTAS Function
-*     1.3        2012/09/14      jiaoyu			N/A          deliver to ChuangQu
-*     1.4        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.5        2012/10/10      Lwt			N/A          Add CTAR_Tx Function
-*     1.6        2012/11/02      Lwt			N/A          Add History Comment
-*     1.7        2013/03/01      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.0        2012/07/06      CODER2       	   	N/A          Original
+*     1.1        2012/09/05      CODER2			N/A          Modify include file
+*     1.2        2012/09/13      CODER2			N/A          Add CTAS Function
+*     1.3        2012/09/14      ----			N/A          deliver to ChuangQu
+*     1.4        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.5        2012/10/10      CODER2			N/A          Add CTAR_Tx Function
+*     1.6        2012/11/02      CODER2			N/A          Add History Comment
+*     1.7        2013/03/01      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
 ************************************************************************************************/
 
 #ifndef _M_DSPI_DRV_H_

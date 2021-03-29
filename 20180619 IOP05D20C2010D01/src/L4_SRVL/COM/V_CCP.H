@@ -15,8 +15,8 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2013/01/14      JiaoYu       N/A          delete debug code
-*     1.1        2013/04/07      JiaoYu       N/A          change can tx interface
+*     1.0        2013/01/14      ----       N/A          delete debug code
+*     1.1        2013/04/07      ----       N/A          change can tx interface
 *     
 *******************************************************************************/
 

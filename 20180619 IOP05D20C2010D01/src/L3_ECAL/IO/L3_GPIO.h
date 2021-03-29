@@ -27,11 +27,14 @@
    *****************************************************************************
    ***************************************************************************** */
 #include	"Std_Types.h"
+extern uint8 getGPIO(uint8 ctrGPIO);
+extern void setGPIO(uint8 *ctrGPIO,uint8 *aliasGPIO,uint8 GpioState);
 //1-5
 #define O_DCDC_DRV_EN 
 //#define O_DCDC_DRV_EN A6_OUT
 #define TEST1  A6_OUT//2pin
 #define O_OVP_RSET A7_OUT
+
 
 //#define O_PFC_DRV_EN A8_OUT //modify to O_PFC_EN
 #define O_PFC_EN C4_OUT
@@ -40,7 +43,7 @@
 
 #define S2_CTR A8_OUT
 #define O_PFC_OVP_RSET C5_OUT
-#define TEST2  //8pin
+#define TEST2  A5_OUT //8pin
 #define O_PFC_OCP_RSET C7_OUT
 
 #define O_DEN  C3_OUT

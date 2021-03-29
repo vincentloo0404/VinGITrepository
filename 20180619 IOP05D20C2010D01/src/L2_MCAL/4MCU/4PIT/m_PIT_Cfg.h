@@ -15,9 +15,9 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt       	   	N/A          Original
-*     1.1        2012/11/02      Lwt			N/A          Add History Comment
-*     1.2        2013/03/05      Lwt			N/A          Move PIT_INTC_EN to SysConfig.h
+*     1.0        2012/09/27      CODER2       	   	N/A          Original
+*     1.1        2012/11/02      CODER2			N/A          Add History Comment
+*     1.2        2013/03/05      CODER2			N/A          Move PIT_INTC_EN to SysConfig.h
 ************************************************************************************************/
 #ifndef _M_PIT_CFG_H_
 #define _M_PIT_CFG_H_

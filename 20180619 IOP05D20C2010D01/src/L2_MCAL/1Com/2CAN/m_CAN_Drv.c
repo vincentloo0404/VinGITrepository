@@ -15,13 +15,13 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/07      Lwt       	   	N/A          Original
-*     1.1        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.2        2012/10/19      JiaoYu			N/A          Modify for CCP Protocol
-*     1.3        2012/11/02      Lwt			N/A          Add History Comment
-*     1.4        2013/01/11      Lwt			N/A          CAN Update, Separate SendMess and MB_ISR 
-*     1.5        2013/01/14      Lwt			N/A          Add BusOff Recover Function
-*     1.6        2013/01/23      Lwt			N/A          Modify Rx_ISR's BUSY Timeout, and Clear-BufIntc; Add Tx_Send "MB[CODE]=ABORT" Can be Sent 
+*     1.0        2012/09/07      CODER2       	   	N/A          Original
+*     1.1        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.2        2012/10/19      ----			N/A          Modify for CCP Protocol
+*     1.3        2012/11/02      CODER2			N/A          Add History Comment
+*     1.4        2013/01/11      CODER2			N/A          CAN Update, Separate SendMess and MB_ISR 
+*     1.5        2013/01/14      CODER2			N/A          Add BusOff Recover Function
+*     1.6        2013/01/23      CODER2			N/A          Modify Rx_ISR's BUSY Timeout, and Clear-BufIntc; Add Tx_Send "MB[CODE]=ABORT" Can be Sent 
 *******************************************************************************/
 
 #ifndef M_CAN_DRV_C
@@ -699,8 +699,7 @@ uint8	mCAN_Init(void)
 				}
 #endif
 	
-#if CAN_MB_ISR_EN	
-	
+#ifdef CAN_MB_ISR_EN
 				/* (7) Intc MASK */
 #ifdef CAN_USE_FIFO
 				/* Rx FIFO Intc Mask */
@@ -1078,7 +1077,7 @@ void  CanRx_L2_Per(void)
 			mCAN_Clear_BufIntc(FIFO_AVAI_MASK);
 			
 			/* User Operation */
-			//pFUN_mCAN_MB_FIFO_DIAG_Hook(&CANTxRxBuf);/* gcj integrate */
+			pFUN_mCAN_MB_FIFO_DIAG_Hook(&CANTxRxBuf);/* gcj integrate */
 			
 			pFUN_mCAN_MB_FIFO_Hook(&CANTxRxBuf);
 			
@@ -1123,7 +1122,8 @@ void  CanTx_L2_Confirm(void)
 				mCAN_Clear_BufIntc(i);
 
 				/* User Operation */
-				pFUN_mCAN_MB_08_11_Hook(&CANTxRxBuf);
+			//	pFUN_mCAN_MB_08_11_Hook(&CANTxRxBuf);
+				//pFUN_mCAN_MB_16_31_Hook(&CANTxRxBuf);
 			}
 			else
 			{
@@ -1762,7 +1762,7 @@ void	mCAN_IRQ72_MB_16_31_ISR(void)
 				mCAN_Clear_BufIntc(i);
 
 				/* User Operation */
-			//	pFUN_mCAN_MB_16_31_Hook(&CANTxRxBuf);
+				pFUN_mCAN_MB_16_31_Hook(&CANTxRxBuf);
 			}
 			else
 			{

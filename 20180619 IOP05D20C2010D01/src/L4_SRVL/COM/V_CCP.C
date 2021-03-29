@@ -15,7 +15,7 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2013/01/14      JiaoYu       N/A          delete debug code
+*     1.0        2013/01/14      ----       N/A          delete debug code
 *     
 *******************************************************************************/
 /* CCP Definitions and Parameters */

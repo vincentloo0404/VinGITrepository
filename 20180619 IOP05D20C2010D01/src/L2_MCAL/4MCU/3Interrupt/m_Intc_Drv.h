@@ -15,13 +15,13 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/06/01      Lwt       		N/A          Original
-*     1.1        2012/09/05      Lwt           	N/A          Modify include file
-*     1.2        2012/09/07      Lwt           	N/A          Move Func Declaration to Src File
-*     1.3        2012/09/14      jiaoyu			N/A          deliver to ChuangQu
-*     1.4        2012/09/24      Lwt           	N/A          Modify PWM ISR
-*     1.5        2012/10/11      Lwt           	N/A          Modify include file
-*     1.6        2012/11/02      Lwt			N/A          Add History Comment
+*     1.0        2012/06/01      CODER2       		N/A          Original
+*     1.1        2012/09/05      CODER2           	N/A          Modify include file
+*     1.2        2012/09/07      CODER2           	N/A          Move Func Declaration to Src File
+*     1.3        2012/09/14      ----			N/A          deliver to ChuangQu
+*     1.4        2012/09/24      CODER2           	N/A          Modify PWM ISR
+*     1.5        2012/10/11      CODER2           	N/A          Modify include file
+*     1.6        2012/11/02      CODER2			N/A          Add History Comment
 *     
 ************************************************************************************************/
 

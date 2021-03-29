@@ -208,12 +208,12 @@ extern uint8_t	CC_STATE_ARR[];		// CC控制参数
 #define HARDWARE_VERSION_INTEGER    0xc	// 硬件版本号
 #define HARDWARE_VERSION_DECIMAL    1	// 硬件版本号
 #define SOFTWARE_VERSION_INTEGER    20	// 软件版本号
-#define SOFTWARE_VERSION_DECIMAL    10	// 软件版本号
+#define SOFTWARE_VERSION_DECIMAL    15	// 软件版本号
 #define SOFTWARE_DATA_VERSION    	01	// 数据版本号
 
 
 #define DBC_VERSION_H    	1	//dbc协议中显示的版本 高位
-#define DBC_VERSION_L    	12//dbc协议中显示的版本 低位
+#define DBC_VERSION_L    	15//dbc协议中显示的版本 低位
 
 
 extern uint8_t k_hardware_version_integer;

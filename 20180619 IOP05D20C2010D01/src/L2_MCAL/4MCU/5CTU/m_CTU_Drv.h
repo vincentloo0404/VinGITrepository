@@ -15,14 +15,14 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/06/17      Lwt       	   	N/A          Original
-*     1.1        2012/08/16      Lwt			N/A          Modify Drv, Add ADC_FIFO, Add Poll
-*     1.2        2012/09/05      Lwt			N/A          Modify include file
-*     1.3        2012/09/25      Lwt			N/A          Modify ADC Command List
-*     1.4        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.5        2012/10/09      Lwt			N/A          Modify Drv and Cfg Files
-*     1.6        2012/11/02      Lwt			N/A          Add History Comment
-*     1.7        2013/02/26      Lwt			N/A          Code Simplify, Delete Reg_Bit Functions
+*     1.0        2012/06/17      CODER2       	   	N/A          Original
+*     1.1        2012/08/16      CODER2			N/A          Modify Drv, Add ADC_FIFO, Add Poll
+*     1.2        2012/09/05      CODER2			N/A          Modify include file
+*     1.3        2012/09/25      CODER2			N/A          Modify ADC Command List
+*     1.4        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.5        2012/10/09      CODER2			N/A          Modify Drv and Cfg Files
+*     1.6        2012/11/02      CODER2			N/A          Add History Comment
+*     1.7        2013/02/26      CODER2			N/A          Code Simplify, Delete Reg_Bit Functions
 ************************************************************************************************/
 
 #ifndef _M_CTU_DRV_H_

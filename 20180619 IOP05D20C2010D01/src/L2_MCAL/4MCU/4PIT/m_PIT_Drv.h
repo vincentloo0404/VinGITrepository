@@ -15,10 +15,10 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/08/30      Lwt       	   	N/A          Original
-*     1.1        2012/09/14      jiaoyu			N/A          deliver to ChuangQu
-*     1.2        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.3        2012/11/02      Lwt			N/A          Add History Comment
+*     1.0        2012/08/30      CODER2       	   	N/A          Original
+*     1.1        2012/09/14      ----			N/A          deliver to ChuangQu
+*     1.2        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.3        2012/11/02      CODER2			N/A          Add History Comment
 *     
 ************************************************************************************************/
 
@@ -51,6 +51,7 @@
 /*---------------------------------------------------------------------------*/
 #define		TIMER_1MS_CYC	(SYS_CLK / 1000)		/* SysClk Cycle Count for 1ms */
 #define		TIMER_100US_CYC	(SYS_CLK / 10000)		/* SysClk Cycle Count for 100us */
+#define		TIMER_80US_CYC	(SYS_CLK / 12500)		/* SysClk Cycle Count for 80us */
 #define		TIMER_50US_CYC	(SYS_CLK / 20000)		/* SysClk Cycle Count for 50us */
 
 

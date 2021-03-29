@@ -15,12 +15,12 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/09/27      Lwt          	N/A          Original
-*     1.1        2012/10/09      Lwt	       	N/A          Simplified, define Pin and Init_Duty
-*     1.2        2012/11/02      Lwt			N/A          Add History Comment
-*     1.3        2013/02/01      Lwt			N/A          Code Simplify, Delete "MPC560xP.h" Reg_Struct
-*     1.4        2013/06/06      Lwt			N/A          Add SUB_A_B Outputs Complementary Macro
-*     1.5        2014/07/22      Lwt			N/A          Add PWMX Capt Config for V1.6 HW
+*     1.0        2012/09/27      CODER2          	N/A          Original
+*     1.1        2012/10/09      CODER2	       	N/A          Simplified, define Pin and Init_Duty
+*     1.2        2012/11/02      CODER2			N/A          Add History Comment
+*     1.3        2013/02/01      CODER2			N/A          Code Simplify, Delete "MPC560xP.h" Reg_Struct
+*     1.4        2013/06/06      CODER2			N/A          Add SUB_A_B Outputs Complementary Macro
+*     1.5        2014/07/22      CODER2			N/A          Add PWMX Capt Config for V1.6 HW
 *     1.6        2017/02/26      ych			N/A          Add SUB_3_A_B 
 ************************************************************************************************/
 

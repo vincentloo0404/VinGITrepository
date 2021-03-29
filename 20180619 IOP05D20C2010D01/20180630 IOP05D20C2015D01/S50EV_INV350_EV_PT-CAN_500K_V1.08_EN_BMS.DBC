@@ -1,0 +1,717 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: Tester ABS EPS CHR IC BMS VPU_GW SAS SRS BCM TBOX CCP DPU
+
+
+BO_ 512 ABS_01: 8 ABS
+ SG_ ABS01_VehicleSpeed : 15|13@0+ (0.05625,0) [0|270] ""  VPU_GW,EPS
+ SG_ ABS01_ABSActv : 0|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ ABS01_ABS_fault : 1|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ ABS01_EBD_fault : 2|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ ABS01_config_flag : 3|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ ABS01_IND_APBConfigFlag : 4|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ ABS01_Status_MovingDirection : 6|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ ABS01_RotDir_FL : 25|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ ABS01_RotDir_FR : 27|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ ABS01_RotDir_RL : 29|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ ABS01_RotDir_RR : 31|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ ABS01_Counter : 59|4@0+ (1,0) [0|15] ""  VPU_GW,EPS
+ SG_ ABS01_CheckSum : 55|8@0+ (1,0) [0|255] ""  VPU_GW
+
+BO_ 796 SRS_01: 8 SRS
+ SG_ SRS01_Counter : 15|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ SRS01_Crash_Output_Sts : 31|8@0+ (1,0) [0|16] ""  VPU_GW
+ SG_ SRS01_CheckSum : 63|8@0+ (1,0) [0|255] ""  VPU_GW
+
+BO_ 329 IC_01: 8 VPU_GW
+ SG_ IC01_hand_brake_status : 1|1@0+ (1,0) [0|1] ""  ABS
+ SG_ IC01_parity_flag : 3|1@0+ (1,0) [0|1] ""  ABS
+ SG_ IC01_ODO : 31|24@0+ (1,0) [0|1999999] "km"  BMS
+
+BO_ 530 VCM_02: 8 VPU_GW
+ SG_ VCM02_DriverRequestedTorque : 7|16@0+ (0.25,-4100) [-4100|4100] "Nm" Vector__XXX
+ SG_ VCM02_SimulEngineSpeed : 23|16@0+ (1,0) [0|65534] "rpm"  EPS
+ SG_ VCM02_CheckSum : 39|8@0+ (1,0) [0|255] ""  ABS,EPS
+ SG_ VCM02_Counter : 43|4@0+ (1,0) [0|15] ""  ABS,EPS
+ SG_ VCM02_DrivingStatus : 47|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ VCM02_BrakePedalStatus : 57|2@0+ (1,0) [0|3] ""  ABS
+ SG_ VCM02_CCStatus : 58|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCM02_CC2Status : 59|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCM02_BrakePedalParity : 60|1@0+ (1,0) [0|1] ""  ABS
+
+BO_ 534 VCM_03: 8 VPU_GW
+ SG_ VCM03_CheckSum : 7|8@0+ (1,0) [0|255] ""  ABS
+ SG_ VCM03_Counter : 9|2@0+ (1,0) [0|3] ""  ABS
+ SG_ VCM03_TorqueCommand : 21|14@0+ (0.1,-500) [-500|500] "Nm" Vector__XXX
+ SG_ VCM03_Ready : 33|2@0+ (1,0) [0|3] ""  ABS
+ SG_ VCM03_Failure : 35|2@0+ (1,0) [0|3] "" Vector__XXX
+ SG_ VCM03_EcoMode : 37|2@0+ (1,0) [0|3] ""  ABS
+ SG_ VCM03_regenActive : 38|1@0+ (1,0) [0|1] ""  BCM
+ SG_ VCM03_PRAMainRelayPLStatus : 40|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCM03_PRAMainRelayMIStatus : 41|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCM03_PreChargeRelayStatus : 42|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCM03_OnePedalMode : 54|1@0+ (1,0) [0|1] ""  ABS
+ SG_ VCM03_Estop_Valid : 55|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCM03_ShiftLeverPosition : 63|8@0+ (1,0) [0|7] ""  ABS
+
+BO_ 528 VCM_06: 8 VPU_GW
+ SG_ VCM06_MbRegenMaxWheel : 7|16@0+ (1,-32768) [-32768|32767] "Nm"  ABS
+ SG_ VCM06_MbRegenWheel : 23|16@0+ (1,-32768) [-32768|32767] "Nm"  ABS
+ SG_ VCM06_MbRegenMaxWheelQualifier : 33|2@0+ (1,0) [0|2] ""  ABS
+ SG_ VCM06_MbRegenWheelQualifier : 35|2@0+ (1,0) [0|2] ""  ABS
+ SG_ VCM06_MotPedalPosThrottleValve : 47|8@0+ (0.4,0) [0|100] ""  ABS
+ SG_ VCM06_MotPedalPosDriver_Status : 48|1@0+ (1,0) [0|1] ""  ABS
+ SG_ VCM06_Counter : 55|4@0+ (1,0) [0|15] ""  ABS
+ SG_ VCM06_CheckSum : 63|8@0+ (1,0) [0|255] ""  ABS
+
+BO_ 546 VCM_08: 8 VPU_GW
+ SG_ VCM08_MCU_Torque : 7|16@0+ (1,-4100) [-4100|4100] "Nm"  ABS
+
+BO_ 320 MCU_01: 8 VPU_GW
+ SG_ MCU01_Torque : 7|14@0+ (0.1,-500) [-500|500] "Nm" Vector__XXX
+ SG_ MCU01_MotorRPM : 23|16@0+ (1,-15000) [-15000|15000] "rpm"  ABS
+ SG_ MCU01_Counter : 55|2@0+ (1,0) [0|3] "" Vector__XXX
+ SG_ MCU01_CheckSum : 63|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 1328 ACM_01: 8 VPU_GW
+ SG_ ACM01_PTCReq : 5|2@0+ (1,0) [0|3] ""  BMS
+
+BO_ 1279 CHR_02: 8 CHR
+ SG_ CHR02_CPState : 23|3@0+ (1,0) [0|7] "" Vector__XXX
+ SG_ CHR02_PFCVolt : 17|10@0+ (0.5,0) [0|511.5] "V"  BMS
+ SG_ CHR02_UINVolt : 1|10@0+ (0.5,0) [0|511.5] "V"  BMS
+ SG_ CHR02_CCState : 7|4@0+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 1266 BMS_02: 8 BMS
+ SG_ BMS02_FaultVehicleLock : 37|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS02_FaultTBoxTimeout : 38|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS02_WarnIsoLow : 36|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS02_FaultOverCurrent : 47|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultCOM : 35|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultUnderVolt : 52|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultTempDiff : 46|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultSOCLow : 43|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultSOCHigh : 44|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultOverVolt : 53|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultOverTemp : 45|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultMismatch : 32|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultIsoLow : 33|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultConsist : 34|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultCellUnderVolt : 54|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_FaultCellOverVolt : 55|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_EnergyRemain : 23|10@0+ (0.05,0) [0|51.15] "Kwh"  VPU_GW
+ SG_ BMS02_PreChargeSt : 9|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS02_PowerLimit : 10|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_InterLock : 11|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_ResetId : 42|3@0+ (1,0) [0|7] ""  VPU_GW
+ SG_ BMS02_IsoTestFinish : 12|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_IsoResistance : 7|10@0+ (10,0) [0|10230] "Kom"  VPU_GW
+ SG_ BMS02_IsoCheckActive : 13|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS02_Counter : 51|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS02_Checksum : 63|8@0+ (1,0) [0|255] ""  VPU_GW
+
+BO_ 1464 BMS_08: 8 BMS
+ SG_ BMS08_BatNumber : 7|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS08_BatIndex : 5|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS08_CellNumber : 23|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS08_TSensorNumber : 3|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS08_HWVersion_C : 15|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS08_DataVersion_C : 47|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS08_CSCVersion : 55|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS08_CSCRevision : 63|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS08_BMUVersion : 31|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS08_BMURevision : 39|8@0+ (1,0) [0|255] ""  VPU_GW
+
+BO_ 1288 BMS_07: 8 BMS
+ SG_ BMS07_FaultCodeB7 : 63|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB6 : 55|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB5 : 47|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB4 : 39|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB3 : 31|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB2 : 23|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB1 : 15|8@0+ (1,0) [0|255] ""  Tester
+ SG_ BMS07_FaultCodeB0 : 7|8@0+ (1,0) [0|255] ""  Tester
+
+BO_ 1270 BMS_06: 8 BMS
+ SG_ BMS06_PTCRlySt : 53|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS06_HVACRlySt : 55|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS06_HeatingCtl : 62|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS06_CoolingCtl : 63|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS06_Counter : 59|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS06_MinTempCellId : 47|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS06_MinTemp : 39|8@0+ (1,-40) [-40|215] "¡æ"  VPU_GW
+ SG_ BMS06_MaxTempCellId : 31|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS06_MaxTemp : 23|8@0+ (1,-40) [-40|215] "¡æ"  VPU_GW
+ SG_ BMS06_BatTemp : 15|8@0+ (1,-40) [-40|215] "¡æ"  VPU_GW
+ SG_ BMS06_BatSOH : 7|8@0+ (0.5,0) [0|100] "%"  VPU_GW
+
+BO_ 1466 VCU_06: 6 VPU_GW
+ SG_ VCU06_SWVersion_C : 31|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU06_SWRevision_C : 39|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU06_Project_C : 23|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU06_PFSample_C : 7|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU06_HWVersion_C : 15|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU06_DataVersion_C : 47|8@0+ (1,0) [0|255] ""  Tester
+
+BO_ 1285 VCU_04: 8 VPU_GW
+ SG_ VCU04_FaultCodeB7 : 63|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB6 : 55|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB5 : 47|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB4 : 39|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB3 : 31|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB2 : 23|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB1 : 15|8@0+ (1,0) [0|255] ""  Tester
+ SG_ VCU04_FaultCodeB0 : 7|8@0+ (1,0) [0|255] ""  Tester
+
+BO_ 1278 CHR_01: 8 CHR
+ SG_ CHR01_SWVersion : 11|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ CHR01_bFaultCable : 2|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_PowerLimit : 12|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_ReqCloseRly : 0|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_bWakeUp : 1|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_bFaultDC : 4|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_Counter : 59|4@0+ (1,0) [0|15] ""  VPU_GW,BMS
+ SG_ CHR01_bFaultAC : 6|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_bFaultHW : 7|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_bOverTempCool : 3|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_bErrorCOM : 5|1@0+ (1,0) [0|1] ""  VPU_GW,BMS
+ SG_ CHR01_FaultID : 55|8@0+ (1,0) [0|255] ""  VPU_GW,BMS
+ SG_ CHR01_ChrTemp : 47|8@0+ (1,-40) [-40|215] "¡æ"  VPU_GW,BMS
+ SG_ CHR01_ChrOpMode : 63|3@0+ (1,0) [0|7] ""  VPU_GW,BMS
+ SG_ CHR01_actChrVolt : 25|10@0+ (0.5,0) [0|511.5] "V"  VPU_GW,BMS
+ SG_ CHR01_actChrCurrent : 19|10@0+ (0.0625,0) [0|63.5] "A"  VPU_GW,BMS
+
+BO_ 1268 BMS_04: 8 BMS
+ SG_ BMS04_EnHeatMode : 16|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS04_CCState : 7|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS04_DCChrRlySt : 21|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS04_FastCharMode : 13|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS04_OBCMode : 9|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS04_DcChrCntSt : 63|2@0+ (1,0) [0|0] ""  VPU_GW
+ SG_ BMS04_AcChrCntSt : 61|2@0+ (1,0) [0|0] ""  VPU_GW
+ SG_ BMS04_Counter : 59|4@0+ (1,0) [0|15] ""  VPU_GW,CHR
+ SG_ BMS04_ACChrRlySt : 31|2@0+ (1,0) [0|3] ""  VPU_GW,CHR
+ SG_ BMS04_ChrTimeRemain : 29|10@0+ (1,0) [0|1023] "min"  VPU_GW,CHR
+ SG_ BMS04_EnCharger : 17|1@0+ (1,0) [0|1] ""  CHR,VPU_GW
+ SG_ BMS04_ChrVoltSp : 41|10@0+ (0.5,0) [0|511.5] "V"  CHR,VPU_GW
+ SG_ BMS04_ChrCurrentSp : 35|10@0+ (0.0625,0) [0|63.5] "A"  CHR,VPU_GW
+
+BO_ 1269 BMS_05: 8 BMS
+ SG_ BMS05_MaxVoltCellId : 15|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS05_Counter : 59|4@0+ (1,0) [0|15] ""  VPU_GW,TBOX
+ SG_ BMS05_AvrgCellVolt : 55|12@0+ (1,1000) [1000|5095] "V"  VPU_GW
+ SG_ BMS05_MinVoltCellId : 7|8@0+ (1,0) [0|255] ""  VPU_GW
+ SG_ BMS05_MinCellVolt : 27|12@0+ (1,1000) [1000|5095] "V"  VPU_GW
+ SG_ BMS05_MaxCellVolt : 23|12@0+ (1,1000) [1000|5095] "V"  VPU_GW
+
+BO_ 1267 BMS_03: 8 BMS
+ SG_ BMS03_MaxChrCurrentShort : 13|10@0+ (1,-512) [-512|511] "A"  VPU_GW
+ SG_ BMS03_MaxDisCurrentShort : 7|10@0+ (1,-512) [-512|511] "A"  VPU_GW
+ SG_ BMS03_MinDisVoltage : 47|10@0+ (1,0) [0|1023] "V"  VPU_GW
+ SG_ BMS03_MaxChrVoltage : 53|10@0+ (1,0) [0|1023] "V"  VPU_GW
+ SG_ BMS03_Counter : 59|4@0+ (1,0) [0|15] ""  TBOX,VPU_GW
+ SG_ BMS03_MaxDisCurrentLong : 19|10@0+ (1,-512) [-512|511] "A"  VPU_GW
+ SG_ BMS03_MaxChrCurrentLong : 25|10@0+ (1,-512) [-512|511] "A"  VPU_GW
+
+BO_ 917 BMS_01: 8 BMS
+ SG_ BMS01_FaultAirbag : 53|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS01_ChrPlugIn : 44|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS01_EmgcyOff_Predic : 38|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS01_EmgcyOff : 39|1@0+ (1,0) [0|1] ""  TBOX,VPU_GW
+ SG_ BMS01_EmgcyOff_Pilot : 54|1@0+ (1,0) [0|1] ""  TBOX,VPU_GW
+ SG_ BMS01_ChrFailure : 45|1@0+ (1,0) [0|1] ""  VPU_GW
+ SG_ BMS01_EmgcyOff_Crash : 55|1@0+ (1,0) [0|1] ""  TBOX,VPU_GW
+ SG_ BMS01_PreRlySt : 33|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS01_PosRlySt : 35|2@0+ (1,0) [0|3] ""  VPU_GW
+ SG_ BMS01_NegRlySt : 37|2@0+ (1,0) [0|3] ""  CHR,VPU_GW
+ SG_ BMS01_Counter : 51|4@0+ (1,0) [0|15] ""  TBOX,CHR,VPU_GW
+ SG_ BMS01_Checksum : 63|8@0+ (1,0) [0|255] ""  TBOX,VPU_GW
+ SG_ BMS01_actVoltage : 11|12@0+ (0.25,0) [0|1023.75] "V"  VPU_GW
+ SG_ BMS01_BatState : 43|4@0+ (1,0) [0|15] ""  VPU_GW
+ SG_ BMS01_actSOC : 31|8@0+ (0.5,0) [0|125] "%"  VPU_GW
+ SG_ BMS01_actCurrent : 7|12@0+ (0.25,-512) [-512|511.75] "A"  VPU_GW
+ SG_ BMS01_FaultLevel : 47|2@0+ (1,0) [0|3] ""  VPU_GW
+
+BO_ 1271 BMS_10: 7 BMS
+ SG_ BMS10_Voltage3 : 43|12@0+ (1,1000) [1000|5095] "V" Vector__XXX
+ SG_ BMS10_Voltage2 : 39|12@0+ (1,1000) [1000|5095] "V" Vector__XXX
+ SG_ BMS10_Voltage1 : 19|12@0+ (1,1000) [1000|5095] "V" Vector__XXX
+ SG_ BMS10_Voltage0 : 15|12@0+ (1,1000) [1000|5095] "V" Vector__XXX
+ SG_ BMS10_StartCellID : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 1272 BMS_11: 5 BMS
+ SG_ BMS11_Temperature3 : 39|8@0- (1,-40) [-40|215] "" Vector__XXX
+ SG_ BMS11_Temperature2 : 31|8@0- (1,-40) [-40|215] "" Vector__XXX
+ SG_ BMS11_Temperature1 : 23|8@0- (1,-40) [-40|215] "" Vector__XXX
+ SG_ BMS11_Temperature0 : 15|8@0- (1,-40) [-40|215] "" Vector__XXX
+ SG_ BMS11_StartCellID : 7|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 1461 BMS_09: 8 BMS
+ SG_ BMS09_ECOState : 36|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_ACReq : 37|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_WaterOutTemp : 47|8@0+ (1,-40) [-40|215] "" Vector__XXX
+ SG_ BMS09_WaterInTemp : 31|8@0+ (1,-40) [-40|215] "" Vector__XXX
+ SG_ BMS09_batteryEWP_status : 17|2@0+ (1,0) [0|3] "" Vector__XXX
+ SG_ BMS09_SubProjectID : 63|4@0+ (1,0) [0|15] "" Vector__XXX
+ SG_ BMS09_Current_Sensor_Fail : 55|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_HVIL_Status : 38|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Crash : 39|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_SBC_Watchdog_Refresh_fail : 21|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_SBC_Wakeup_State : 18|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_SBC_Vsup_Battery_Fail : 23|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_SBC_Udd_Under_Volt : 20|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_SBC_Safe_line : 22|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_SBC_DBG_Mode : 19|1@1- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_VREG_2_7_Low_Volt_Detected : 12|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_V_2_7_Low_Voltage_Detected : 11|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_V_1_2_Low_Volt_Detected_1 : 9|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_V_1_2_Low_Volt_Detected_0 : 8|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Software_Watchdog_Timer : 10|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Software_Reset : 0|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Power_On_Reset : 13|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Jtag_Initiated_Reset : 14|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_FXOSC_Frequency_Low : 3|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_FMPLL_Fail : 2|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Flash_Fatal_Error : 6|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_External_Reset : 7|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_Debug_Control_Core_Reset : 15|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_CMU_Clock_Frequency_Error : 4|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_CheckStop_Reset : 1|1@0- (1,0) [0|1] "" Vector__XXX
+ SG_ BMS09_4_5V_Low_Voltage_Detected : 5|1@0- (1,0) [0|1] "" Vector__XXX
+
+BO_ 920 VCU_05: 8 VPU_GW
+ SG_ VCU05_bCrank : 13|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU05_UBnetLow : 9|1@0+ (1,0) [0|1] "" Vector__XXX
+ SG_ VCU05_AlarmBMS : 12|1@0+ (1,0) [0|1] ""  TBOX,IC
+ SG_ VCU05_FaultUTnetOff : 11|1@0+ (1,0) [0|1] ""  TBOX,IC
+ SG_ VCU05_FaultSOCLow : 10|1@0+ (1,0) [0|1] ""  TBOX,IC
+ SG_ VCU05_bT15 : 46|1@0+ (1,0) [0|1] ""  TBOX,BMS
+ SG_ VCU05_bWakeup : 47|1@0+ (1,0) [0|1] ""  TBOX,BMS,IC
+ SG_ VCU05_EmgcyPowerOffReq : 8|1@0+ (1,0) [0|1] ""  TBOX,BMS
+ SG_ VCU05_PTCurrent : 23|12@0+ (0.25,-512) [-512|511.75] "A"  TBOX,BMS,IC
+ SG_ VCU05_PTPower : 27|12@0+ (0.0625,-128) [-128|127.9375] "Kw"  TBOX,BMS,IC
+ SG_ VCU05_BMSModeReq : 7|4@0+ (1,0) [0|15] ""  TBOX,BMS
+ SG_ VCU05_CapVoltage : 45|10@0+ (0.5,0) [0|511.5] "V"  TBOX,BMS,IC
+ SG_ VCU05_Counter : 51|4@0+ (1,0) [0|15] ""  TBOX,BMS
+ SG_ VCU05_CheckSum : 63|8@0+ (1,0) [0|255] ""  TBOX,BMS
+
+
+
+CM_ SG_ 1279 CHR02_CPState "CC state from GB";
+CM_ SG_ 1279 CHR02_CCState "CC state from GB";
+CM_ SG_ 1266 BMS02_WarnIsoLow "isolation low warn";
+CM_ SG_ 1266 BMS02_FaultOverCurrent "BMS Over Current warn";
+CM_ SG_ 1266 BMS02_FaultCOM "CAN FAULT(CAN busOff£¬time out£¬DLC£¬CHK£¬ CNT)";
+CM_ SG_ 1266 BMS02_FaultUnderVolt "BMS Under Volt";
+CM_ SG_ 1266 BMS02_FaultTempDiff "cell battery TempDiff";
+CM_ SG_ 1266 BMS02_FaultSOCLow "SOCLow";
+CM_ SG_ 1266 BMS02_FaultSOCHigh "SOCHigh";
+CM_ SG_ 1266 BMS02_FaultOverVolt "OverVolt";
+CM_ SG_ 1266 BMS02_FaultOverTemp "OverTemp";
+CM_ SG_ 1266 BMS02_FaultMismatch "BMS Miss match";
+CM_ SG_ 1266 BMS02_FaultIsoLow "isolation low";
+CM_ SG_ 1266 BMS02_FaultConsist "cell battery Consist";
+CM_ SG_ 1266 BMS02_FaultCellUnderVolt "cell battery UnderVolt";
+CM_ SG_ 1266 BMS02_FaultCellOverVolt "cell battery OverVolt";
+CM_ SG_ 1266 BMS02_EnergyRemain "EnergyRemain,KWH";
+CM_ SG_ 1266 BMS02_PreChargeSt "PreCharge state";
+CM_ SG_ 1266 BMS02_PowerLimit "PowerLimit";
+CM_ SG_ 1266 BMS02_InterLock "BMS Interlock Warn";
+CM_ SG_ 1266 BMS02_ResetId "Reset code";
+CM_ SG_ 1266 BMS02_IsoTestFinish "isolation test finish,and BMS02_IsoResistance credible";
+CM_ SG_ 1266 BMS02_IsoResistance "system isolation value";
+CM_ SG_ 1266 BMS02_IsoCheckActive "Checking isolation...";
+CM_ SG_ 1266 BMS02_Checksum "E = (Byte0+Byte1+......+Byte6) XOR 0xFF";
+CM_ SG_ 1268 BMS04_EnHeatMode "EnHeatMode";
+CM_ SG_ 1268 BMS04_CCState "CC state from GB";
+CM_ SG_ 1268 BMS04_ChrCurrentSp "charge current set point,slow charge or fast charge in comm";
+CM_ SG_ 1269 BMS05_AvrgCellVolt "Factor = 1000/1024";
+CM_ SG_ 1269 BMS05_MinCellVolt "Factor = 1000/1024";
+CM_ SG_ 1269 BMS05_MaxCellVolt "Factor = 1000/1024";
+CM_ SG_ 1267 BMS03_MaxChrCurrentShort "short time max charge current";
+CM_ SG_ 1267 BMS03_MaxDisCurrentShort "short time max discharge current";
+CM_ SG_ 1267 BMS03_MinDisVoltage "MinDisVoltage";
+CM_ SG_ 1267 BMS03_MaxChrVoltage "MaxChrVoltage";
+CM_ SG_ 1267 BMS03_MaxDisCurrentLong "MaxDisCurrentLong";
+CM_ SG_ 1267 BMS03_MaxChrCurrentLong "MaxChrCurrentLong ";
+CM_ SG_ 917 BMS01_FaultAirbag "air bag Fault";
+CM_ SG_ 917 BMS01_ChrPlugIn "ChrPlugIn";
+CM_ SG_ 917 BMS01_EmgcyOff_Predic "EmgcyOff_Predic";
+CM_ SG_ 917 BMS01_EmgcyOff "EmgcyOff";
+CM_ SG_ 917 BMS01_EmgcyOff_Pilot "Interlock,and emergency off";
+CM_ SG_ 917 BMS01_ChrFailure "ChrFailure=1 when (CHR01_ChrOpMode = Failure)";
+CM_ SG_ 917 BMS01_EmgcyOff_Crash "Crash,and emergency off";
+CM_ SG_ 917 BMS01_Checksum "E = (Byte0+Byte1+......+Byte6) XOR 0xFF";
+CM_ SG_ 917 BMS01_actVoltage "active voltage";
+CM_ SG_ 917 BMS01_BatState "battery state";
+CM_ SG_ 917 BMS01_actSOC "SOC";
+CM_ SG_ 917 BMS01_actCurrent "active current";
+CM_ SG_ 920 VCU05_CheckSum "E = (Byte0+Byte1+......+Byte6) XOR 0xFF";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 50000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 999999;
+BA_DEF_  "NmBaseAddress" HEX 1024 1087;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NmStationAddress" HEX 0 0;
+BA_DEF_  "GenNWMApBusSleep" STRING ;
+BA_DEF_  "GenNWMApCanNormal" STRING ;
+BA_DEF_  "GenNWMApCanOff" STRING ;
+BA_DEF_  "GenNWMApCanOn" STRING ;
+BA_DEF_  "GenNWMApCanSleep" STRING ;
+BA_DEF_  "GenNWMApCanWakeUp" STRING ;
+BA_DEF_  "GenNWMGotoMode_Awake" STRING ;
+BA_DEF_  "GenNWMGotoMode_BusSleep" STRING ;
+BA_DEF_  "GenNWMSleepTime" INT 0 1000000;
+BA_DEF_  "GenNWMTalkNM" STRING ;
+BA_DEF_ BU_  "GenNodSleepTime" INT 0 1000000;
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmNode" ENUM  "No","Yes";
+BA_DEF_ SG_  "NWM-WakeupAllowed" ENUM  "No","Yes";
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 2 50000;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 1 1000;
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 1 999999;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclic","spontaneous","cyclicIfActive","spontaneousWithDelay","cyclicAndSpontaneous","cyclicAndSpontaneousWithDelay","spontaneousWithRepetition","cyclicIfActiveAndSpontaneousWD";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "spontaneous";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT 0 1215752192;
+BA_DEF_ EV_  "GenEnvControlType" ENUM  "NoControl","SliderHoriz","SliderVert","PushButton","Edit","BitmapSwitch";
+BA_DEF_ EV_  "GenEnvMsgName" STRING ;
+BA_DEF_ EV_  "GenEnvMsgOffset" INT 0 999999999;
+BA_DEF_ EV_  "GenEnvAutoGenCtrl" ENUM  "No","Yes";
+BA_DEF_  "GenEnvVarEndingDsp" STRING ;
+BA_DEF_  "GenEnvVarEndingSnd" STRING ;
+BA_DEF_  "GenEnvVarPrefix" STRING ;
+BA_DEF_ BO_  "GenMsgAltSetting" STRING ;
+BA_DEF_ BO_  "GenMsgAutoGenDsp" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgAutoGenSnd" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgConditionalSend" STRING ;
+BA_DEF_ BO_  "GenMsgEVName" STRING ;
+BA_DEF_ BO_  "GenMsgPostIfSetting" STRING ;
+BA_DEF_ BO_  "GenMsgPostSetting" STRING ;
+BA_DEF_ BO_  "GenMsgPreIfSetting" STRING ;
+BA_DEF_ BO_  "GenMsgPreSetting" STRING ;
+BA_DEF_ BU_  "GenNodAutoGenSnd" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigAltSetting" STRING ;
+BA_DEF_ SG_  "GenSigAssignSetting" STRING ;
+BA_DEF_ SG_  "GenSigAutoGenDsp" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigAutoGenSnd" ENUM  "No","Yes";
+BA_DEF_ SG_  "GenSigConditionalSend" STRING ;
+BA_DEF_ SG_  "GenSigEnvVarType" ENUM  "int","float","undef";
+BA_DEF_ SG_  "GenSigEVName" STRING ;
+BA_DEF_ SG_  "GenSigPostIfSetting" STRING ;
+BA_DEF_ SG_  "GenSigPostSetting" STRING ;
+BA_DEF_ SG_  "GenSigPreIfSetting" STRING ;
+BA_DEF_ SG_  "GenSigPreSetting" STRING ;
+BA_DEF_ SG_  "GenSigReceiveSetting" STRING ;
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "NmBaseAddress" 1024;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "GenNWMApBusSleep" "apBusSleep()";
+BA_DEF_DEF_  "GenNWMApCanNormal" "apCanNormal()";
+BA_DEF_DEF_  "GenNWMApCanOff" "apCanOff()";
+BA_DEF_DEF_  "GenNWMApCanOn" "apCanOn()";
+BA_DEF_DEF_  "GenNWMApCanSleep" "apCanSleep()";
+BA_DEF_DEF_  "GenNWMApCanWakeUp" "apCanWakeUp()";
+BA_DEF_DEF_  "GenNWMGotoMode_Awake" "GotoMode_Awake()";
+BA_DEF_DEF_  "GenNWMGotoMode_BusSleep" "GotoMode_BusSleep()";
+BA_DEF_DEF_  "GenNWMSleepTime" 0;
+BA_DEF_DEF_  "GenNWMTalkNM" "TalkNM()";
+BA_DEF_DEF_  "GenNodSleepTime" 0;
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "NmNode" "No";
+BA_DEF_DEF_  "NWM-WakeupAllowed" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "GenMsgCycleTime" 100;
+BA_DEF_DEF_  "GenMsgDelayTime" 1;
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 1;
+BA_DEF_DEF_  "GenMsgSendType" "";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenEnvControlType" "";
+BA_DEF_DEF_  "GenEnvMsgName" "";
+BA_DEF_DEF_  "GenEnvMsgOffset" 0;
+BA_DEF_DEF_  "GenEnvAutoGenCtrl" "No";
+BA_DEF_DEF_  "GenEnvVarEndingDsp" "Dsp_";
+BA_DEF_DEF_  "GenEnvVarEndingSnd" "_";
+BA_DEF_DEF_  "GenEnvVarPrefix" "Env";
+BA_DEF_DEF_  "GenMsgAltSetting" "";
+BA_DEF_DEF_  "GenMsgAutoGenDsp" "";
+BA_DEF_DEF_  "GenMsgAutoGenSnd" "";
+BA_DEF_DEF_  "GenMsgConditionalSend" "";
+BA_DEF_DEF_  "GenMsgEVName" "";
+BA_DEF_DEF_  "GenMsgPostIfSetting" "";
+BA_DEF_DEF_  "GenMsgPostSetting" "";
+BA_DEF_DEF_  "GenMsgPreIfSetting" "";
+BA_DEF_DEF_  "GenMsgPreSetting" "";
+BA_DEF_DEF_  "GenNodAutoGenSnd" "";
+BA_DEF_DEF_  "GenSigAltSetting" "";
+BA_DEF_DEF_  "GenSigAssignSetting" "";
+BA_DEF_DEF_  "GenSigAutoGenDsp" "";
+BA_DEF_DEF_  "GenSigAutoGenSnd" "";
+BA_DEF_DEF_  "GenSigConditionalSend" "";
+BA_DEF_DEF_  "GenSigEnvVarType" "undef";
+BA_DEF_DEF_  "GenSigEVName" "";
+BA_DEF_DEF_  "GenSigPostIfSetting" "";
+BA_DEF_DEF_  "GenSigPostSetting" "";
+BA_DEF_DEF_  "GenSigPreIfSetting" "";
+BA_DEF_DEF_  "GenSigPreSetting" "";
+BA_DEF_DEF_  "GenSigReceiveSetting" "";
+BA_ "NmStationAddress" BU_ ABS 39;
+BA_ "NmStationAddress" BU_ EPS 65;
+BA_ "NmStationAddress" BU_ CHR 49;
+BA_ "NmStationAddress" BU_ IC 45;
+BA_ "NmStationAddress" BU_ BMS 32;
+BA_ "NmStationAddress" BU_ VPU_GW 16;
+BA_ "GenMsgCycleTime" BO_ 512 20;
+BA_ "GenMsgSendType" BO_ 512 0;
+BA_ "GenMsgCycleTime" BO_ 796 500;
+BA_ "GenMsgCycleTimeFast" BO_ 796 20;
+BA_ "GenMsgSendType" BO_ 796 0;
+BA_ "GenMsgCycleTime" BO_ 329 100;
+BA_ "GenMsgSendType" BO_ 329 0;
+BA_ "GenMsgCycleTime" BO_ 1328 200;
+BA_ "GenMsgSendType" BO_ 1328 0;
+BA_ "GenMsgSendType" BO_ 1279 0;
+BA_ "GenMsgSendType" BO_ 1266 0;
+BA_ "GenMsgCycleTime" BO_ 1464 1000;
+BA_ "GenMsgSendType" BO_ 1464 0;
+BA_ "GenMsgSendType" BO_ 1288 0;
+BA_ "GenMsgSendType" BO_ 1270 0;
+BA_ "GenMsgSendType" BO_ 1466 0;
+BA_ "GenMsgCycleTime" BO_ 1466 1000;
+BA_ "GenMsgSendType" BO_ 1285 0;
+BA_ "GenMsgSendType" BO_ 1278 0;
+BA_ "GenMsgSendType" BO_ 1268 0;
+BA_ "GenMsgSendType" BO_ 1269 0;
+BA_ "GenMsgSendType" BO_ 1267 0;
+BA_ "GenMsgCycleTime" BO_ 917 20;
+BA_ "GenMsgSendType" BO_ 917 0;
+BA_ "GenMsgCycleTime" BO_ 1271 100;
+BA_ "GenMsgSendType" BO_ 1271 0;
+BA_ "GenMsgCycleTime" BO_ 1272 100;
+BA_ "GenMsgSendType" BO_ 1272 0;
+BA_ "GenMsgCycleTime" BO_ 1461 1000;
+BA_ "GenMsgSendType" BO_ 1461 0;
+BA_ "GenMsgCycleTime" BO_ 920 20;
+BA_ "GenMsgSendType" BO_ 920 0;
+BA_ "GenSigStartValue" SG_ 512 ABS01_VehicleSpeed 0;
+BA_ "GenSigStartValue" SG_ 512 ABS01_Counter 0;
+BA_ "GenSigStartValue" SG_ 1279 CHR02_CPState 0;
+BA_ "GenSigStartValue" SG_ 1279 CHR02_UINVolt 0;
+BA_ "GenSigStartValue" SG_ 1279 CHR02_CCState 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_WarnIsoLow 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultOverCurrent 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultCOM 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultUnderVolt 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultTempDiff 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultSOCLow 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultSOCHigh 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultOverVolt 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultOverTemp 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultMismatch 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultIsoLow 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultConsist 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultCellUnderVolt 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_FaultCellOverVolt 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_EnergyRemain 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_PreChargeSt 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_PowerLimit 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_InterLock 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_ResetId 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_IsoTestFinish 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_IsoResistance 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_IsoCheckActive 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_Counter 0;
+BA_ "GenSigStartValue" SG_ 1266 BMS02_Checksum 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_BatNumber 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_BatIndex 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_CellNumber 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_TSensorNumber 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_HWVersion_C 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_DataVersion_C 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_CSCVersion 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_CSCRevision 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_BMUVersion 0;
+BA_ "GenSigStartValue" SG_ 1464 BMS08_BMURevision 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_PTCRlySt 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_HVACRlySt 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_HeatingCtl 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_CoolingCtl 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_Counter 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_MinTempCellId 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_MinTemp 40;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_MaxTempCellId 0;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_MaxTemp 40;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_BatTemp 40;
+BA_ "GenSigStartValue" SG_ 1270 BMS06_BatSOH 0;
+BA_ "GenSigStartValue" SG_ 1466 VCU06_SWVersion_C 0;
+BA_ "GenSigStartValue" SG_ 1466 VCU06_SWRevision_C 0;
+BA_ "GenSigStartValue" SG_ 1466 VCU06_Project_C 0;
+BA_ "GenSigStartValue" SG_ 1466 VCU06_PFSample_C 0;
+BA_ "GenSigStartValue" SG_ 1466 VCU06_HWVersion_C 0;
+BA_ "GenSigStartValue" SG_ 1466 VCU06_DataVersion_C 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_SWVersion 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bFaultCable 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_PowerLimit 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_ReqCloseRly 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bWakeUp 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bFaultDC 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_Counter 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bFaultAC 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bFaultHW 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bOverTempCool 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_bErrorCOM 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_FaultID 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_ChrTemp 40;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_ChrOpMode 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_actChrVolt 0;
+BA_ "GenSigStartValue" SG_ 1278 CHR01_actChrCurrent 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_EnHeatMode 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_CCState 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_DCChrRlySt 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_FastCharMode 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_OBCMode 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_Counter 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_ACChrRlySt 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_ChrTimeRemain 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_EnCharger 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_ChrVoltSp 0;
+BA_ "GenSigStartValue" SG_ 1268 BMS04_ChrCurrentSp 0;
+BA_ "GenSigStartValue" SG_ 1269 BMS05_MaxVoltCellId 0;
+BA_ "GenSigStartValue" SG_ 1269 BMS05_Counter 0;
+BA_ "GenSigStartValue" SG_ 1269 BMS05_AvrgCellVolt 0;
+BA_ "GenSigStartValue" SG_ 1269 BMS05_MinVoltCellId 0;
+BA_ "GenSigStartValue" SG_ 1269 BMS05_MinCellVolt 0;
+BA_ "GenSigStartValue" SG_ 1269 BMS05_MaxCellVolt 0;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_MaxChrCurrentShort 512;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_MaxDisCurrentShort 512;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_MinDisVoltage 0;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_MaxChrVoltage 0;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_Counter 0;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_MaxDisCurrentLong 512;
+BA_ "GenSigStartValue" SG_ 1267 BMS03_MaxChrCurrentLong 512;
+BA_ "GenSigStartValue" SG_ 917 BMS01_FaultAirbag 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_ChrPlugIn 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_EmgcyOff_Predic 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_EmgcyOff 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_EmgcyOff_Pilot 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_ChrFailure 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_EmgcyOff_Crash 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_PreRlySt 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_PosRlySt 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_NegRlySt 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_Counter 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_Checksum 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_actVoltage 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_BatState 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_actSOC 0;
+BA_ "GenSigStartValue" SG_ 917 BMS01_actCurrent 2048;
+BA_ "GenSigStartValue" SG_ 917 BMS01_FaultLevel 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_bCrank 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_UBnetLow 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_AlarmBMS 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_FaultUTnetOff 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_FaultSOCLow 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_bT15 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_bWakeup 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_EmgcyPowerOffReq 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_PTCurrent 2048;
+BA_ "GenSigStartValue" SG_ 920 VCU05_PTPower 2048;
+BA_ "GenSigStartValue" SG_ 920 VCU05_BMSModeReq 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_CapVoltage 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_Counter 0;
+BA_ "GenSigStartValue" SG_ 920 VCU05_CheckSum 0;
+VAL_ 512 ABS01_ABSActv 0 "no ABS intervention" 1 "ABS intervention active" ;
+VAL_ 512 ABS01_ABS_fault 0 "no failure" 1 "failure detected" ;
+VAL_ 512 ABS01_EBD_fault 0 "no failure" 1 "failure detected" ;
+VAL_ 512 ABS01_config_flag 0 "match ABS" 1 "match ESP" ;
+VAL_ 512 ABS01_IND_APBConfigFlag 0 "No APB Configuration" 1 "APB Configuration" ;
+VAL_ 512 ABS01_Status_MovingDirection 0 "Stop" 1 "Forward" 2 "Backward" 3 "Invalid" ;
+VAL_ 512 ABS01_RotDir_FL 0 "Stop" 1 "Forward" 2 "Backward" 3 "Invalid" ;
+VAL_ 512 ABS01_RotDir_FR 0 "Stop" 1 "Forward" 2 "Backward" 3 "Invalid" ;
+VAL_ 512 ABS01_RotDir_RL 0 "Stop" 1 "Forward" 2 "Backward" 3 "Invalid" ;
+VAL_ 512 ABS01_RotDir_RR 0 "Stop" 1 "Forward" 2 "Backward" 3 "Invalid" ;
+VAL_ 796 SRS01_Crash_Output_Sts 0 "no crash" 1 "deployed crash" ;
+VAL_ 329 IC01_hand_brake_status 0 "not pulled" 1 "pulled" ;
+VAL_ 329 IC01_parity_flag 0 "Valid" 1 "Invalid" ;
+VAL_ 530 VCM02_DrivingStatus 0 "Ready" 1 "PRA On" 2 "Reserved" 3 "Driving" 7 "Fault" ;
+VAL_ 530 VCM02_BrakePedalStatus 0 "not actuated" 1 "actuated" 2 "Reserved" 3 "Invalid" ;
+VAL_ 530 VCM02_CCStatus 0 "Disconnected" 1 "Connected" ;
+VAL_ 530 VCM02_CC2Status 0 "Disconnected" 1 "Connected" ;
+VAL_ 530 VCM02_BrakePedalParity 0 "Valid" 1 "Invalid" ;
+VAL_ 534 VCM03_Ready 0 "No Ready" 1 "Ready" 2 "error" 3 "Invalid" ;
+VAL_ 534 VCM03_Failure 0 "No Failure " 1 "Failure " 2 "error" 3 "Invalid" ;
+VAL_ 534 VCM03_EcoMode 0 "Off" 1 "On" 2 "error" 3 "Invalid" ;
+VAL_ 534 VCM03_regenActive 0 "Valid" 1 "Invalid" ;
+VAL_ 534 VCM03_PRAMainRelayPLStatus 0 "OFF" 1 "ON" ;
+VAL_ 534 VCM03_PRAMainRelayMIStatus 0 "OFF" 1 "ON" ;
+VAL_ 534 VCM03_PreChargeRelayStatus 0 "OFF" 1 "ON" ;
+VAL_ 534 VCM03_OnePedalMode 0 "Invalid" 1 "Valid" ;
+VAL_ 534 VCM03_Estop_Valid 0 "Inactive" 1 "Active" ;
+VAL_ 534 VCM03_ShiftLeverPosition 0 "Init" 1 "Reserved" 2 "Failed" 3 "Reserved" 4 "D" 5 "N" 6 "R" 7 "P" ;
+VAL_ 528 VCM06_MbRegenMaxWheelQualifier 0 "notinitialized" 1 "normal" 2 "faulty" 3 "Invalid" ;
+VAL_ 528 VCM06_MbRegenWheelQualifier 0 "notinitialized" 1 "normal" 2 "faulty" 3 "Invalid" ;
+VAL_ 528 VCM06_MotPedalPosDriver_Status 0 "Valid" 1 "Invalid" ;
+VAL_ 1328 ACM01_PTCReq 0 "Off" 1 "Gear 1" 2 "Gear 2" 3 "Gear 3" ;
+VAL_ 1279 CHR02_CPState 7 "null" 6 "VOLT HIGH" 5 "VOLT LOW" 4 "duty HIGH" 3 "duty low" 2 "frequency high" 0 "normal" 1 "frequencyLow" ;
+VAL_ 1279 CHR02_CCState 10 "F' semijoin 63A" 9 "F connect 63A" 8 "E' semijoin 32A" 7 "E connect 32A" 6 "D' semijoin 16A" 5 "D connect 16A" 4 "C' semijoin 10A" 3 "C connect 10A" 2 "B OPEN" 0 "NULL" 1 "A disconnect" ;
+VAL_ 1270 BMS06_PTCRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 1270 BMS06_HVACRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 1270 BMS06_HeatingCtl 0 "Off" 1 "On" ;
+VAL_ 1270 BMS06_CoolingCtl 0 "Off" 1 "On" ;
+VAL_ 1278 CHR01_ChrOpMode 7 "preFailure" 6 "Failure" 5 "after run" 4 "volt loop" 3 "current loop" 2 "preCharge" 0 "init" 1 "standby" ;
+VAL_ 1268 BMS04_CCState 10 "F' semijoin 63A" 9 "F connect 63A" 8 "E' semijoin 32A" 7 "E connect 32A" 6 "D' semijoin 16A" 5 "D connect 16A" 4 "C' semijoin 10A" 3 "C connect 10A" 2 "B OPEN" 0 "NULL" 1 "A disconnect" ;
+VAL_ 1268 BMS04_DCChrRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 1268 BMS04_DcChrCntSt 3 "Reserve" 2 "semijoin" 0 "open" 1 "connect" ;
+VAL_ 1268 BMS04_AcChrCntSt 3 "Reserve" 2 "semijoin" 0 "open" 1 "connect" ;
+VAL_ 1268 BMS04_ACChrRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 917 BMS01_PreRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 917 BMS01_PosRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 917 BMS01_NegRlySt 3 "stuck" 2 "weld" 0 "open" 1 "close" ;
+VAL_ 917 BMS01_BatState 15 "Reserve" 14 "Fault" 13 "RTC" 12 "FastChargeFail" 11 "slowChargeFail" 10 "FastCharge ready" 9 "fastCharge or slowcharge Finish" 8 "ChargeStart" 7 "Reserve" 6 "InCharge" 5 "AfterRun" 4 "ON&MR Open£¬and PostDrive" 3 "Servicing" 2 "PreCharge" 0 "Init" 1 "StandBy" ;
+VAL_ 917 BMS01_FaultLevel 3 "Level3 Fault-park" 2 "Level2 Fault-powerLimt" 0 "No Fault" 1 "Level1 Fault-vehicle's normal runnin" ;
+VAL_ 1461 BMS09_ECOState 0 "off" 1 "on" ;
+VAL_ 1461 BMS09_ACReq 0 "off" 1 "on" ;
+VAL_ 1461 BMS09_batteryEWP_status 3 "error" 2 "reserved" 0 "off" 1 "on" ;
+VAL_ 920 VCU05_BMSModeReq 4 "Charge Mode" 3 "Output Module 3" 2 "Output Module 2" 0 "standby" 1 "Output Module 1" ;
+

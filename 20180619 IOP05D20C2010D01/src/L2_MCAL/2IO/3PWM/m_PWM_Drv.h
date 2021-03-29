@@ -15,17 +15,17 @@
 * 
 *    Version      Date          Author        CR#          Descriptions
 *   ---------   ----------    ------------  ----------  ---------------
-*     1.0        2012/06/11      Lwt          	N/A          Original
-*     1.1        2012/09/05      Lwt			N/A          Modify include file
-*     1.2        2012/09/20      Lwt			N/A          Modify Duty-Func
-*     1.3        2012/09/24      Lwt			N/A          Modify Pins, Sub2, ISR_SRC, ISR_Predefine
-*     1.4        2012/09/25      Lwt			N/A          Modify Duty Param-in
-*     1.5        2012/09/27      Lwt			N/A          Add Cfg file
-*     1.6        2012/10/09      Lwt	       	N/A          Modified All_Sub_Duty Function
-*     1.7        2012/10/10      Lwt	       	N/A          Modified Func-Declaration in Header file
-*     1.8        2012/11/02      Lwt			N/A          Add History Comment
-*     1.9        2013/02/01      Lwt			N/A          Code Simplify, Delete "MPC560xP.h" Reg_Struct
-*     1.10       2013/02/01      Lwt			N/A          Add Func-Declaration in Header
+*     1.0        2012/06/11      CODER2          	N/A          Original
+*     1.1        2012/09/05      CODER2			N/A          Modify include file
+*     1.2        2012/09/20      CODER2			N/A          Modify Duty-Func
+*     1.3        2012/09/24      CODER2			N/A          Modify Pins, Sub2, ISR_SRC, ISR_Predefine
+*     1.4        2012/09/25      CODER2			N/A          Modify Duty Param-in
+*     1.5        2012/09/27      CODER2			N/A          Add Cfg file
+*     1.6        2012/10/09      CODER2	       	N/A          Modified All_Sub_Duty Function
+*     1.7        2012/10/10      CODER2	       	N/A          Modified Func-Declaration in Header file
+*     1.8        2012/11/02      CODER2			N/A          Add History Comment
+*     1.9        2013/02/01      CODER2			N/A          Code Simplify, Delete "MPC560xP.h" Reg_Struct
+*     1.10       2013/02/01      CODER2			N/A          Add Func-Declaration in Header
 ************************************************************************************************/
 
 #ifndef _M_PWM_DRV_H_
